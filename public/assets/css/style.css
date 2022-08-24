@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap');
+
+* {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box !important;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    transition: .2s linear;
+    text-transform: capitalize;
+}
+
+*::selection {
+    color: #F1F1F1;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* search  */
+
+.home {
+    background-image: url(../images/search-bg.PNG);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 613px;
+}
+
+.height {
+
+    height: 650px;
+
+}
+
+.form {
+
+    position: relative;
+}
+
+.form .fa-search {
+
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #157347;
+    font-size: 20px;
+
+
+}
+
+.form span {
+
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #157347;
+
+}
+
+.left-pan {
+    padding-left: 7px;
+}
+
+.left-pan i {
+
+    padding-left: 10px;
+}
+
+.form-input {
+
+    height: 55px;
+    text-indent: 33px;
+    font-size: 16px;
+    border: none;
+
+}
+
+.form-input:focus {
+    border: none;
+}
+
+/* about  */
+
+.about {
+    background-color: #f7f7f7;
+}
+
+
+/* Teachers  */
+
+.teachers {
+    background-color: #f7f7f7;
+}
+
+.teachers .slide {
+    position: relative;
+    overflow: hidden;
+    /* margin-bottom: 4rem; */
+    user-select: none;
+}
+
+.teachers .slide img {
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+
+.teachers .slide h3 {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(72, 71, 71);
+}
+
+.teachers .slide .share {
+    position: absolute;
+    top: 1rem;
+    left: -10rem;
+}
+
+.teachers .slide:hover .share {
+    left: 2rem;
+}
+
+.teachers .slide .share a {
+    display: block;
+    margin-top: 1rem;
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    border-radius: .5rem;
+    background-color: rgb(72, 71, 71);
+    color: #F1F1F1;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.teachers .slide .share a:hover {
+    background-color: #157347;
+    color: #ffffff;
+}
+
+/* Reviews  */
+
+.reviews-slider .slide {
+    border-radius: .5rem;
+    background-color: #FFFFFF;
+    padding: 2rem;
+    user-select: none;
+    margin-bottom: 23px;
+}
+
+.reviews-slider .slide p {
+    line-height: 2;
+    color: #aaa;
+}
+
+.reviews-slider .slide .user {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.reviews-slider .slide .user img {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.reviews-slider .slide .user h3 {
+    font-size: 1.2rem;
+    color: rgb(72, 71, 71);
+    margin-bottom: .5rem;
+}
+
+.reviews-slider .slide .user .subject {
+    font-size: 1rem;
+    color: rgb(118, 113, 113);
+}
+
+/* contact  */
+
+.contact {
+    background-color: #f7f7f7;
+}
+
+.contact .row form .box {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    border-radius: .5rem;
+    background-color: #FFFFFF;
+    font-size: 1rem;
+    color: rgb(72, 71, 71);
+    padding: 0.8rem;
+    text-transform: none;
+}
+
+.contact .row form span {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.contact .row form .radio {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.contact .row form .radio label {
+    font-size: 1rem;
+    color: #aaa;
+    margin-left: .5rem;
+    cursor: pointer;
+}
+
+.contact .row form .radio #female {
+    margin-left: 2rem;
+}
+
+.contact .row form .radio input {
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    background-color: #aaa;
+    cursor: pointer;
+}
+
+.contact .row form .radio input:checked {
+    background-color: #157347;
+    border-radius: 5rem;
+}
+
+.contact .row form .radio #male:checked~label[for="male"] {
+    color: #157347;
+}
+
+.contact .row form .radio #female:checked~label[for="female"] {
+    color: #157347;
+}
+
+.card-hover:hover {
+    transform: translateY(-20px);
+}
+
+.menu-hover:hover {
+    color: #157347;
+}
+
+.dropdown-item:hover {
+    color: white;
+    background-color: #157347;
+}
+
+/* Login Page  */
+
+.login-input,
+.reader select {
+    background-color: #F2F2F2;
+}
+
+/* footer  */
+
+.footer {
+    background-color: rgb(72, 71, 71);
+    text-align: center;
+}
+
+.footer .share a {
+    margin: 0 .3rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    line-height: 3.5rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: rgb(72, 71, 71);
+    background-color: #F1F1F1;
+    ;
+    transition: 0.5s ease-in-out;
+}
+
+.footer .share a:hover {
+    background-color: #157347;
+    color: #ffffff;
+}
+
+.footer .credit {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    padding-top: 2.5rem;
+    border-top: .1rem solid #FFFFFF;
+    font-size: 1.5rem;
+    color: #FFFFFF;
+}
+
+.footer .credit span {
+    color: #157347;
+}
+
+
+@media only screen and (max-width: 400px) {
+    .home {
+        background-image: url(../images/search-bg-400.PNG);
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 179px;
+    }
+
+    .height {
+
+        height: 215px;
+
+    }
+
+    .form-input {
+        height: 40px;
+        text-indent: 25px;
+        font-size: 13px;
+        border: none;
+    }
+
+    .form .fa-search {
+
+        position: absolute;
+        top: 12px;
+        left: 14px;
+        color: #157347;
+        font-size: 15px;
+
+    }
+}
