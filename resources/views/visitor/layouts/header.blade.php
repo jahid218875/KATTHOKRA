@@ -49,7 +49,7 @@
                             <a class="nav-link fw-bold fs-5 menu-hover" href="#প্রকৌশলবিদ্যা">প্রকৌশলবিদ্যা</a>
                         </li>
                     </ul>
-                    <div class="btn-group" role="group">
+                    {{-- <div class="btn-group" role="group">
                         <div type="button" class=" dropdown-toggle me-3" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             বাংলা / Eng
@@ -58,9 +58,9 @@
                             <li><a class="dropdown-item" href="#">বাংলা</a></li>
                             <li><a class="dropdown-item" href="#">English</a></li>
                         </ul>
-                    </div>
-                    <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2" type="submit"><i
-                            class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
+                    </div> --}}
+                    <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow"
+                        type="submit"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
                 </div>
             </div>
         </nav>
@@ -70,7 +70,7 @@
 
     <!-- home search area start  -->
 
-    <section class="home">
+    {{-- <section class="home">
         <div class="container">
             <div class="row height d-flex justify-content-center align-items-center">
                 <div class="col-10 col-md-6">
@@ -82,19 +82,16 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    {{-- <section class="home">
-        <img src="assets/images/search-bg.PNG" class="img-fluid position-relative">
-
-
-
-        <div class="form position-absolute position-absolute bottom-50 end-50" style="width: 300px">
-            <i class="fa fa-search fa-bold" style="font-size: 20px;"></i>
+    <section class="home">
+        <img src="assets/images/search-bg.PNG" class="img-fluid">
+        <div class="form">
+            <i class="fa fa-search fa-bold"></i>
             <input type="search" class="form-control form-input p-3 rounded-pill shadow"
                 placeholder="Search anything...">
         </div>
-    </section> --}}
+    </section>
 
 
     <!-- home search area end  -->

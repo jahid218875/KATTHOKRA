@@ -59,7 +59,7 @@
                 </div>
             </a>
         </div>
-        <div class="col">
+        {{-- <div class="col">
             <a href="{{'/arts'}}">
                 <div class="card shadow my-3 border-0 mx-auto card-hover" style="width: 18rem;">
                     <img src="assets/images/course-5.svg" class="card-img-top" alt="...">
@@ -68,8 +68,8 @@
                     </div>
                 </div>
             </a>
-        </div>
-        <div class="col">
+        </div> --}}
+        {{-- <div class="col">
             <a href="{{'/commerce'}}">
                 <div class="card shadow my-3 border-0 mx-auto card-hover" style="width: 18rem;">
                     <img src="assets/images/homg-img.svg" class="card-img-top" alt="...">
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div> --}}
     </div>
 </section>
 
