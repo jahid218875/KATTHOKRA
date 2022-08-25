@@ -20,7 +20,7 @@
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
-    scroll-padding-top: 28rem;
+    scroll-padding-top: 8rem;
 }
 
 ::-webkit-scrollbar {
@@ -34,7 +34,7 @@ html {
 
 ::-webkit-scrollbar-thumb {
     background-color: #157347;
-    border-radius: 115rem;
+    border-radius: 5rem;
 }
 
 a {
