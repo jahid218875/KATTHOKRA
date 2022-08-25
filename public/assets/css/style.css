@@ -20,7 +20,7 @@
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
-    scroll-padding-top: 18rem;
+    scroll-padding-top: 28rem;
 }
 
 ::-webkit-scrollbar {
