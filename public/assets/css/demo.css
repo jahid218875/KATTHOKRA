@@ -5,7 +5,7 @@ html.hc-nav-yscroll {
 body.hc-nav-open {
     overflow: visible;
     position: fixed;
-    width: 120%;
+    width: 100%;
     min-height: 100%
 }
 
