@@ -14,9 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/login', [HomeController::class, 'login']);
-Route::get('/science', [HomeController::class, 'science']);
-Route::get('/commerce', [HomeController::class, 'commerce']);
-Route::get('/arts', [HomeController::class, 'arts']);
-Route::get('/engineering', [HomeController::class, 'engineering']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/login', [HomeController::class, 'login'])->name('login');
+Route::get('/group/{name}', [HomeController::class, 'group']);
+
+
+
+
+Route::name('admin.')->prefix('/panel/admin')->group(function () {
+    Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/subject-add', [HomeController::class, 'subject_add'])->name('subject_add');
+    Route::post('/subject-add', [HomeController::class, 'subject_add_process'])->name('subject_process');
+
+
+    Route::get('/subject-list', [HomeController::class, 'subject_list']);
+});

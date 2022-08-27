@@ -13,9 +13,9 @@
 
 }
 
-*::selection {
+/* *::selection {
     color: #F1F1F1;
-}
+} */
 
 html {
     overflow-x: hidden;

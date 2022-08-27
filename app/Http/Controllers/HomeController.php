@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -17,23 +19,44 @@ class HomeController extends Controller
         return view('visitor.login');
     }
 
-    public function science()
+    public function group($name)
     {
-        return view('visitor.science');
+        return view('visitor.group');
     }
 
-    public function commerce()
+    public function dashboard()
     {
-        return view('visitor.commerce');
+        return view('admin.main');
     }
 
-    public function arts()
+    public function subject_add()
     {
-        return view('visitor.arts');
+        return view('admin.subject-add');
+    }
+    public function subject_list()
+    {
+        return view('admin.subject-list');
     }
 
-    public function engineering()
+    public function subject_add_process(Request $request)
     {
-        return view('visitor.engineering');
+        $data = $this->validate($request, [
+            'group_name' => 'required',
+            'subject_name' => 'required',
+            'subject_image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('subject_image')) {
+            $image      = $request->file('subject_image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['subject_image'] = $image_name;
+
+        Subject::create($data);
+
+        $success = "Subject Added Successfully";
+
+        return back()->with('success', $success);
     }
 }
