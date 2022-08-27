@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
-Route::get('/group/{name}', [HomeController::class, 'group']);
+Route::post('/login', [HomeController::class, 'login'])->name('loginSubmit');
+Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 
 
