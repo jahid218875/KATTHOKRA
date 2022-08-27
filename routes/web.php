@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,17 +24,17 @@ Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 
 Route::name('admin.')->prefix('/panel/admin')->group(function () {
-    Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
     // Subject Add 
 
-    Route::get('/subject-add', [HomeController::class, 'subject_add'])->name('subject_add');
-    Route::post('/subject-add', [HomeController::class, 'subject_add_process'])->name('subject_process');
+    Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
+    Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');
 
     // Paper Add 
 
-    Route::get('/paper-add', [HomeController::class, 'paper_add'])->name('paper_add');
+    Route::get('/paper-add', [AdminController::class, 'paper_add'])->name('paper_add');
 
 
-    Route::get('/subject-list', [HomeController::class, 'subject_list']);
+    Route::get('/subject-list', [AdminController::class, 'subject_list']);
 });
