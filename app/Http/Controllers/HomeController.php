@@ -33,10 +33,10 @@ class HomeController extends Controller
     {
         return view('admin.subject-add');
     }
-    public function subject_list()
-    {
-        return view('admin.subject-list');
-    }
+    // public function subject_list()
+    // {
+    //     return view('admin.subject-list');
+    // }
 
     public function subject_add_process(Request $request)
     {
@@ -58,5 +58,12 @@ class HomeController extends Controller
         $success = "Subject Added Successfully";
 
         return back()->with('success', $success);
+    }
+
+    public function paper_add()
+    {
+        $subject = Subject::get();
+        // dd($subject);
+        return view('admin.paper-add', compact('subject'));
     }
 }

@@ -84,6 +84,9 @@
                                 <li class="submenu-item {{ request()->routeIs('admin.subject_add') ? 'active' : ''}}">
                                     <a href="{{route('admin.subject_add')}}">Subject Add</a>
                                 </li>
+                                <li class="submenu-item {{ request()->routeIs('admin.paper_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.paper_add')}}">Paper Add</a>
+                                </li>
                                 <li class="submenu-item {{ request()->routeIs('admin.subject_list') ? 'active' : ''}}">
                                     {{-- <a href="{{route('admin.subject_list')}}">Subject List</a> --}}
                                 </li>
