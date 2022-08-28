@@ -33,6 +33,8 @@
 
         <section id="multiple-column-form">
             <div class="row match-height">
+
+
                 @if(session('success'))
                 <script>
                     Swal.fire(
@@ -41,14 +43,14 @@
                     'success'
                     )
                 </script>
-                @elseif(session('error'))
+                {{-- @elseif(session('error'))
                 <script>
                     Swal.fire(
-                    'Oops...!',
+                    'Good job!',
                     '{{ session('error') }}',
                     'error'
                     )
-                </script>
+                </script> --}}
                 @endif
 
                 @if($errors->any())
@@ -65,18 +67,18 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Paper Add</h4>
+                            <h4 class="card-title">Chapter Add</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" method="post" action="{{ route('admin.paper_process')}}"
+                                <form class="form" action="{{ route('admin.subject_process')}}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
                                             <h6>Subject Select</h6>
                                             <fieldset class="form-group">
-                                                <select class="form-select" id="basicSelect" name="subject_id" required>
+                                                <select class="form-select" id="subject" name="subject_id" required>
                                                     <option value="">Select....</option>
                                                     @foreach($subject as $sub_name)
                                                     <option value="{{$sub_name->id}}">{{$sub_name->subject_name}}
@@ -88,12 +90,21 @@
                                         <div class="col-12">
                                             <h6>Paper Select</h6>
                                             <fieldset class="form-group">
-                                                <select class="form-select" id="basicSelect" name="paper_name" required>
+                                                <select class="form-select" id="paper" name="paper_id" required>
                                                     <option value="">Select....</option>
-                                                    <option>1st Paper</option>
-                                                    <option>2nd Paper</option>
+                                                    {{-- @foreach($paper as $paper_name)
+                                                    <option value="{{$paper_name->id}}">{{$paper_name->paper_name}}
+                                                    </option>
+                                                    @endforeach --}}
                                                 </select>
                                             </fieldset>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="subject_name">Chapter Name</label>
+                                                <input type="text" id="subject_name" class="form-control"
+                                                    placeholder="Chapter 1" name="subject_name" required>
+                                            </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
@@ -109,5 +120,42 @@
         <!-- // Basic multiple Column Form section end -->
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+<script>
+    $("#subject").change(function(e){
+  
+  e.preventDefault();
+ var subject = $(this).val();
+
+  $.ajax({
+     type:'POST',
+     url:"{{ route('admin.chapter_process') }}",
+     data:{
+        '_token': $('input[name=_token]').val(),
+        subject_id: subject
+    },
+
+     success:function(data){
+        // console.log(data);
+        var paper = [];
+       data.map(function(papers){
+        // console.log(papers.paper_name);
+            paper.push(`<option value="${papers.id}">${papers.paper_name}</option>`)
+
+        })
+        // console.log(paper);
+        $('#paper').html(paper) ;
+        
+         
+     }
+  });
+
+});
+</script>
+
 
 @endsection

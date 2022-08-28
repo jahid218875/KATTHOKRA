@@ -30,9 +30,10 @@
 
     <!-- header area start  -->
     <div class="shadow sticky-top bg-white">
-        <nav class="navbar navbar-expand-lg container py-4">
+        <nav class="navbar navbar-expand-lg container py-3">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold text-success fs-3" href="{{'/'}}">KATTHOKRA</a>
+                <a class="navbar-brand fw-bold text-success fs-3" href="{{'/'}}"><img src="assets/images/logo.png"
+                        style="width: 150px"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
