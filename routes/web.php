@@ -30,6 +30,7 @@ Route::name('admin.')->prefix('/panel/admin')->group(function () {
     // Subject Add 
     Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
     Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');
+    Route::get('/subject-delete/{id}', [AdminController::class, 'subject_delete'])->name('subject_delete');
 
 
     // Paper Add 
@@ -39,8 +40,17 @@ Route::name('admin.')->prefix('/panel/admin')->group(function () {
 
     // Chapter add 
     Route::get('/chapter-add', [AdminController::class, 'chapter_add'])->name('chapter_add');
+
     Route::post('/chapter-add', [AdminController::class, 'chapter_add_process'])->name('chapter_process');
 
+    Route::post('/chapter-add-submit', [AdminController::class, 'chapter_add_submit'])->name('chapter_submit');
 
-    // Route::get('/subject-list', [AdminController::class, 'subject_list']);
+
+    // Type add
+
+    Route::get('/type-add', [AdminController::class, 'type_add'])->name('type_add');
+
+    Route::post('/type-add', [AdminController::class, 'type_add_process'])->name('type_process');
+
+    Route::post('/type-add-submit', [AdminController::class, 'type_add_submit'])->name('type_submit');
 });

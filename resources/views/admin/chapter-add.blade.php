@@ -43,14 +43,14 @@
                     'success'
                     )
                 </script>
-                {{-- @elseif(session('error'))
+                @elseif(session('error'))
                 <script>
                     Swal.fire(
-                    'Good job!',
+                    'Ooops....!',
                     '{{ session('error') }}',
                     'error'
                     )
-                </script> --}}
+                </script>
                 @endif
 
                 @if($errors->any())
@@ -71,7 +71,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" action="{{ route('admin.subject_process')}}" method="post"
+                                <form class="form" action="{{ route('admin.chapter_submit')}}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -92,18 +92,15 @@
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="paper" name="paper_id" required>
                                                     <option value="">Select....</option>
-                                                    {{-- @foreach($paper as $paper_name)
-                                                    <option value="{{$paper_name->id}}">{{$paper_name->paper_name}}
-                                                    </option>
-                                                    @endforeach --}}
+
                                                 </select>
                                             </fieldset>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="subject_name">Chapter Name</label>
-                                                <input type="text" id="subject_name" class="form-control"
-                                                    placeholder="Chapter 1" name="subject_name" required>
+                                                <label for="chapter_name">Chapter Name</label>
+                                                <input type="text" id="chapter_name" class="form-control"
+                                                    placeholder="Chapter 1" name="chapter_name" required>
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
@@ -139,8 +136,9 @@
         subject_id: subject
     },
 
-     success:function(data){
         // console.log(data);
+        success:function(data){
+
         var paper = [];
        data.map(function(papers){
         // console.log(papers.paper_name);

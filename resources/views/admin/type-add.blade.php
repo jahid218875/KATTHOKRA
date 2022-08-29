@@ -33,12 +33,22 @@
 
         <section id="multiple-column-form">
             <div class="row match-height">
+
+
                 @if(session('success'))
                 <script>
                     Swal.fire(
                     'Good job!',
                     '{{ session('success') }}',
                     'success'
+                    )
+                </script>
+                @elseif(session('error'))
+                <script>
+                    Swal.fire(
+                    'Ooops....!',
+                    '{{ session('error') }}',
+                    'error'
                     )
                 </script>
                 @endif
@@ -57,37 +67,49 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">HSC & Admission Subject Add</h4>
+                            <h4 class="card-title">Type Add</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" action="{{ route('admin.subject_process')}}" method="post"
+                                <form class="form" action="{{ route('admin.type_submit')}}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
-                                            <h6>Group Select</h6>
+                                            <h6>Subject Select</h6>
                                             <fieldset class="form-group">
-                                                <select class="form-select" id="basicSelect" name="group_name" required>
+                                                <select class="form-select" id="subject" name="subject_id" required>
                                                     <option value="">Select....</option>
-                                                    <option>Science</option>
-                                                    <option>Humanities</option>
-                                                    <option>Business Studies</option>
+                                                    @foreach($subject as $sub_name)
+                                                    <option value="{{$sub_name->id}}">{{$sub_name->subject_name}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-12">
+                                            <h6>Paper Select</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="paper" name="paper_id" required>
+                                                    <option value="">Select....</option>
+
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-12">
+                                            <h6>Chapter Select</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="chapter" name="chapter_id" required>
+                                                    <option value="">Select....</option>
+
                                                 </select>
                                             </fieldset>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="subject_name">Subject Name</label>
-                                                <input type="text" id="subject_name" class="form-control"
-                                                    placeholder="Subject Name" name="subject_name" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="subject_image">Image Upload</label>
-                                                <input type="file" id="subject_image" class="form-control"
-                                                    name="subject_image" required>
+                                                <label for="type_name">Type Name</label>
+                                                <input type="text" id="type_name" class="form-control"
+                                                    placeholder="Mathmetical Problem" name="type_name" required>
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
@@ -102,40 +124,70 @@
             </div>
         </section>
         <!-- // Basic multiple Column Form section end -->
-
-        <!-- Basic Tables start -->
-        <section class="section">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table" id="table1">
-                        <thead>
-                            <tr>
-                                <th>Group Name</th>
-                                <th>Subject Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($subject as $sub_list)
-                            <tr>
-                                <td>{{$sub_list->group_name}}</td>
-                                <td>{{$sub_list->subject_name}}</td>
-                                <td>
-                                    <a href="{{ route('admin.subject_delete', $sub_list->id)}}"
-                                        onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
-                                </td>
-                            </tr>
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </section>
-        <!-- Basic Tables end -->
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+<script>
+    $("#subject").change(function(e){
+  
+  e.preventDefault();
+ var subject = $(this).val();
+
+  $.ajax({
+     type:'POST',
+     url:"{{ route('admin.chapter_process') }}",
+     data:{
+        '_token': $('input[name=_token]').val(),
+        subject_id: subject
+    },
+
+        success:function(data){
+
+            var paper = [];
+            data.map(function(papers){
+            paper.push(`<option value="${papers.id}">${papers.paper_name}</option>`)
+
+        })
+        $('#paper').html( '<option value="">Select....</option>' + paper) ;
+        
+         
+     }
+  });
+
+});
+
+$("#paper").change(function(e){
+  
+  e.preventDefault();
+ var paper = $(this).val();
+
+  $.ajax({
+     type:'POST',
+     url:"{{ route('admin.type_process') }}",
+     data:{
+        '_token': $('input[name=_token]').val(),
+        paper_id: paper
+    },
+
+        success:function(data){
+
+            var chapter = [];
+            data.map(function(chapters){
+            chapter.push(`<option value="${chapters.id}">${chapters.chapter_name}</option>`)
+
+        })
+        $('#chapter').html( '<option value="">Select....</option>' + chapter) ;
+        
+         
+     }
+  });
+
+});
+</script>
+
 
 @endsection

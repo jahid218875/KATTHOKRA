@@ -90,6 +90,9 @@
                                 <li class="submenu-item {{ request()->routeIs('admin.chapter_add') ? 'active' : ''}}">
                                     <a href="{{route('admin.chapter_add')}}">Chapter Add</a>
                                 </li>
+                                <li class="submenu-item {{ request()->routeIs('admin.type_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.type_add')}}">Type Add</a>
+                                </li>
                                 <li class="submenu-item {{ request()->routeIs('admin.subject_list') ? 'active' : ''}}">
                                     {{-- <a href="{{route('admin.subject_list')}}">Subject List</a> --}}
                                 </li>
