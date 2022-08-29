@@ -24,7 +24,7 @@
                     </div>
                     <h3 class="auth-title">Log in.</h3>
 
-                    <form action="{{route('admin.login')}}" method="POST">
+                    <form action="{{route('manager.login')}}" method="POST">
                         @csrf
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" name="email" class="form-control form-control-xl" placeholder="Username">

@@ -21,6 +21,10 @@ Route::post('/login', [HomeController::class, 'loginSubmit'])->name('loginSubmit
 Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 
+Route::get('/manager', [AdminController::class, 'login'])->name('manager.login');
+Route::post('/manager', [AdminController::class, 'loginSubmit'])->name('manager.login');
+
+Route::get('/logout', [AdminController::class, 'logout'])->name('manager.logout');
 
 
 //check auth middleware
@@ -29,7 +33,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
 });
 
-Route::get('/manager', [AdminController::class, 'login'])->name('manager.login');
 
 Route::name('admin.')->prefix('/panel/admin')->group(function () {
 

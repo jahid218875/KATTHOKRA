@@ -16,6 +16,38 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
+
+    public function loginSubmit(Request $request)
+    {
+        $login = $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+
+        $login['role'] = 'admin';
+
+        $editor = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 'editor',
+        ];
+
+        if (auth()->guard('admin')->attempt($login)) {
+            return redirect()->route('admin.dashboard');
+        } elseif (auth()->guard('editor')->attempt($editor)) {
+            return redirect()->route('editor.dashboard');
+        } else {
+            return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
+        }
+    }
+
+    public function logout()
+    {
+        auth()->guard('admin')->logout();
+        auth()->guard('editor')->logout();
+        return redirect()->route('login');
+    }
+
     public function dashboard()
     {
         return view('admin.main');
