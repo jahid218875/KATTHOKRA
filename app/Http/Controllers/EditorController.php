@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class EditorController extends Controller
 {
-    //
+    public function dashboard()
+    {
+        return view('admin.editor.main');
+    }
 }

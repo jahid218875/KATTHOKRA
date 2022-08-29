@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,4 +67,9 @@ Route::name('admin.')->prefix('/panel/admin')->group(function () {
     Route::post('/type-add-submit', [AdminController::class, 'type_add_submit'])->name('type_submit');
 
     Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
+});
+
+Route::name('editor.')->prefix('/panel/editor')->group(function () {
+
+    Route::get('/dashboard', [EditorController::class, 'dashboard'])->name('dashboard');
 });
