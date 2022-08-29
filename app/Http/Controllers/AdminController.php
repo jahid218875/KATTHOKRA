@@ -20,7 +20,7 @@ class AdminController extends Controller
     // Subject Added 
     public function subject_add()
     {
-        $subject = DB::table('subjects')->OrderBy('id', 'desc')->get();
+        $subject = Subject::OrderBy('id', 'desc')->get();
         // dd($subject);
         return view('admin.subject-add', compact('subject'));
     }
@@ -49,7 +49,11 @@ class AdminController extends Controller
 
     public function subject_delete($id)
     {
-        DB::table('subjects')->where('id', $id)->delete();
+        Subject::where('id', $id)->delete();
+        Paper::where('subject_id', $id)->delete();
+        Chapter::where('subject_id', $id)->delete();
+        Type::where('subject_id', $id)->delete();
+
         return back()->with('success', 'Subject Deleted!');
     }
 
@@ -58,7 +62,9 @@ class AdminController extends Controller
     public function paper_add()
     {
         $subject = Subject::get();
-        return view('admin.paper-add', compact('subject'));
+        $paper = Paper::with('getSubject')->get();
+        // dd($paper);
+        return view('admin.paper-add', compact('subject', 'paper'));
     }
 
     public function paper_add_process(Request $request)
@@ -81,13 +87,23 @@ class AdminController extends Controller
         return back()->with('success', $success);
     }
 
+    public function paper_delete($id)
+    {
+        Paper::where('id', $id)->delete();
+        Chapter::where('paper_id', $id)->delete();
+        Type::where('paper_id', $id)->delete();
+        return back()->with('success', 'Paper Deleted!');
+    }
+
 
     // Chapter Added 
     public function chapter_add()
     {
         $subject = Subject::get();
         $paper = Paper::get();
-        return view('admin.chapter-add', compact('subject', 'paper'));
+        $chapter = Chapter::with('getSubject', 'getPaper')->get();
+
+        return view('admin.chapter-add', compact('subject', 'paper', 'chapter'));
     }
 
     public function chapter_add_process(Request $request)
@@ -116,6 +132,13 @@ class AdminController extends Controller
         return back()->with('success', $success);
     }
 
+    public function chapter_delete($id)
+    {
+        Chapter::where('id', $id)->delete();
+        Type::where('chapter_id', $id)->delete();
+        return back()->with('success', 'Chapter Deleted!');
+    }
+
 
     // Type Added 
 
@@ -123,7 +146,11 @@ class AdminController extends Controller
     {
         $subject = Subject::get();
         $paper = Paper::get();
-        return view('admin.type-add', compact('subject', 'paper'));
+
+        $type = Type::with('getSubject', 'getPaper', 'getChapter')->get();
+        // dd($type);
+
+        return view('admin.type-add', compact('subject', 'paper', 'type'));
     }
 
     public function type_add_process(Request $request)
@@ -151,5 +178,11 @@ class AdminController extends Controller
         $success = "Type Added Successfully";
 
         return back()->with('success', $success);
+    }
+
+    public function type_delete($id)
+    {
+        Type::where('id', $id)->delete();
+        return back()->with('success', 'Type Deleted!');
     }
 }

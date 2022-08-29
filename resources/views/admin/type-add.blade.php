@@ -124,6 +124,43 @@
             </div>
         </section>
         <!-- // Basic multiple Column Form section end -->
+
+        <!-- Basic Tables start -->
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table" id="table1">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Paper Name</th>
+                                <th>Chapter Name</th>
+                                <th>Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($type as $type_list)
+                            <tr>
+                                <td>{{$type_list->getSubject->subject_name}}</td>
+                                <td>{{$type_list->getPaper->paper_name}}</td>
+                                <td>{{$type_list->getChapter->chapter_name}}</td>
+                                <td>{{$type_list->type_name}}</td>
+                                <td>
+                                    <a href="{{ route('admin.type_delete', $type_list->id)}}"
+                                        onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
+                                </td>
+                            </tr>
+                            @endforeach
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+        <!-- Basic Tables end -->
     </div>
 </div>
 

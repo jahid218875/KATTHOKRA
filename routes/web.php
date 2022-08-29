@@ -42,6 +42,7 @@ Route::name('admin.')->prefix('/panel/admin')->group(function () {
     // Paper Add 
     Route::get('/paper-add', [AdminController::class, 'paper_add'])->name('paper_add');
     Route::post('/paper-add', [AdminController::class, 'paper_add_process'])->name('paper_process');
+    Route::get('/paper-delete/{id}', [AdminController::class, 'paper_delete'])->name('paper_delete');
 
 
     // Chapter add 
@@ -51,6 +52,8 @@ Route::name('admin.')->prefix('/panel/admin')->group(function () {
 
     Route::post('/chapter-add-submit', [AdminController::class, 'chapter_add_submit'])->name('chapter_submit');
 
+    Route::get('/chapter-delete/{id}', [AdminController::class, 'chapter_delete'])->name('chapter_delete');
+
 
     // Type add
 
@@ -59,4 +62,6 @@ Route::name('admin.')->prefix('/panel/admin')->group(function () {
     Route::post('/type-add', [AdminController::class, 'type_add_process'])->name('type_process');
 
     Route::post('/type-add-submit', [AdminController::class, 'type_add_submit'])->name('type_submit');
+
+    Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
 });

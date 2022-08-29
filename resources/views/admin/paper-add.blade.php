@@ -107,6 +107,40 @@
             </div>
         </section>
         <!-- // Basic multiple Column Form section end -->
+
+        <!-- Basic Tables start -->
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table" id="table1">
+                        <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                                <th>Paper Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($paper as $paper_list)
+                            <tr>
+                                <td>{{$paper_list->getSubject->subject_name}}</td>
+                                <td>{{$paper_list->paper_name}}</td>
+                                <td>
+                                    <a href="{{ route('admin.paper_delete', $paper_list->id)}}"
+                                        onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
+                                </td>
+                            </tr>
+                            @endforeach
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+        <!-- Basic Tables end -->
+
     </div>
 </div>
 
