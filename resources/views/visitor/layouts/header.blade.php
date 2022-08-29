@@ -61,8 +61,13 @@
                             <li><a class="dropdown-item" href="#">English</a></li>
                         </ul>
                     </div> --}}
-                    <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow"
+
+                    @if(Auth::check())
+                        {{ 'Your LoggedIn...' }}
+                    @else
+                        <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow"
                         type="submit"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
+                    @endif
                 </div>
             </div>
         </nav>
