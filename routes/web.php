@@ -30,7 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::name('admin.')->prefix('/panel/admin')->group(function () {
-    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/', [AdminController::class, 'login'])->name('login');
+
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+
 
 
     // Subject Add 
