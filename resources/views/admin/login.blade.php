@@ -19,7 +19,7 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="{{route('admin.login')}}"><img src="{{ asset('admin/images/logo/logo.png') }}"
+                        <a href="{{route('manager.login')}}"><img src="{{ asset('admin/images/logo/logo.png') }}"
                                 alt="Logo" style="width: 150px; height: 100px;"></a>
                     </div>
                     <h3 class="auth-title">Log in.</h3>

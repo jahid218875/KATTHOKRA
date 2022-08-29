@@ -29,14 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
 });
 
+Route::get('/manager', [AdminController::class, 'login'])->name('manager.login');
+
 Route::name('admin.')->prefix('/panel/admin')->group(function () {
 
-    Route::get('/', [AdminController::class, 'login'])->name('login');
-
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
-
-
 
     // Subject Add 
     Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
