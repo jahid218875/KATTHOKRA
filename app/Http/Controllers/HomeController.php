@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Subject;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -52,6 +53,47 @@ class HomeController extends Controller
         } elseif ($request->email and $request->otp and $request->password) {
             User::where('email', $request->email)->update(['password' => bcrypt($request->password), 'otp' => null]);
             return back()->with('success', 'Thank you for registration, Login to continue..');
+        } elseif ($request->email and $request->password) {
+            $login = [
+                'email' => $request->email,
+                'password' => $request->password
+            ];
+
+            if (Auth::attempt($login)) {
+                if (empty(Auth::user()->name)) {
+                    return redirect()->route('signup');
+                } else {
+                    return redirect()->route('home');
+                }
+            } else {
+                return ['status' => 'invalid email or password'];
+            }
         }
+    }
+
+    public function signup()
+    {
+        return view('visitor.signup');
+    }
+
+    public function signupData(Request $request)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'level' => 'required',
+            'institution' => 'required',
+            'email_phone' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+
+        $image = $request->file('image');
+        $name = time() . '.' . $image->getClientOriginalExtension();
+        $destinationPath = public_path('/images');
+        $image->move($destinationPath, $name);
+        $data['image'] = $name;
+
+        $user = User::where('email', Auth::user()->email)->update($data);
+        return redirect()->route('home');
     }
 }

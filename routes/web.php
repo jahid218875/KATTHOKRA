@@ -23,6 +23,12 @@ Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 
 
+//check auth middleware
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
+    Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
+});
+
 Route::name('admin.')->prefix('/panel/admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
 
