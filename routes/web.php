@@ -34,7 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
 });
 
-Route::group(['middleware' => ['auth:admins']], function () {
+Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::name('admin.')->prefix('/panel/admin')->group(function () {
 
@@ -74,12 +74,15 @@ Route::group(['middleware' => ['auth:admins']], function () {
     });
 });
 
-Route::group(['middleware' => ['auth:admins']], function () {
+Route::group(['middleware' => ['auth:editor']], function () {
 
     Route::name('editor.')->prefix('/panel/editor')->group(function () {
 
         Route::get('/dashboard', [EditorController::class, 'dashboard'])->name('dashboard');
 
         Route::get('/content-add', [EditorController::class, 'content_add'])->name('content_add');
+        Route::post('/paper-process', [EditorController::class, 'paper_process'])->name('paper_process');
+        Route::post('/chapter-process', [EditorController::class, 'chapter_process'])->name('chapter_process');
+        Route::post('/type-process', [EditorController::class, 'type_process'])->name('type_process');
     });
 });

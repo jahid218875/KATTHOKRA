@@ -106,12 +106,21 @@
                                             </fieldset>
                                         </div>
                                         <div class="col-12">
+                                            <h6>Type Select</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="type" name="type_id" required>
+                                                    <option value="">Select....</option>
+
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        {{-- <div class="col-12">
                                             <div class="form-group">
                                                 <label for="type_name">Type Name</label>
                                                 <input type="text" id="type_name" class="form-control"
                                                     placeholder="Mathmetical Problem" name="type_name" required>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                         </div>
@@ -125,42 +134,7 @@
         </section>
         <!-- // Basic multiple Column Form section end -->
 
-        <!-- Basic Tables start -->
-        <section class="section">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table" id="table1">
-                        <thead>
-                            <tr>
-                                <th>Subject Name</th>
-                                <th>Paper Name</th>
-                                <th>Chapter Name</th>
-                                <th>Type</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($type as $type_list)
-                            <tr>
-                                <td>{{$type_list->getSubject->subject_name}}</td>
-                                <td>{{$type_list->getPaper->paper_name}}</td>
-                                <td>{{$type_list->getChapter->chapter_name}}</td>
-                                <td>{{$type_list->type_name}}</td>
-                                <td>
-                                    <a href="{{ route('admin.type_delete', $type_list->id)}}"
-                                        onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
-                                </td>
-                            </tr>
-                            @endforeach
 
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </section>
-        <!-- Basic Tables end -->
     </div>
 </div>
 
@@ -176,7 +150,7 @@
 
   $.ajax({
      type:'POST',
-     url:"{{ route('admin.chapter_process') }}",
+     url:"{{ route('editor.paper_process') }}",
      data:{
         '_token': $('input[name=_token]').val(),
         subject_id: subject
@@ -204,7 +178,7 @@ $("#paper").change(function(e){
 
   $.ajax({
      type:'POST',
-     url:"{{ route('admin.type_process') }}",
+     url:"{{ route('editor.chapter_process') }}",
      data:{
         '_token': $('input[name=_token]').val(),
         paper_id: paper
@@ -218,6 +192,34 @@ $("#paper").change(function(e){
 
         })
         $('#chapter').html( '<option value="">Select....</option>' + chapter) ;
+        
+         
+     }
+  });
+
+});
+
+$("#chapter").change(function(e){
+  
+  e.preventDefault();
+ var chapter = $(this).val();
+
+  $.ajax({
+     type:'POST',
+     url:"{{ route('editor.type_process') }}",
+     data:{
+        '_token': $('input[name=_token]').val(),
+        chapter_id: chapter
+    },
+
+        success:function(data){
+
+            var type = [];
+            data.map(function(types){
+            type.push(`<option value="${types.id}">${types.type_name}</option>`)
+
+        })
+        $('#type').html( '<option value="">Select....</option>' + type) ;
         
          
      }

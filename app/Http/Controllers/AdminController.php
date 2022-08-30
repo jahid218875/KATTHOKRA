@@ -100,7 +100,6 @@ class AdminController extends Controller
     {
         $subject = Subject::get();
         $paper = Paper::with('getSubject')->get();
-        // dd($paper);
         return view('admin.paper-add', compact('subject', 'paper'));
     }
 
