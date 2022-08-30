@@ -114,6 +114,17 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>HSC & Admission</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item {{ request()->routeIs('editor.content_add') ? 'active' : ''}}">
+                                    <a href="{{route('editor.content_add')}}">Content Add</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 @endif

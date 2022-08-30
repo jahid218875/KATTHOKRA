@@ -34,45 +34,53 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
 });
 
-
-Route::name('admin.')->prefix('/panel/admin')->group(function () {
-
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
-    // Subject Add 
-    Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
-    Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');
-    Route::get('/subject-delete/{id}', [AdminController::class, 'subject_delete'])->name('subject_delete');
+Route::group(['middleware' => ['auth:admins']], function () {
 
 
-    // Paper Add 
-    Route::get('/paper-add', [AdminController::class, 'paper_add'])->name('paper_add');
-    Route::post('/paper-add', [AdminController::class, 'paper_add_process'])->name('paper_process');
-    Route::get('/paper-delete/{id}', [AdminController::class, 'paper_delete'])->name('paper_delete');
+    Route::name('admin.')->prefix('/panel/admin')->group(function () {
+
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+
+        // Subject Add 
+        Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
+        Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');
+        Route::get('/subject-delete/{id}', [AdminController::class, 'subject_delete'])->name('subject_delete');
 
 
-    // Chapter add 
-    Route::get('/chapter-add', [AdminController::class, 'chapter_add'])->name('chapter_add');
-
-    Route::post('/chapter-add', [AdminController::class, 'chapter_add_process'])->name('chapter_process');
-
-    Route::post('/chapter-add-submit', [AdminController::class, 'chapter_add_submit'])->name('chapter_submit');
-
-    Route::get('/chapter-delete/{id}', [AdminController::class, 'chapter_delete'])->name('chapter_delete');
+        // Paper Add 
+        Route::get('/paper-add', [AdminController::class, 'paper_add'])->name('paper_add');
+        Route::post('/paper-add', [AdminController::class, 'paper_add_process'])->name('paper_process');
+        Route::get('/paper-delete/{id}', [AdminController::class, 'paper_delete'])->name('paper_delete');
 
 
-    // Type add
+        // Chapter add 
+        Route::get('/chapter-add', [AdminController::class, 'chapter_add'])->name('chapter_add');
 
-    Route::get('/type-add', [AdminController::class, 'type_add'])->name('type_add');
+        Route::post('/chapter-add', [AdminController::class, 'chapter_add_process'])->name('chapter_process');
 
-    Route::post('/type-add', [AdminController::class, 'type_add_process'])->name('type_process');
+        Route::post('/chapter-add-submit', [AdminController::class, 'chapter_add_submit'])->name('chapter_submit');
 
-    Route::post('/type-add-submit', [AdminController::class, 'type_add_submit'])->name('type_submit');
+        Route::get('/chapter-delete/{id}', [AdminController::class, 'chapter_delete'])->name('chapter_delete');
 
-    Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
+
+        // Type add
+
+        Route::get('/type-add', [AdminController::class, 'type_add'])->name('type_add');
+
+        Route::post('/type-add', [AdminController::class, 'type_add_process'])->name('type_process');
+
+        Route::post('/type-add-submit', [AdminController::class, 'type_add_submit'])->name('type_submit');
+
+        Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
+    });
 });
 
-Route::name('editor.')->prefix('/panel/editor')->group(function () {
+Route::group(['middleware' => ['auth:admins']], function () {
 
-    Route::get('/dashboard', [EditorController::class, 'dashboard'])->name('dashboard');
+    Route::name('editor.')->prefix('/panel/editor')->group(function () {
+
+        Route::get('/dashboard', [EditorController::class, 'dashboard'])->name('dashboard');
+
+        Route::get('/content-add', [EditorController::class, 'content_add'])->name('content_add');
+    });
 });
