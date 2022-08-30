@@ -36,13 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['middleware' => ['auth:admins']], function () {
 
-<<<<<<< HEAD
-
-
-Route::name('admin.')->prefix('/panel/admin')->group(function () {
-=======
->>>>>>> b11823dac017c32b718a650611f0cb8b4dcf23fb
-
     Route::name('admin.')->prefix('/panel/admin')->group(function () {
 
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
