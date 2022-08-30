@@ -16,9 +16,14 @@ class SignUp extends Mailable
      *
      * @return void
      */
-    public function __construct()
+
+    public $email;
+    public $otp;
+
+    public function __construct($email, $otp)
     {
-        //
+        $this->email = $email;
+        $this->otp = $otp;
     }
 
     /**
@@ -28,6 +33,7 @@ class SignUp extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('no-reply@katthokra.com', 'no-reply')
+            ->view('visitor.verify-email')->with(['email' => $this->email, 'otp' => $this->otp]);
     }
 }

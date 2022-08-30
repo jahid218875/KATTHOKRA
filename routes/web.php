@@ -24,8 +24,7 @@ Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 Route::get('/manager', [AdminController::class, 'login'])->name('manager.login');
 Route::post('/manager', [AdminController::class, 'loginSubmit'])->name('manager.login');
-
-Route::get('/logout', [AdminController::class, 'logout'])->name('manager.logout');
+Route::get('/manager/logout', [AdminController::class, 'logout'])->name('manager.logout');
 
 
 //check auth middleware
