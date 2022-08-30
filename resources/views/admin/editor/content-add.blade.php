@@ -114,6 +114,76 @@
                                                 </select>
                                             </fieldset>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Page 1</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <textarea name="editor1" id="editor1" cols="30"
+                                                        rows="10"></textarea>
+
+                                                    {{-- <div id="editor">
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Page 2</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <textarea name="editor2" id="editor2" cols="30"
+                                                        rows="10"></textarea>
+
+                                                    {{-- <div id="editor">
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Page 3</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <textarea name="editor3" id="editor3" cols="30"
+                                                        rows="10"></textarea>
+
+                                                    {{-- <div id="editor">
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Page 4</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <textarea name="editor4" id="editor4" cols="30"
+                                                        rows="10"></textarea>
+
+                                                    {{-- <div id="editor">
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Page 5</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <textarea name="editor5" id="editor5" cols="30"
+                                                        rows="10"></textarea>
+
+                                                    {{-- <div id="editor">
+                                                    </div> --}}
+                                                </div>
+                                            </div>
+                                        </div>
                                         {{-- <div class="col-12">
                                             <div class="form-group">
                                                 <label for="type_name">Type Name</label>
@@ -142,10 +212,16 @@
 
 @section('scripts')
 
+<script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+
+
 <script>
     $("#subject").change(function(e){
   
   e.preventDefault();
+  $('#chapter').html( '<option value="">Select....</option>');
+  $('#type').html( '<option value="">Select....</option>');
+
  var subject = $(this).val();
 
   $.ajax({
@@ -226,7 +302,13 @@ $("#chapter").change(function(e){
   });
 
 });
+
+// CK Editor 
+CKEDITOR.replace( 'editor1' );
+CKEDITOR.replace( 'editor2' );
+CKEDITOR.replace( 'editor3' );
+CKEDITOR.replace( 'editor4' );
+CKEDITOR.replace( 'editor5' );
+
 </script>
-
-
 @endsection

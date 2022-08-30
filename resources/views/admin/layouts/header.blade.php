@@ -100,6 +100,12 @@
 
                             </ul>
                         </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
+                            <a href="{{route('manager.logout')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Log Out</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 @else
@@ -124,6 +130,12 @@
                                     <a href="{{route('editor.content_add')}}">Content Add</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="sidebar-item {{ request()->routeIs('editor.manager.logout') ? 'active' : ''}} ">
+                            <a href="{{route('manager.logout')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span class="text-danger">Log Out</span>
+                            </a>
                         </li>
                     </ul>
                 </div>

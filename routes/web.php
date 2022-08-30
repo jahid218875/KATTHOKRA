@@ -83,5 +83,7 @@ Route::group(['middleware' => ['auth:editor']], function () {
         Route::post('/paper-process', [EditorController::class, 'paper_process'])->name('paper_process');
         Route::post('/chapter-process', [EditorController::class, 'chapter_process'])->name('chapter_process');
         Route::post('/type-process', [EditorController::class, 'type_process'])->name('type_process');
+
+        Route::post('/hsc-content-submit', [EditorController::class, 'hsc_content_submit'])->name('hsc_content_submit');
     });
 });

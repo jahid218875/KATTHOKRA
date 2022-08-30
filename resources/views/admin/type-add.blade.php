@@ -172,6 +172,7 @@
     $("#subject").change(function(e){
   
   e.preventDefault();
+  $('#chapter').html( '<option value="">Select....</option>');
  var subject = $(this).val();
 
   $.ajax({
@@ -200,6 +201,7 @@
 $("#paper").change(function(e){
   
   e.preventDefault();
+  
  var paper = $(this).val();
 
   $.ajax({
