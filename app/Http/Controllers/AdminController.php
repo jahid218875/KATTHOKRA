@@ -45,7 +45,7 @@ class AdminController extends Controller
     {
         auth()->guard('admin')->logout();
         auth()->guard('editor')->logout();
-        return redirect()->route('login');
+        return redirect()->route('manager.login');
     }
 
     public function dashboard()
