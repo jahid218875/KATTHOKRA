@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -39,6 +40,8 @@ class HomeController extends Controller
             } else {
                 $six_digit_random_number = random_int(100000, 999999);
                 User::create(['email' => $request->email, 'otp' => $six_digit_random_number]);
+
+                // Mail::
                 return ['status' => 'otp', 'email' => $request->email, 'otp' => $six_digit_random_number];
             }
         } elseif ($request->email and $request->otp and empty($request->password)) {

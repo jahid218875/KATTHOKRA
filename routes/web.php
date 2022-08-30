@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+
+
 Route::name('admin.')->prefix('/panel/admin')->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
