@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('chapter_id');
             $table->string('type_id');
             $table->text('editor1');
-            $table->text('editor2');
-            $table->text('editor3');
-            $table->text('editor4');
-            $table->text('editor5');
+            $table->text('editor2')->nullable();
+            $table->text('editor3')->nullable();
+            $table->text('editor4')->nullable();
+            $table->text('editor5')->nullable();
             $table->string('status');
         });
     }

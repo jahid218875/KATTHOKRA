@@ -71,6 +71,13 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::post('/type-add-submit', [AdminController::class, 'type_add_submit'])->name('type_submit');
 
         Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
+
+        // Hsc Content List 
+
+        Route::get('/hsc-content-list', [AdminController::class, 'hsc_content_list'])->name('hsc_content_list');
+        Route::get('/hsc-content-edit/{id}', [AdminController::class, 'hsc_content_edit'])->name('hsc_content_edit');
+        Route::post('/hsc-content-update/{id}', [AdminController::class, 'hsc_content_update'])->name('hsc_content_update');
+        Route::get('/hsc-content-delete/{id}', [AdminController::class, 'hsc_content_delete'])->name('hsc_content_delete');
     });
 });
 
@@ -84,7 +91,11 @@ Route::group(['middleware' => ['auth:editor']], function () {
         Route::post('/paper-process', [EditorController::class, 'paper_process'])->name('paper_process');
         Route::post('/chapter-process', [EditorController::class, 'chapter_process'])->name('chapter_process');
         Route::post('/type-process', [EditorController::class, 'type_process'])->name('type_process');
-
         Route::post('/hsc-content-submit', [EditorController::class, 'hsc_content_submit'])->name('hsc_content_submit');
+
+
+        Route::get('/hsc-content-list', [EditorController::class, 'hsc_content_list'])->name('hsc_content_list');
+        Route::get('/hsc-content-edit/{id}', [EditorController::class, 'hsc_content_edit'])->name('hsc_content_edit');
+        Route::post('/hsc-content-update/{id}', [EditorController::class, 'hsc_content_update'])->name('hsc_content_update');
     });
 });

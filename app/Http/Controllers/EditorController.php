@@ -63,4 +63,43 @@ class EditorController extends Controller
 
         return back()->with('success', $success);
     }
+
+    public function hsc_content_list()
+    {
+        $hsc_content = HscContent::with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
+
+        return view('admin.editor.hsc-content-list', compact('hsc_content'));
+    }
+
+    public function hsc_content_edit($id)
+    {
+
+        $content = HscContent::where('id', $id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->first();
+
+        return view('admin.editor.content-edit', compact('content'));
+    }
+
+    public function hsc_content_update($id, Request $request)
+    {
+
+        $hsc_content = $this->validate($request, [
+            'subject_id' => 'required',
+            'paper_id' => 'required',
+            'chapter_id' => 'required',
+            'type_id' => 'required',
+            'editor1' => 'required',
+        ]);
+
+        $hsc_content['editor2'] = $request->editor2;
+        $hsc_content['editor3'] = $request->editor3;
+        $hsc_content['editor4'] = $request->editor4;
+        $hsc_content['editor5'] = $request->editor5;
+        $hsc_content['status'] = 'pending';
+
+        HscContent::where('id', $id)->update($hsc_content);
+
+
+
+        return redirect()->route('editor.hsc_content_list')->with('success', 'Content Update Successfully');
+    }
 }

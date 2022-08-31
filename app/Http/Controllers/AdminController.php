@@ -6,6 +6,7 @@ use App\Models\Type;
 use App\Models\Paper;
 use App\Models\Chapter;
 use App\Models\Subject;
+use App\Models\HscContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -220,5 +221,52 @@ class AdminController extends Controller
     {
         Type::where('id', $id)->delete();
         return back()->with('success', 'Type Deleted!');
+    }
+
+    // Hsc Content List 
+
+    public function hsc_content_list()
+    {
+        $hsc_content = HscContent::with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
+
+        return view('admin.admin-hsc-content-list', compact('hsc_content'));
+    }
+
+    public function hsc_content_edit($id)
+    {
+
+        $content = HscContent::where('id', $id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->first();
+
+        return view('admin.hsc-content-edit', compact('content'));
+    }
+
+    public function hsc_content_update($id, Request $request)
+    {
+
+        $hsc_content = $this->validate($request, [
+            'subject_id' => 'required',
+            'paper_id' => 'required',
+            'chapter_id' => 'required',
+            'type_id' => 'required',
+            'editor1' => 'required',
+            'status' => 'required',
+        ]);
+
+        $hsc_content['editor2'] = $request->editor2;
+        $hsc_content['editor3'] = $request->editor3;
+        $hsc_content['editor4'] = $request->editor4;
+        $hsc_content['editor5'] = $request->editor5;
+
+        HscContent::where('id', $id)->update($hsc_content);
+
+
+
+        return redirect()->route('admin.hsc_content_list')->with('success', 'Content Update Successfully');
+    }
+
+    public function hsc_content_delete($id)
+    {
+        HscContent::where('id', $id)->delete();
+        return back()->with('success', 'Hsc Content Deleted!');
     }
 }

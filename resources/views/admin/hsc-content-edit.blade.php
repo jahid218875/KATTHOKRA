@@ -71,19 +71,16 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" action="{{ route('editor.hsc_content_submit')}}" method="post"
-                                    enctype="multipart/form-data">
+                                <form class="form" action="{{ route('admin.hsc_content_update', $content->id)}}"
+                                    method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
                                             <h6>Subject Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="subject" name="subject_id" required>
-                                                    <option value="">Select....</option>
-                                                    @foreach($subject as $sub_name)
-                                                    <option value="{{$sub_name->id}}">{{$sub_name->subject_name}}
-                                                    </option>
-                                                    @endforeach
+                                                    <option value="{{$content->subject_id}}">
+                                                        {{$content->getSubject->subject_name}}</option>
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -91,7 +88,8 @@
                                             <h6>Paper Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="paper" name="paper_id" required>
-                                                    <option value="">Select....</option>
+                                                    <option value="{{$content->paper_id}}">
+                                                        {{$content->getPaper->paper_name}}</option>
 
                                                 </select>
                                             </fieldset>
@@ -100,8 +98,8 @@
                                             <h6>Chapter Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="chapter" name="chapter_id" required>
-                                                    <option value="">Select....</option>
-
+                                                    <option value="{{$content->chapter_id}}">
+                                                        {{$content->getChapter->chapter_name}}</option>
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -109,7 +107,8 @@
                                             <h6>Type Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="type" name="type_id" required>
-                                                    <option value="">Select....</option>
+                                                    <option value="{{$content->type_id}}">
+                                                        {{$content->getType->type_name}}</option>
 
                                                 </select>
                                             </fieldset>
@@ -121,7 +120,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <textarea name="editor1" id="editor1" cols="30"
-                                                        rows="10"></textarea>
+                                                        rows="10">{{$content->editor1}}</textarea>
 
                                                     {{-- <div id="editor">
                                                     </div> --}}
@@ -135,7 +134,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <textarea name="editor2" id="editor2" cols="30"
-                                                        rows="10"></textarea>
+                                                        rows="10">{{$content->editor2}}</textarea>
 
                                                     {{-- <div id="editor">
                                                     </div> --}}
@@ -149,7 +148,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <textarea name="editor3" id="editor3" cols="30"
-                                                        rows="10"></textarea>
+                                                        rows="10">{{$content->editor3}}</textarea>
 
                                                     {{-- <div id="editor">
                                                     </div> --}}
@@ -163,7 +162,7 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <textarea name="editor4" id="editor4" cols="30"
-                                                        rows="10"></textarea>
+                                                        rows="10">{{$content->editor4}}</textarea>
 
                                                     {{-- <div id="editor">
                                                     </div> --}}
@@ -177,22 +176,29 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <textarea name="editor5" id="editor5" cols="30"
-                                                        rows="10"></textarea>
+                                                        rows="10">{{$content->editor5}}</textarea>
 
                                                     {{-- <div id="editor">
                                                     </div> --}}
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="type_name">Type Name</label>
-                                                <input type="text" id="type_name" class="form-control"
-                                                    placeholder="Mathmetical Problem" name="type_name" required>
-                                            </div>
-                                        </div> --}}
+                                        <div class="col-12">
+                                            <h6>Status Select</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="status" name="status" required>
+                                                    {{-- <option value="{{$content->status}}">
+                                                        {{$content->status}}</option> --}}
+                                                    <option {{$content->status == 'pending' ? 'selected' : ''}}>pending
+                                                    </option>
+                                                    <option {{$content->status == 'active' ? 'selected' : ''}}>active
+                                                    </option>
+
+                                                </select>
+                                            </fieldset>
+                                        </div>
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <button type="submit" class="btn btn-success me-1 mb-1">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -216,94 +222,7 @@
 
 
 <script>
-    $("#subject").change(function(e){
-  
-  e.preventDefault();
-  $('#chapter').html( '<option value="">Select....</option>');
-  $('#type').html( '<option value="">Select....</option>');
-
- var subject = $(this).val();
-
-  $.ajax({
-     type:'POST',
-     url:"{{ route('editor.paper_process') }}",
-     data:{
-        '_token': $('input[name=_token]').val(),
-        subject_id: subject
-    },
-
-        success:function(data){
-
-            var paper = [];
-            data.map(function(papers){
-            paper.push(`<option value="${papers.id}">${papers.paper_name}</option>`)
-
-        })
-        $('#paper').html( '<option value="">Select....</option>' + paper) ;
-        
-         
-     }
-  });
-
-});
-
-$("#paper").change(function(e){
-  
-  e.preventDefault();
- var paper = $(this).val();
-
-  $.ajax({
-     type:'POST',
-     url:"{{ route('editor.chapter_process') }}",
-     data:{
-        '_token': $('input[name=_token]').val(),
-        paper_id: paper
-    },
-
-        success:function(data){
-
-            var chapter = [];
-            data.map(function(chapters){
-            chapter.push(`<option value="${chapters.id}">${chapters.chapter_name}</option>`)
-
-        })
-        $('#chapter').html( '<option value="">Select....</option>' + chapter) ;
-        
-         
-     }
-  });
-
-});
-
-$("#chapter").change(function(e){
-  
-  e.preventDefault();
- var chapter = $(this).val();
-
-  $.ajax({
-     type:'POST',
-     url:"{{ route('editor.type_process') }}",
-     data:{
-        '_token': $('input[name=_token]').val(),
-        chapter_id: chapter
-    },
-
-        success:function(data){
-
-            var type = [];
-            data.map(function(types){
-            type.push(`<option value="${types.id}">${types.type_name}</option>`)
-
-        })
-        $('#type').html( '<option value="">Select....</option>' + type) ;
-        
-         
-     }
-  });
-
-});
-
-// CK Editor 
+    // CK Editor 
 CKEDITOR.replace( 'editor1' );
 CKEDITOR.replace( 'editor2' );
 CKEDITOR.replace( 'editor3' );

@@ -63,9 +63,9 @@
                     </div> --}}
 
                     @if(Auth::check())
-                        {{ 'Your LoggedIn...' }}
+                    {{ 'Your LoggedIn...' }}
                     @else
-                        <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow"
+                    <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow"
                         type="submit"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
                     @endif
                 </div>
@@ -92,7 +92,7 @@
     </section> --}}
 
     <section class="home">
-        <img src="assets/images/search-bg.PNG" class="img-fluid">
+        <img src="assets/images/new-bg.jpg" class="img-fluid">
         <div class="form">
             <i class="fa fa-search fa-bold"></i>
             <input type="search" class="form-control form-input p-3 rounded-pill shadow"

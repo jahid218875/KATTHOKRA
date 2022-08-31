@@ -94,8 +94,9 @@
                                 <li class="submenu-item {{ request()->routeIs('admin.type_add') ? 'active' : ''}}">
                                     <a href="{{route('admin.type_add')}}">Type Add</a>
                                 </li>
-                                <li class="submenu-item {{ request()->routeIs('admin.subject_list') ? 'active' : ''}}">
-                                    {{-- <a href="{{route('admin.subject_list')}}">Subject List</a> --}}
+                                <li
+                                    class="submenu-item {{ request()->routeIs('editor.hsc_content_list') ? 'active' : ''}}">
+                                    <a href="{{route('admin.hsc_content_list')}}">Content List</a>
                                 </li>
 
                             </ul>
@@ -103,7 +104,7 @@
                         <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
                             <a href="{{route('manager.logout')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Log Out</span>
+                                <span class="text-danger">Log Out</span>
                             </a>
                         </li>
                     </ul>
@@ -128,6 +129,10 @@
                             <ul class="submenu ">
                                 <li class="submenu-item {{ request()->routeIs('editor.content_add') ? 'active' : ''}}">
                                     <a href="{{route('editor.content_add')}}">Content Add</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('editor.hsc_content_list') ? 'active' : ''}}">
+                                    <a href="{{route('editor.hsc_content_list')}}">Content List</a>
                                 </li>
                             </ul>
                         </li>
