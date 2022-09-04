@@ -162,14 +162,15 @@ $("#type").change(function(e){
         }
 
     }
-  });
+});
 
 }
 });
 
 
 $('.pagination').on('click', '.page-link', function(){
-    $(this).text();
+    console.log(data);
+   
 })
 
 
