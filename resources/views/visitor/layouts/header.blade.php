@@ -46,6 +46,7 @@
                         <li class="nav-item">
                             <a class="nav-link fw-bold fs-5 menu-hover" aria-current="page" href="{{'/'}}">নীড়পাতা</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link fw-bold fs-5 menu-hover" href="#HSC&ADMISSION">HSC ও ADMISSION</a>
                         </li>

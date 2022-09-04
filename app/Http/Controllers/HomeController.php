@@ -35,6 +35,11 @@ class HomeController extends Controller
         return view('visitor.about');
     }
 
+    public function hsc_admission()
+    {
+        return view('visitor.hsc-page');
+    }
+
     public function login()
     {
         return view('visitor.login');
