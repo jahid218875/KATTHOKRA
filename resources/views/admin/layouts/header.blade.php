@@ -101,6 +101,12 @@
 
                             </ul>
                         </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.editor_add') ? 'active' : ''}} ">
+                            <a href="{{route('admin.editor_add')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Add Editor</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
                             <a href="{{route('manager.logout')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>

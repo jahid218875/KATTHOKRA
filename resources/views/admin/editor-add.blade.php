@@ -105,24 +105,26 @@
         <!-- // Basic multiple Column Form section end -->
 
         <!-- Basic Tables start -->
-        {{-- <section class="section">
+        <section class="section">
             <div class="card">
                 <div class="card-body">
                     <table class="table" id="table1">
                         <thead>
                             <tr>
-                                <th>Group Name</th>
-                                <th>Subject Name</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($subject as $sub_list)
+                            @foreach($editor as $editor_list)
                             <tr>
-                                <td>{{$sub_list->group_name}}</td>
-                                <td>{{$sub_list->subject_name}}</td>
+                                <td>{{$editor_list->name}}</td>
+                                <td>{{$editor_list->email}}</td>
+                                <td>{{$editor_list->mobile}}</td>
                                 <td>
-                                    <a href="{{ route('admin.subject_delete', $sub_list->id)}}"
+                                    <a href="{{ route('admin.editor_delete', $editor_list->id)}}"
                                         onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
                                 </td>
                             </tr>
@@ -134,7 +136,7 @@
                 </div>
             </div>
 
-        </section> --}}
+        </section>
         <!-- Basic Tables end -->
     </div>
 </div>

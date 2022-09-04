@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
         // Editor Add 
         Route::get('/editor-add', [AdminController::class, 'editor_add'])->name('editor_add');
         Route::post('/editor-add', [AdminController::class, 'editor_add_process'])->name('editor_process');
+        Route::get('/editor-delete/{id}', [AdminController::class, 'editor_delete'])->name('editor_delete');
 
 
         // Subject Add 
