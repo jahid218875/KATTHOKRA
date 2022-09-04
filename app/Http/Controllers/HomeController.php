@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SignUp;
-use App\Models\Subject;
+use App\Models\Type;
 use App\Models\User;
+use App\Models\Paper;
+use App\Models\Chapter;
+use App\Models\HscContent;
+use App\Models\Subject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -15,7 +19,20 @@ class HomeController extends Controller
 
     public function index()
     {
+
         return view('visitor.index');
+    }
+
+    public function contact()
+    {
+
+        return view('visitor.contact');
+    }
+
+    public function about()
+    {
+
+        return view('visitor.about');
     }
 
     public function login()
@@ -25,7 +42,9 @@ class HomeController extends Controller
 
     public function group($name)
     {
-        return view('visitor.group');
+        $subject = Subject::where('group_name', $name)->get();
+        // dd($subject);
+        return view('visitor.group', compact('subject'));
     }
 
 
@@ -123,5 +142,28 @@ class HomeController extends Controller
     {
         Auth::logout();
         return redirect()->route('login');
+    }
+
+    public function reader($name, $subject)
+    {
+        $papers = Subject::where(['group_name' => $name, 'subject_name' => $subject])->with('get_paper')->get();
+
+        return view('visitor.reader', compact('papers'));
+    }
+
+    public function paper_to_chapter(Request $request)
+    {
+        return Chapter::where('paper_id', $request->paper_id)->get();
+    }
+
+    public function chapter_to_type(Request $request)
+    {
+        return Type::where('chapter_id', $request->chapter_id)->get();
+    }
+
+    public function type_to_content(Request $request)
+    {
+        $content = HscContent::where(['paper_id' => $request->paper_id, 'chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
+        return $content;
     }
 }

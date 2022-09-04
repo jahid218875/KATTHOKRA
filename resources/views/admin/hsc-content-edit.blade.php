@@ -184,6 +184,20 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                            <h6>Course Type Select</h6>
+                                            <fieldset class="form-group">
+                                                <select class="form-select" id="course_type" name="course_type"
+                                                    required>
+                                                    <option {{$content->course_type == 'Free' ? 'selected' : ''}}>Free
+                                                    </option>
+                                                    <option {{$content->course_type == 'Premium' ? 'selected' :
+                                                        ''}}>Premium
+                                                    </option>
+
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-12">
                                             <h6>Status Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="status" name="status" required>
