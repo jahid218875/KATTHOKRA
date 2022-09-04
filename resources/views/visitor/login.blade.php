@@ -39,6 +39,9 @@
                         <label for="exampleInputEmail1" class="form-label fw-bold">মোবাইল নাম্বার/ইমেইল</label>
                         <input type="email" name="email" class="form-control py-3 login-input border-0" id="email"
                             aria-describedby="emailHelp" placeholder="017xxxxxxxx">
+                        <a href="{{route('forgot')}}" class="text-end">
+                            <p class="mt-2">পাসওয়ার্ড ভুলে গিয়েছেন?</p>
+                        </a>
                         {{-- <div id="emailHelp" class="form-text text-end"><a href="#">Change Number</a></div> --}}
                     </div>
                     <div class="otp"></div>
