@@ -168,17 +168,17 @@ $("#type").change(function(e){
 });
 
 var data;
-
 function getData(response){
     data = response
 }
 
-console.log(data);
-
-
 $('.pagination').on('click', '.page-link', function(){
     var page = $(this).text();
 
+    if(page == 1){
+        var content = `<article class="blog-post">${data.editor1}</article>`;
+        $('#content').html(content) ;
+    }
 
 
     if(page == 2){
@@ -191,18 +191,12 @@ $('.pagination').on('click', '.page-link', function(){
         $('#content').html(`<article class="blog-post">${data.editor5}</article>`);
     }
 
+
+    $('.page-item').removeClass('active');
+    $(this).parent().addClass('active');
    
 })
 
-
-// $('body .page-link').click(function(e){
-//     e.preventDefault()
-//     alert(1)
-// });
-
-// console.log($content);
-
- 
 
 </script>
 
