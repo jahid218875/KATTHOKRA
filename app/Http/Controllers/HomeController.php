@@ -166,4 +166,20 @@ class HomeController extends Controller
         $content = HscContent::where(['paper_id' => $request->paper_id, 'chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
         return $content;
     }
+
+
+
+    public function forgot(Request $request)
+    {
+
+
+        if ($request->email and empty($request->otp) and empty($request->password)) {
+            $check = User::where('email', $request->email)->first();
+            if ($check) {
+                return ['error' => 'Email Or Phone not found'];
+            } else {
+                return ['status' => 'paici'];
+            }
+        }
+    }
 }
