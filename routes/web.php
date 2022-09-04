@@ -56,6 +56,11 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
+        // Editor Add 
+        Route::get('/editor-add', [AdminController::class, 'editor_add'])->name('editor_add');
+        Route::post('/editor-add', [AdminController::class, 'editor_add_process'])->name('editor_process');
+
+
         // Subject Add 
         Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
         Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');

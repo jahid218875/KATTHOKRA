@@ -57,6 +57,19 @@ class AdminController extends Controller
 
 
     // Subject Added 
+    public function editor_add()
+    {
+        // $editor = Editor::OrderBy('id', 'desc')->get();
+        // dd($editor);
+        return view('admin.editor-add');
+    }
+
+    public function editor_add_process(Request $request)
+    {
+    }
+
+
+    // Subject Added 
     public function subject_add()
     {
         $subject = Subject::OrderBy('id', 'desc')->get();
