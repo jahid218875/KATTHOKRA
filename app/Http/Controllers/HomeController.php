@@ -109,7 +109,7 @@ class HomeController extends Controller
                     return redirect()->route('home');
                 }
             } else {
-                return ['status' => 'invalid email or password'];
+                return back()->with('error', 'invalid email or password');
             }
         }
     }
