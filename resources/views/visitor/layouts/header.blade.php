@@ -21,7 +21,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <!-- custom css file link  -->
+    <!-- custom css file link -->
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
     @yield('styles')
