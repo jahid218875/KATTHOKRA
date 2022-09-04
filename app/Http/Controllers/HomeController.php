@@ -168,18 +168,46 @@ class HomeController extends Controller
     }
 
 
+    public function forgotPassword()
+    {
+        return view('visitor.forgot');
+    }
+
 
     public function forgot(Request $request)
     {
-
-
         if ($request->email and empty($request->otp) and empty($request->password)) {
             $check = User::where('email', $request->email)->first();
             if ($check) {
-                return ['error' => 'Email Or Phone not found'];
+                $six_digit_random_number = random_int(100000, 999999);
+                User::where('email', $request->email)->update(['forgot' => $six_digit_random_number]);
+
+                if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number));
+                } else {
+                    $token = "21|ZEzUo3Z09qMHOiVMvvzfKCnbJWYVnws2ksrtyQ4n";
+                    $email = $request->email;
+                    $url = "https://sms.devswire.com/api/v3/sms/send?recipient=88$email&sender_id=8804445600777&message=katthokra.com Otp Code is: $six_digit_random_number";
+                    $client = new \GuzzleHttp\Client();
+                    $response = $client->request('POST', $url, [
+                        'headers' => ['Authorization' => 'Bearer ' . $token],
+                    ]);
+                    // $body = $response->getBody();
+                }
+                return ['status' => 'otp'];
             } else {
-                return ['status' => 'paici'];
+                return ['error' => 'Email Or Phone not found'];
             }
+        } elseif ($request->email and $request->otp and empty($request->password)) {
+            $check = User::where(['email' => $request->email, 'forgot' => $request->otp])->first();
+            if ($check) {
+                return ['status' => 'set passsword'];
+            } else {
+                return ['error' => 'Invalid Otp Code...'];
+            }
+        } elseif ($request->email and $request->otp and $request->password) {
+            User::where(['email' => $request->email, 'forgot' => $request->otp])->update(['password' => bcrypt($request->password), 'forgot' => null]);
+            return redirect()->route('login')->with('success', 'Password Changed Successfully');
         }
     }
 }

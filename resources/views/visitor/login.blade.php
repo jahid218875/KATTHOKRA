@@ -101,7 +101,7 @@
                     $('.password').html(`<div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label fw-bold">পাসওয়ার্ড</label>
                         <input type="password" name="password" class="form-control py-3 login-input border-0"
-                            id="password">
+                            id="password" required>
                     </div>`);
                 } else {
                     alert('invalid otp')
@@ -124,15 +124,15 @@
                     $('.otp').html(`<div class="mb-3">
                         <label for="otpText" class="form-label fw-bold">ফোনে পাঠানো OTP নিচে লিখুন
                         </label>
-                        <input type="email" name="otp" class="form-control  py-3 login-input border-0" id="otpText"
-                            aria-describedby="otplHelp">
+                        <input type="number" name="otp" class="form-control  py-3 login-input border-0" id="otpText"
+                            aria-describedby="otplHelp" required>
                         <div id="otplHelp" class="form-text">আপনি কোডটি পাননি? <a href="#">আবার পাঠান</a></div>
                     </div>`);
                 }else{
                     $('.password').html(`<div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label fw-bold">পাসওয়ার্ড</label>
                         <input type="password" name="password" class="form-control py-3 login-input border-0"
-                            id="password">
+                            id="password" required>
                     </div>`);
                 }
             }

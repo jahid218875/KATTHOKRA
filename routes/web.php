@@ -22,6 +22,11 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::post('/login', [HomeController::class, 'loginSubmit'])->name('loginSubmit');
+
+
+Route::get('forgot', [HomeController::class, 'forgotPassword'])->name('forgotPassword');
+Route::post('forgot', [HomeController::class, 'forgot'])->name('forgot');
+
 // Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 // Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');

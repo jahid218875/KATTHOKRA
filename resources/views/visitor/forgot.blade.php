@@ -14,7 +14,7 @@
             </h5>
                 {{-- error session laravel --}}
 
-                <form class="mx-auto" method="post" action="{{route('loginSubmit')}}" style="width: 400px">
+                <form class="mx-auto" method="post" action="{{route('forgot')}}" style="width: 400px">
                     @csrf
                     <div class="mb-3 emails">
                         <label for="exampleInputEmail1" class="form-label fw-bold">মোবাইল নাম্বার/ইমেইল</label>
@@ -71,7 +71,7 @@ $('.login').click(function (e) {
     ){
         //ajax
         $.ajax({
-            url: "{{ route('loginSubmit') }}",
+            url: "{{ route('forgot') }}",
             type: 'POST',
             data: {
                 '_token': $('input[name=_token]').val(),
@@ -79,14 +79,19 @@ $('.login').click(function (e) {
                 'otp': $('#otpText').val(),
             },
             success: function (data) {
+                console.log(1);
                 if (data.status == 'set passsword') {
                     $('.password').html(`<div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label fw-bold">পাসওয়ার্ড</label>
+                        <label for="exampleInputPassword1" class="form-label fw-bold">নতুন পাসওয়ার্ড</label>
                         <input type="password" name="password" class="form-control py-3 login-input border-0"
-                            id="password">
+                            id="password" required>
                     </div>`);
                 } else {
-                    alert('invalid otp')
+                    Swal.fire(
+                    'Ooops....!',
+                    'Invalid Otp Code',
+                    'error'
+                    )
                 }
             }
         })        
@@ -94,28 +99,26 @@ $('.login').click(function (e) {
     }else if($('#email').val() !== ''){
         //ajax
         $.ajax({
-            url: "{{ route('loginSubmit') }}",
+            url: "{{ route('forgot') }}",
             type: 'POST',
             data: {
                 '_token': $('input[name=_token]').val(),
                 'email': $('#email').val(),
             },
             success: function (data) {
-                console.log(data.status);
                 if (data.status == 'otp') {
                     $('.otp').html(`<div class="mb-3">
                         <label for="otpText" class="form-label fw-bold">ফোনে পাঠানো OTP নিচে লিখুন
                         </label>
-                        <input type="email" name="otp" class="form-control  py-3 login-input border-0" id="otpText"
+                        <input type="number" name="otp" class="form-control  py-3 login-input border-0" id="otpText"
                             aria-describedby="otplHelp">
-                        <div id="otplHelp" class="form-text">আপনি কোডটি পাননি? <a href="#">আবার পাঠান</a></div>
                     </div>`);
                 }else{
-                    $('.password').html(`<div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label fw-bold">পাসওয়ার্ড</label>
-                        <input type="password" name="password" class="form-control py-3 login-input border-0"
-                            id="password">
-                    </div>`);
+                    Swal.fire(
+                    'Ooops....!',
+                    'Invalid Otp Code',
+                    'error'
+                    )
                 }
             }
         })
