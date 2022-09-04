@@ -160,16 +160,37 @@ $("#type").change(function(e){
         if(data.editor2){
             $('.paginate').after('<li class="page-item"><a class="page-link" href="#">2</a></li>');
         }
-
+        getData(data);
     }
 });
 
 }
 });
 
+var data;
+
+function getData(response){
+    data = response
+}
+
+console.log(data);
+
 
 $('.pagination').on('click', '.page-link', function(){
-    console.log(data);
+    var page = $(this).text();
+
+
+
+    if(page == 2){
+        $('#content').html(`<article class="blog-post">${data.editor2}</article>`);
+    }else if(page == 3){
+        $('#content').html(`<article class="blog-post">${data.editor3}</article>`);
+    }else if(page == 4){
+        $('#content').html(`<article class="blog-post">${data.editor4}</article>`);
+    }else if(page == 5){
+        $('#content').html(`<article class="blog-post">${data.editor5}</article>`);
+    }
+
    
 })
 

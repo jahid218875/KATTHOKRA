@@ -13,8 +13,8 @@
 <script src="{{asset('admin/js/datatables.js')}}"></script>
 
 <!-- Need: Apexcharts -->
-<script src="{{asset('admin/js/apexcharts.min.js')}}"></script>
-<script src="{{asset('admin/js/dashboard.js')}}"></script>
+{{-- <script src="{{asset('admin/js/apexcharts.min.js')}}"></script> --}}
+{{-- <script src="{{asset('admin/js/dashboard.js')}}"></script> --}}
 
 
 
