@@ -104,7 +104,11 @@
                             id="password" required>
                     </div>`);
                 } else {
-                    alert('invalid otp')
+                    Swal.fire(
+                    'Ooops....!',
+                    'Invalid Otp Code',
+                    'error'
+                    )
                 }
             }
         })        
@@ -119,7 +123,6 @@
                 'email': $('#email').val(),
             },
             success: function (data) {
-                console.log(data.status);
                 if (data.status == 'otp') {
                     $('.otp').html(`<div class="mb-3">
                         <label for="otpText" class="form-label fw-bold">ফোনে পাঠানো OTP নিচে লিখুন

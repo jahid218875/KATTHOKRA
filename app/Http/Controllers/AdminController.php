@@ -8,6 +8,7 @@ use App\Models\Paper;
 use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\HscContent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +54,12 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.main');
+        $admin = Admin::where('role', 'admin')->count();
+        $editor = Admin::where('role', 'editor')->count();
+        $users = User::count();
+        $posts = HscContent::count();
+
+        return view('admin.main', compact('admin', 'editor', 'users', 'posts'));
     }
 
 
