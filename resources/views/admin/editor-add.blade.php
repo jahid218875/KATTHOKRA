@@ -64,31 +64,30 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="editor_name">Editor Name</label>
-                                                <input type="text" id="editor_name" class="form-control"
-                                                    placeholder="Editor Name" name="editor_name" required>
+                                                <label for="name">Editor Name</label>
+                                                <input type="text" id="name" class="form-control"
+                                                    placeholder="Editor Name" name="name" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="editor_email">Email</label>
-                                                <input type="email" id="editor_email" class="form-control"
-                                                    placeholder="Enter Editor Email" name="editor_email" required>
+                                                <label for="email">Email</label>
+                                                <input type="email" id="email" class="form-control"
+                                                    placeholder="Enter Editor Email" name="email" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="editor_mobile_number">Mobile Number</label>
-                                                <input type="email" id="editor_mobile_number" class="form-control"
-                                                    placeholder="Enter Editor Mobile Number" name="editor_mobile_number"
-                                                    required>
+                                                <label for="mobile">Mobile Number</label>
+                                                <input type="text" id="mobile" class="form-control"
+                                                    placeholder="Enter Editor Mobile Number" name="mobile" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="editor_password">Password</label>
-                                                <input type="password" id="editor_password" class="form-control"
-                                                    placeholder="Enter Editor Email" name="editor_password" required>
+                                                <label for="password">Password</label>
+                                                <input type="password" id="password" class="form-control"
+                                                    placeholder="Enter Editor Email" name="password" required>
                                             </div>
                                         </div>
 

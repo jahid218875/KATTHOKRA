@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Type;
 use App\Models\Paper;
 use App\Models\Chapter;
@@ -66,6 +67,27 @@ class AdminController extends Controller
 
     public function editor_add_process(Request $request)
     {
+        $editor = $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+            'password' => 'required',
+        ]);
+        $editor['password'] = bcrypt($request->password);
+        $editor['role'] = 'editor';
+
+        $check = Admin::where('email', $request->email)->first();
+        if ($check) {
+            unset($editor['email']);
+            Admin::where('email', $request->email)->update($editor);
+            $success = "Editor Updated Successfully";
+        } else {
+            Admin::create($editor);
+            $success = "Editor Added Successfully";
+        }
+
+
+        return back()->with('success', $success);
     }
 
 

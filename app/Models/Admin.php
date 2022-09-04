@@ -10,4 +10,5 @@ class Admin extends Authenticatable
     use HasFactory;
 
     public $timestamps = false;
+    protected $guarded = ['id'];
 }
