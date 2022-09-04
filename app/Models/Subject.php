@@ -11,4 +11,9 @@ class Subject extends Model
     use HasFactory;
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function get_paper()
+    {
+        return $this->hasMany(Paper::class, 'subject_id', 'id');
+    }
 }

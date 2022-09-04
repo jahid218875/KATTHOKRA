@@ -17,10 +17,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::post('/login', [HomeController::class, 'loginSubmit'])->name('loginSubmit');
-Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
+// Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
+
+// Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');
+// Route::post('/paper-to-chapter', [HomeController::class, 'paper_to_chapter'])->name('paper_to_chapter');
+// Route::post('/chapter-to-type', [HomeController::class, 'chapter_to_type'])->name('chapter_to_type');
+// Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');
+
+// Route::get('/reader', [HomeController::class, 'reader'])->name('reader');
 
 
 Route::get('/manager', [AdminController::class, 'login'])->name('manager.login');
@@ -32,6 +41,13 @@ Route::get('/manager/logout', [AdminController::class, 'logout'])->name('manager
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
+
+    Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
+
+    Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');
+    Route::post('/paper-to-chapter', [HomeController::class, 'paper_to_chapter'])->name('paper_to_chapter');
+    Route::post('/chapter-to-type', [HomeController::class, 'chapter_to_type'])->name('chapter_to_type');
+    Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');
 });
 
 Route::group(['middleware' => ['auth:admin']], function () {

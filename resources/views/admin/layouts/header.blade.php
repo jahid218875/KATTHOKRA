@@ -27,7 +27,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('admin/images/logo/logo.png') }}" alt="Logo"
+                            <a href="{{route('home')}}"><img src="{{ asset('admin/images/logo/logo.png') }}" alt="Logo"
                                     style="width: 100px; height: 80px;" srcset=""></a>
                         </div>
                         <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
@@ -70,7 +70,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item {{ request()->routeIs('admin.dashboard') ? 'active' : ''}} ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -114,10 +114,10 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item {{ request()->routeIs('editor.dashboard') ? 'active' : ''}} ">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ request()->routeIs('editor.hsc_content_list') ? 'active' : ''}} ">
+                            <a href="{{route('editor.hsc_content_list')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
+                                <span>Content List</span>
                             </a>
                         </li>
 

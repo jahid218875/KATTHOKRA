@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('editor3')->nullable();
             $table->text('editor4')->nullable();
             $table->text('editor5')->nullable();
+            $table->string('course_type')->nullable();
             $table->string('status');
         });
     }

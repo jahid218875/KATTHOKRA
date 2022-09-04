@@ -14,6 +14,7 @@ class AdminController extends Controller
 {
     public function login()
     {
+
         return view('admin.login');
     }
 
@@ -36,7 +37,7 @@ class AdminController extends Controller
         if (auth()->guard('admin')->attempt($login)) {
             return redirect()->route('admin.dashboard');
         } elseif (auth()->guard('editor')->attempt($editor)) {
-            return redirect()->route('editor.dashboard');
+            return redirect()->route('editor.hsc_content_list');
         } else {
             return redirect()->back()->withErrors(['email' => 'Invalid credentials']);
         }
@@ -91,6 +92,7 @@ class AdminController extends Controller
         Paper::where('subject_id', $id)->delete();
         Chapter::where('subject_id', $id)->delete();
         Type::where('subject_id', $id)->delete();
+        HscContent::where('subject_id', $id)->delete();
 
         return back()->with('success', 'Subject Deleted!');
     }
@@ -129,6 +131,7 @@ class AdminController extends Controller
         Paper::where('id', $id)->delete();
         Chapter::where('paper_id', $id)->delete();
         Type::where('paper_id', $id)->delete();
+        HscContent::where('paper_id', $id)->delete();
         return back()->with('success', 'Paper Deleted!');
     }
 
@@ -173,6 +176,7 @@ class AdminController extends Controller
     {
         Chapter::where('id', $id)->delete();
         Type::where('chapter_id', $id)->delete();
+        HscContent::where('chapter_id', $id)->delete();
         return back()->with('success', 'Chapter Deleted!');
     }
 
@@ -185,7 +189,6 @@ class AdminController extends Controller
         $paper = Paper::get();
 
         $type = Type::with('getSubject', 'getPaper', 'getChapter')->get();
-        // dd($type);
 
         return view('admin.type-add', compact('subject', 'paper', 'type'));
     }
@@ -220,6 +223,7 @@ class AdminController extends Controller
     public function type_delete($id)
     {
         Type::where('id', $id)->delete();
+        HscContent::where('type_id', $id)->delete();
         return back()->with('success', 'Type Deleted!');
     }
 
@@ -250,6 +254,7 @@ class AdminController extends Controller
             'type_id' => 'required',
             'editor1' => 'required',
             'status' => 'required',
+            'course_type' => 'required',
         ]);
 
         $hsc_content['editor2'] = $request->editor2;

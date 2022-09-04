@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KATTHOKRA</title>
+    <title>কাঠঠোকরা- মাতৃভাষায় উচ্চশিক্ষার একমাত্র প্লাটফর্ম</title>
 
     <!-- bootstrap cdn link  -->
 
@@ -30,10 +30,10 @@
 
     <!-- header area start  -->
     <div class="shadow sticky-top bg-white">
-        <nav class="navbar navbar-expand-lg container py-3">
+        <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold text-success fs-3" href="{{'/'}}"><img src="assets/images/logo.png"
-                        style="width: 150px"></a>
+                <a class="navbar-brand fw-bold text-success fs-3" href="{{'/'}}"><img
+                        src="{{asset('assets/images/logo.png')}}" style="width: 150px" class="py-2"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -63,42 +63,40 @@
                     </div> --}}
 
                     @if(Auth::check())
-                    {{ 'Your LoggedIn...' }}
-                    @else
-                    <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow"
-                        type="submit"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
-                    @endif
+                    {{-- {{ 'Your LoggedIn...' }} --}}
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                            <img src="assets/images/pic-1.png" class="rounded-circle w-25">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 1</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 2</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 3</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Menu item 4</a></li>
+                        </ul>
+                    </div>
                 </div>
+                @else
+                <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow" type="submit"><i
+                        class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
+                @endif
             </div>
-        </nav>
+    </div>
+    </nav>
     </div>
 
     <!-- header area end  -->
 
     <!-- home search area start  -->
 
-    {{-- <section class="home">
-        <div class="container">
-            <div class="row height d-flex justify-content-center align-items-center">
-                <div class="col-10 col-md-6">
-                    <div class="form">
-                        <i class="fa fa-search fa-bold"></i>
-                        <input type="search" class="form-control form-input p-3 rounded-pill shadow"
-                            placeholder="Search anything...">
-                    </div>
-                </div>
-            </div>
+    <div class="container-fluid cards">
+        <div class="d-flex justify-content-center">
+            <div class="input-field"> <input placeholder="খোঁজ করুন" class="form-control shadow home-search" /> <button
+                    class="btn1"><i class="fa fa-search"></i></button> </div>
         </div>
-    </section> --}}
-
-    <section class="home">
-        <img src="assets/images/new-bg.jpg" class="img-fluid">
-        <div class="form">
-            <i class="fa fa-search fa-bold"></i>
-            <input type="search" class="form-control form-input p-3 rounded-pill shadow"
-                placeholder="Search anything...">
-        </div>
-    </section>
+    </div>
 
 
     <!-- home search area end  -->
