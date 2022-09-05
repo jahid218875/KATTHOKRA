@@ -116,7 +116,7 @@
 
 <!-- teachers section starts  -->
 
-<section class="teachers container-fluid pb-5 px-0 m-0">
+{{-- <section class="teachers container-fluid pb-5 px-0 m-0">
 
     <h1 class="text-center py-5 fw-bold">যাদের আন্তরিক প্রচেষ্টায়<span class="text-success"> আমাদের পথচলা</span>
     </h1>
@@ -140,7 +140,7 @@
 
     </div>
 
-</section>
+</section> --}}
 
 <!-- teachers section ends -->
 
