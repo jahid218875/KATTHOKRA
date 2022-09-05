@@ -76,9 +76,10 @@ class HomeController extends Controller
                 if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
                     Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number));
                 } else {
-                    $token = "21|ZEzUo3Z09qMHOiVMvvzfKCnbJWYVnws2ksrtyQ4n";
+                    $token = "28|4RAQVFfe8fJAyvqRL563ze8goiFecESpni5bHsoS";
                     $email = $request->email;
-                    $url = "https://sms.devswire.com/api/v3/sms/send?recipient=88$email&sender_id=8804445600777&message=katthokra.com Otp Code is: $six_digit_random_number";
+                    $url = "https://sms.devswire.com/api/v3/sms/send?recipient=88$email&sender_id=8804445632730&message=katthokra.com Otp Code is: $six_digit_random_number";
+
                     $client = new \GuzzleHttp\Client();
                     $response = $client->request('POST', $url, [
                         'headers' => ['Authorization' => 'Bearer ' . $token],
@@ -192,9 +193,9 @@ class HomeController extends Controller
                 if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
                     Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number));
                 } else {
-                    $token = "21|ZEzUo3Z09qMHOiVMvvzfKCnbJWYVnws2ksrtyQ4n";
+                    $token = "28|4RAQVFfe8fJAyvqRL563ze8goiFecESpni5bHsoS";
                     $email = $request->email;
-                    $url = "https://sms.devswire.com/api/v3/sms/send?recipient=88$email&sender_id=8804445600777&message=katthokra.com Otp Code is: $six_digit_random_number";
+                    $url = "https://sms.devswire.com/api/v3/sms/send?recipient=88$email&sender_id=8804445632730&message=katthokra.com Otp Code is: $six_digit_random_number";
                     $client = new \GuzzleHttp\Client();
                     $response = $client->request('POST', $url, [
                         'headers' => ['Authorization' => 'Bearer ' . $token],
