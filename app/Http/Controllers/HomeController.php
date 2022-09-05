@@ -7,8 +7,9 @@ use App\Models\Type;
 use App\Models\User;
 use App\Models\Paper;
 use App\Models\Chapter;
-use App\Models\HscContent;
 use App\Models\Subject;
+use App\Models\Teacher;
+use App\Models\HscContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -19,8 +20,9 @@ class HomeController extends Controller
 
     public function index()
     {
-
-        return view('visitor.index');
+        $teachers = Teacher::get();
+        // dd($teacher);
+        return view('visitor.index', compact('teachers'));
     }
 
     public function contact()

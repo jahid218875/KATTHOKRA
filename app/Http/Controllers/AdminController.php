@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\Type;
+use App\Models\User;
+use App\Models\Admin;
 use App\Models\Paper;
 use App\Models\Chapter;
 use App\Models\Subject;
+use App\Models\Teacher;
 use App\Models\HscContent;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -107,9 +108,41 @@ class AdminController extends Controller
     // Teacher Added 
     public function teacher_add()
     {
-        // $editor = Admin::where('role', 'editor')->OrderBy('id', 'desc')->get();
-        // dd($editor);
-        return view('admin.teacher-add');
+        $teacher = Teacher::get();
+        // dd($teacher);
+        return view('admin.teacher-add', compact('teacher'));
+    }
+
+    public function teacher_add_process(Request $request)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'facebook' => 'required',
+            'twitter' => 'required',
+            'linkedin' => 'required',
+            'email' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('image')) {
+            $image      = $request->file('image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['image'] = $image_name;
+
+        Teacher::create($data);
+
+        $success = "Teacher Homepage Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function teacher_delete($id)
+    {
+        Teacher::where('id', $id)->delete();
+
+        return back()->with('success', 'Teacher Deleted!');
     }
 
 

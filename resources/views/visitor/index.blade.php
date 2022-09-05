@@ -123,71 +123,20 @@
 
     <div class="row owl-carousel owl-theme two p-0 m-0">
 
-        <div class="col item slide">
-            <img src="assets/images/tutor-1.png" loading="lazy" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
+        @foreach ($teachers as $teacher)
 
         <div class="col item slide">
-            <img src="assets/images/tutor-2.png" loading="lazy" alt="">
+            <img src="{{asset('uploads/' . $teacher->image)}}" loading="lazy" alt="">
             <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
+                <a href="{{$teacher->facebook}}" class="fab fa-facebook-f"></a>
+                <a href="{{$teacher->twitter}}" class="fab fa-twitter"></a>
+                <a href="mailto:{{$teacher->email}}" class="fa-solid fa-envelope"></a>
+                <a href="{{$teacher->linkedin}}" class="fab fa-linkedin"></a>
             </div>
-            <h3>john deo</h3>
+            <h3>{{$teacher->name}}</h3>
         </div>
 
-        <div class="col item slide">
-            <img src="assets/images/tutor-3.png" loading="lazy" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="col item slide">
-            <img src="assets/images/tutor-4.png" loading="lazy" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="col item slide">
-            <img src="assets/images/tutor-5.png" loading="lazy" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
-
-        <div class="col item slide">
-            <img src="assets/images/tutor-6.png" loading="lazy" alt="">
-            <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>john deo</h3>
-        </div>
+        @endforeach
 
     </div>
 

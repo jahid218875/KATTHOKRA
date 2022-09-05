@@ -58,7 +58,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" action="{{ route('admin.editor_process')}}" method="post"
+                                <form class="form" action="{{ route('admin.teacher_process')}}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -97,7 +97,14 @@
                                                     placeholder="Enter Editor Email" name="email" required>
                                             </div>
                                         </div>
-
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Image Upload</label>
+                                                <p>image size 500 * 750</p>
+                                                <input type="file" id="image" class="form-control" name="image"
+                                                    required>
+                                            </div>
+                                        </div>
                                         <div class="col-12 d-flex justify-content-end">
                                             <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                         </div>
@@ -112,7 +119,7 @@
         <!-- // Basic multiple Column Form section end -->
 
         <!-- Basic Tables start -->
-        {{-- <section class="section">
+        <section class="section">
             <div class="card">
                 <div class="card-body">
                     <table class="table" id="table1">
@@ -120,18 +127,16 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Mobile</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($editor as $editor_list)
+                            @foreach($teacher as $teacher_list)
                             <tr>
-                                <td>{{$editor_list->name}}</td>
-                                <td>{{$editor_list->email}}</td>
-                                <td>{{$editor_list->mobile}}</td>
+                                <td>{{$teacher_list->name}}</td>
+                                <td>{{$teacher_list->email}}</td>
                                 <td>
-                                    <a href="{{ route('admin.editor_delete', $editor_list->id)}}"
+                                    <a href="{{ route('admin.teacher_delete', $teacher_list->id)}}"
                                         onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
                                 </td>
                             </tr>
@@ -143,7 +148,7 @@
                 </div>
             </div>
 
-        </section> --}}
+        </section>
         <!-- Basic Tables end -->
     </div>
 </div>
