@@ -74,7 +74,7 @@ class HomeController extends Controller
 
                 //mail to SignUp
                 if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number));
+                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number, 'Thank you for Signup.'));
                 } else {
                     $token = "28|4RAQVFfe8fJAyvqRL563ze8goiFecESpni5bHsoS";
                     $email = $request->email;
@@ -84,7 +84,6 @@ class HomeController extends Controller
                     $response = $client->request('POST', $url, [
                         'headers' => ['Authorization' => 'Bearer ' . $token],
                     ]);
-                    $body = $response->getBody();
                 }
 
                 return ['status' => 'otp', 'email' => $request->email, 'otp' => $six_digit_random_number];
@@ -191,7 +190,7 @@ class HomeController extends Controller
                 User::where('email', $request->email)->update(['forgot' => $six_digit_random_number]);
 
                 if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number));
+                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number, 'your forgot password code..'));
                 } else {
                     $token = "28|4RAQVFfe8fJAyvqRL563ze8goiFecESpni5bHsoS";
                     $email = $request->email;
@@ -200,7 +199,6 @@ class HomeController extends Controller
                     $response = $client->request('POST', $url, [
                         'headers' => ['Authorization' => 'Bearer ' . $token],
                     ]);
-                    // $body = $response->getBody();
                 }
                 return ['status' => 'otp'];
             } else {

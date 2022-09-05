@@ -19,11 +19,13 @@ class SignUp extends Mailable
 
     public $email;
     public $otp;
+    public $subject;
 
-    public function __construct($email, $otp)
+    public function __construct($email, $otp, $subject)
     {
         $this->email = $email;
         $this->otp = $otp;
+        $this->subject = $subject;
     }
 
     /**
@@ -34,6 +36,7 @@ class SignUp extends Mailable
     public function build()
     {
         return $this->from('no-reply@katthokra.com', 'no-reply')
+            ->subject($this->subject)
             ->view('visitor.verify-email')->with(['email' => $this->email, 'otp' => $this->otp]);
     }
 }
