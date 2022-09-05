@@ -126,8 +126,8 @@
                     {{-- <p><i class="fas fa-home mr-3"></i> বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়</p> --}}
                     <p><i class="fas fa-envelope mr-3"></i> <a href="mailto:community@katthokra.com"
                             class="text-dark text-lowercase">community@katthokra.com</a></p>
-                    <p><i class="fas fa-phone mr-3"></i> + 880 1234 56788</p>
-                    <p><i class="fas fa-print mr-3"></i> + 880 1234 56788</p>
+                    {{-- <p><i class="fas fa-phone mr-3"></i> + 880 1234 56788</p>
+                    <p><i class="fas fa-print mr-3"></i> + 880 1234 56788</p> --}}
                 </div>
                 <!-- Grid column -->
             </div>

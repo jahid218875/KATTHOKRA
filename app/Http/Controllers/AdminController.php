@@ -63,7 +63,7 @@ class AdminController extends Controller
     }
 
 
-    // Subject Added 
+    // Editor Added 
     public function editor_add()
     {
         $editor = Admin::where('role', 'editor')->OrderBy('id', 'desc')->get();
@@ -101,6 +101,15 @@ class AdminController extends Controller
         Admin::where('id', $id)->delete();
 
         return back()->with('success', 'Editor Deleted!');
+    }
+
+
+    // Teacher Added 
+    public function teacher_add()
+    {
+        // $editor = Admin::where('role', 'editor')->OrderBy('id', 'desc')->get();
+        // dd($editor);
+        return view('admin.teacher-add');
     }
 
 
