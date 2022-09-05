@@ -128,15 +128,17 @@ class HomeController extends Controller
             'level' => 'required',
             'institution' => 'required',
             'email_phone' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $data['image'] = $name;
+        }
 
-        $image = $request->file('image');
-        $name = time() . '.' . $image->getClientOriginalExtension();
-        $destinationPath = public_path('/images');
-        $image->move($destinationPath, $name);
-        $data['image'] = $name;
 
         $user = User::where('email', Auth::user()->email)->update($data);
         return redirect()->route('home');

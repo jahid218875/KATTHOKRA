@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->int('otp')->nullable();
             $table->int('forgot')->nullable();
+            $table->int('lavel')->nullable();
+            $table->int('Institution')->nullable();
+            $table->int('image')->nullable();
+            $table->int('email_phone')->nullable();
+            $table->int('remember_token')->nullable();
             // $table->rememberToken();
             $table->timestamps();
         });

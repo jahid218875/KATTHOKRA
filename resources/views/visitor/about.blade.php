@@ -41,8 +41,7 @@
                 আমরা কেবল বহুলাংশে এগিয়েই যেতাম না বরং তা হতো এক মহাবিপ্লব।
                 মাতৃভাষাকে কেবল একুশে ফেব্রুয়ারির গণ্ডিতে আবদ্ধ না রেখে উচ্চশিক্ষা সহ সকল খাতে প্রচলন করা এখন বায়ান্নর
                 শহীদদের রক্তের দাবি। সে দাবি পূরণের মহান উদ্দেশ্য নিয়ে আমাদের পথ চলা।
-            </p>
-            <br><br><br>
+            </p><br>
             <p class="fw-bold ps-5">-আহনাফ তাহমিদ
                 <br>Founder and CEO at Katthokra
             </p>
@@ -55,10 +54,10 @@
 <div class="container py-5 mb-5">
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-1">
         <div class="col">
-            <div class="card card-blue h-100 overflow-hidden shadow bg-white border-0 px-0">
+            <div class="card card-blue overflow-hidden shadow bg-white border-0 px-0">
                 <div class="card-shape">
                     <img src="{{asset('assets/images/ahnaf.jpg')}}" class="card-img-top team-img" alt="Dave">
-                    <div class="custom-shape-divider-bottom-1634717805">
+                    {{-- <div class="custom-shape-divider-bottom-1634717805">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                             preserveAspectRatio="none">
                             <path
@@ -71,9 +70,9 @@
                                 d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
                                 class="shape-fill"></path>
                         </svg>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="card-body">
+                {{-- <div class="card-body">
                     <blockquote>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 475.082 475.081" x="0px" y="0px"
                             width="25px" height="25px" xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -94,7 +93,7 @@
                         </p>
                     </blockquote>
 
-                </div>
+                </div> --}}
                 <div class="card-footer">
                     <p class="mb-0 font-weight-bolder">Ahnaf Tahmid</p>
                     <small class="text-muted">Founder and CEO at Katthokra</small>
@@ -105,7 +104,7 @@
             <div class="card card-pink h-100 overflow-hidden shadow bg-white border-0 px-0">
                 <div class="card-shape">
                     <img src="{{asset('assets/images/irfan.jpg')}}" class="card-img-top team-img" alt="Michele">
-                    <div class="custom-shape-divider-bottom-1634717805">
+                    {{-- <div class="custom-shape-divider-bottom-1634717805">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                             preserveAspectRatio="none">
                             <path
@@ -118,9 +117,9 @@
                                 d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
                                 class="shape-fill"></path>
                         </svg>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="card-body">
+                {{-- <div class="card-body">
                     <blockquote>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 475.082 475.081" x="0px" y="0px"
                             width="25px" height="25px" xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -140,7 +139,7 @@
                             This card has even longer content than the first to show that equal height action.
                         </p>
                     </blockquote>
-                </div>
+                </div> --}}
                 <div class="card-footer">
                     <p class="mb-0 font-weight-bolder">Mohammed Irfan Hossain</p>
                     <small class="text-muted">
@@ -152,7 +151,7 @@
             <div class="card card-blue h-100 overflow-hidden shadow bg-white border-0 px-0">
                 <div class="card-shape">
                     <img src="{{asset('assets/images/proeas.jpg')}}" class="card-img-top team-img" alt="Larry">
-                    <div class="custom-shape-divider-bottom-1634717805">
+                    {{-- <div class="custom-shape-divider-bottom-1634717805">
                         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                             preserveAspectRatio="none">
                             <path
@@ -165,10 +164,10 @@
                                 d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
                                 class="shape-fill"></path>
                         </svg>
-                    </div>
+                    </div> --}}
                 </div>
 
-                <div class="card-body">
+                {{-- <div class="card-body">
                     <blockquote>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 475.082 475.081" x="0px" y="0px"
                             width="25px" height="25px" xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -187,7 +186,7 @@
                             This card has supporting text below as a natural lead-in to additional content.
                         </p>
                     </blockquote>
-                </div>
+                </div> --}}
                 <div class="card-footer">
                     <p class="mb-0 font-weight-bolder">Washiur Rahman Proeas</p>
                     <small class="text-muted">Co-founder</small>

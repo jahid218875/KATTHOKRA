@@ -24,6 +24,7 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::post('/login', [HomeController::class, 'loginSubmit'])->name('loginSubmit');
 
+Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
 Route::get('forgot', [HomeController::class, 'forgotPassword'])->name('forgotPassword');
 Route::post('forgot', [HomeController::class, 'forgot'])->name('forgot');
@@ -48,7 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
 
-    Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
     Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');
     Route::post('/paper-to-chapter', [HomeController::class, 'paper_to_chapter'])->name('paper_to_chapter');

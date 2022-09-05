@@ -74,7 +74,7 @@
             <!-- Grid row -->
             <div class="row mt-3">
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
 
                     <br><img src="{{asset('assets/images/logo.png')}}" style="width: 150px" alt="logo">
@@ -82,7 +82,7 @@
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                {{-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">বিষয়</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto"
@@ -99,15 +99,15 @@
                     <p>
                         <a href="#!" class="text-dark">বিজ্ঞান</a>
                     </p>
-                </div>
+                </div> --}}
                 <!-- Grid column -->
 
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">প্রয়োজনীয় পেইজ </h6>
-                    <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                        style="width: 60px; background-color: #7c4dff; height: 2px" />
+                    <hr class="mb-4 mt-0 d-block mx-auto"
+                        style="width: 100px; background-color: #7c4dff; height: 2px" />
                     <p>
                         <a href="{{route('contact')}}" class="text-dark">পরামর্শ ও সহযোগিতা</a>
                     </p>
@@ -123,11 +123,11 @@
                     <h6 class="text-uppercase fw-bold">যোগাযোগ</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto"
                         style="width: 60px; background-color: #7c4dff; height: 2px" />
-                    <p><i class="fas fa-home mr-3"></i> বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়</p>
+                    {{-- <p><i class="fas fa-home mr-3"></i> বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়</p> --}}
                     <p><i class="fas fa-envelope mr-3"></i> <a href="mailto:community@katthokra.com"
                             class="text-dark">community@katthokra.com</a></p>
-                    <p><i class="fas fa-phone mr-3"></i> + 880 1234 56788</p>
-                    <p><i class="fas fa-print mr-3"></i> + 880 1234 56788</p>
+                    {{-- <p><i class="fas fa-phone mr-3"></i> + 880 1234 56788</p>
+                    <p><i class="fas fa-print mr-3"></i> + 880 1234 56788</p> --}}
                 </div>
                 <!-- Grid column -->
             </div>

@@ -83,8 +83,11 @@
                     </li>
                 </div>
                 @else
-                <a href="{{'/login'}}" class="btn btn-success fw-bold rounded-pill px-4 py-2 shadow" type="submit"><i
+                <a href="{{'/login'}}" class="btn btn-success rounded-pill px-3 py-2 shadow me-2" type="submit"><i
+                        class="fa-solid fa-user-plus me-2"></i> সাইন আপ </a>
+                <a href="{{'/login'}}" class="btn btn-success rounded-pill px-3 py-2 shadow" type="submit"><i
                         class="fa-solid fa-arrow-right-to-bracket me-2"></i> লগ-ইন </a>
+
                 @endif
             </div>
     </div>

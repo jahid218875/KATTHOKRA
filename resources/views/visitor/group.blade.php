@@ -20,12 +20,12 @@
         <div class="col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover" style="width: 18rem;">
                 <a href="{{ route('reader', ['name' => $group, 'subject' => $subject_list->subject_name])}}">
-                    <img src="{{asset('uploads/' . $subject_list->subject_image)}}" class="card-img-top" alt="...">
+                    <img src="{{asset('uploads/' . $subject_list->subject_image)}}" class="card-img-top img-fluid"
+                        alt="...">
                 </a>
                 {{-- <div class="card-body">
                     <h5 class="card-title text-center">ফিজিক্স</h5>
                 </div> --}}
-
             </div>
         </div>
         @endforeach

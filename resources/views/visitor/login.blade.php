@@ -23,7 +23,7 @@
                 </script>
                 @endif
 
-                <h5 class="text-center fw-bold py-5">ঘরে বসে পড়াশোনার সহজ সমাধান
+                <h5 class="text-center fw-bold py-5">গুছিয়ে পড়াশোনার সহজ সমাধান
                     {{-- success session laravel --}}
                     @if (session('success'))
                     <div class="alert alert-success">
@@ -37,8 +37,8 @@
                     @csrf
                     <div class="mb-3 emails">
                         <label for="exampleInputEmail1" class="form-label fw-bold">মোবাইল নাম্বার/ইমেইল</label>
-                        <input type="email" name="email" class="form-control py-3 login-input border-0" id="email"
-                            aria-describedby="emailHelp" placeholder="017xxxxxxxx">
+                        <input type="email" name="email" class="form-control py-3 login-input border-0 text-lowercase"
+                            id="email" aria-describedby="emailHelp" placeholder="017xxxxxxxx">
                         <a href="{{route('forgot')}}" class="text-end">
                             <p class="mt-2">পাসওয়ার্ড ভুলে গিয়েছেন?</p>
                         </a>
@@ -133,6 +133,7 @@
                         <input type="number" name="otp" class="form-control  py-3 login-input border-0" id="otpText"
                             aria-describedby="otplHelp" required>
                         <div id="otplHelp" class="form-text">আপনি কোডটি পাননি? <a href="#">আবার পাঠান</a></div>
+                        <div id="otplHelp" class="form-text">Inbox এ কোন মেইল পাননি? দয়া করে Spam এ খোঁজ করুন।</div>
                     </div>`);
                 }else{
                     $('.password').html(`<div class="mb-3">
