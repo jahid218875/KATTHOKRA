@@ -64,9 +64,30 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="name">Editor Name</label>
+                                                <label for="name">Teacher Name</label>
                                                 <input type="text" id="name" class="form-control"
-                                                    placeholder="Editor Name" name="name" required>
+                                                    placeholder="Teacher Name" name="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="facebook">Facebook</label>
+                                                <input type="text" id="facebook" class="form-control"
+                                                    placeholder="Enter Facebook Profile Link" name="facebook" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="twitter">Twitter</label>
+                                                <input type="text" id="twitter" class="form-control"
+                                                    placeholder="Enter Twitter Profile Link" name="twitter" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="linkedin">Linkedin</label>
+                                                <input type="text" id="linkedin" class="form-control"
+                                                    placeholder="Enter Linkedin Profile Link" name="linkedin" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -74,20 +95,6 @@
                                                 <label for="email">Email</label>
                                                 <input type="email" id="email" class="form-control"
                                                     placeholder="Enter Editor Email" name="email" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="mobile">Mobile Number</label>
-                                                <input type="text" id="mobile" class="form-control"
-                                                    placeholder="Enter Editor Mobile Number" name="mobile" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="password">Password</label>
-                                                <input type="password" id="password" class="form-control"
-                                                    placeholder="Enter Editor Email" name="password" required>
                                             </div>
                                         </div>
 

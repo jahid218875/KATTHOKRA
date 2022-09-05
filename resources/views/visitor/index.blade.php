@@ -7,7 +7,7 @@
         <div class="row">
 
             <div class="col-md-6 d-flex align-items-center justify-content-center">
-                <img src="assets/images/about-img.svg" class="w-100 img-fluid">
+                <img src="assets/images/about-img.svg" loading="lazy" class="w-100 img-fluid">
             </div>
 
             <div class="col-md-6 my-auto">
@@ -40,7 +40,7 @@
         <div class="col">
             <a href="{{route('group', 'science')}}">
                 <div class="card shadow my-3 border-0 mx-auto card-hover" style="width: 18rem;">
-                    <img src="assets/images/science.png" class="card-img-top" alt="...">
+                    <img src="assets/images/science.png" loading="lazy" class="card-img-top" alt="...">
                     {{-- <div class="card-body">
                         <h5 class="card-title text-center text-dark">science</h5>
                     </div> --}}
@@ -50,7 +50,7 @@
         {{-- <div class="col">
             <a href="{{route('group', 'humanities')}}">
                 <div class="card shadow my-3 border-0 mx-auto card-hover" style="width: 18rem;">
-                    <img src="assets/images/course-5.svg" class="card-img-top" alt="...">
+                    <img src="assets/images/course-5.svg" loading="lazy" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title text-center text-dark">মানবিক</h5>
                     </div>
@@ -60,7 +60,7 @@
         {{-- <div class="col">
             <a href="{{route('group', 'commerce')}}">
                 <div class="card shadow my-3 border-0 mx-auto card-hover" style="width: 18rem;">
-                    <img src="assets/images/homg-img.svg" class="card-img-top" alt="...">
+                    <img src="assets/images/homg-img.svg" loading="lazy" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title text-center text-dark">ব্যবসায় শিক্ষা</h5>
                     </div>
@@ -80,28 +80,28 @@
         <div class="col-6 col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover">
                 <a href="#">
-                    <img src="assets/images/laplace.png" class="card-img-top" alt="...">
+                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
                 </a>
             </div>
         </div>
         <div class="col-6 col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover">
                 <a href="#">
-                    <img src="assets/images/laplace.png" class="card-img-top" alt="...">
+                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
                 </a>
             </div>
         </div>
         <div class="col-6 col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover">
                 <a href="#">
-                    <img src="assets/images/laplace.png" class="card-img-top" alt="...">
+                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
                 </a>
             </div>
         </div>
         <div class="col-6 col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover">
                 <a href="#">
-                    <img src="assets/images/laplace.png" class="card-img-top" alt="...">
+                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
                 </a>
             </div>
         </div>
@@ -124,7 +124,7 @@
     <div class="row owl-carousel owl-theme two p-0 m-0">
 
         <div class="col item slide">
-            <img src="assets/images/tutor-1.png" alt="">
+            <img src="assets/images/tutor-1.png" loading="lazy" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -135,7 +135,7 @@
         </div>
 
         <div class="col item slide">
-            <img src="assets/images/tutor-2.png" alt="">
+            <img src="assets/images/tutor-2.png" loading="lazy" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -146,7 +146,7 @@
         </div>
 
         <div class="col item slide">
-            <img src="assets/images/tutor-3.png" alt="">
+            <img src="assets/images/tutor-3.png" loading="lazy" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -157,7 +157,7 @@
         </div>
 
         <div class="col item slide">
-            <img src="assets/images/tutor-4.png" alt="">
+            <img src="assets/images/tutor-4.png" loading="lazy" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -168,7 +168,7 @@
         </div>
 
         <div class="col item slide">
-            <img src="assets/images/tutor-5.png" alt="">
+            <img src="assets/images/tutor-5.png" loading="lazy" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -179,7 +179,7 @@
         </div>
 
         <div class="col item slide">
-            <img src="assets/images/tutor-6.png" alt="">
+            <img src="assets/images/tutor-6.png" loading="lazy" alt="">
             <div class="share">
                 <a href="#" class="fab fa-facebook-f"></a>
                 <a href="#" class="fab fa-twitter"></a>
@@ -208,7 +208,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
                 numquam consequatur velit autem distinctio possimus culpa!</p>
             <div class="user">
-                <img src="assets/images/pic-1.png" alt="">
+                <img src="assets/images/pic-1.png" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>john deo</h3>
                     <p class="subject">chemistry</p>
@@ -220,7 +220,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
                 numquam consequatur velit autem distinctio possimus culpa!</p>
             <div class="user">
-                <img src="assets/images/pic-2.png" alt="">
+                <img src="assets/images/pic-2.png" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>john deo</h3>
                     <p class="subject">chemistry</p>
@@ -232,7 +232,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
                 numquam consequatur velit autem distinctio possimus culpa!</p>
             <div class="user">
-                <img src="assets/images/pic-3.png" alt="">
+                <img src="assets/images/pic-3.png" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>john deo</h3>
                     <p class="subject">chemistry</p>
@@ -244,7 +244,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
                 numquam consequatur velit autem distinctio possimus culpa!</p>
             <div class="user">
-                <img src="assets/images/pic-4.png" alt="">
+                <img src="assets/images/pic-4.png" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>john deo</h3>
                     <p class="subject">chemistry</p>
@@ -256,7 +256,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
                 numquam consequatur velit autem distinctio possimus culpa!</p>
             <div class="user">
-                <img src="assets/images/pic-5.png" alt="">
+                <img src="assets/images/pic-5.png" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>john deo</h3>
                     <p class="subject">chemistry</p>
@@ -268,7 +268,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
                 numquam consequatur velit autem distinctio possimus culpa!</p>
             <div class="user">
-                <img src="assets/images/pic-6.png" alt="">
+                <img src="assets/images/pic-6.png" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>john deo</h3>
                     <p class="subject">chemistry</p>
