@@ -190,7 +190,7 @@ class HomeController extends Controller
                 User::where('email', $request->email)->update(['forgot' => $six_digit_random_number]);
 
                 if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number, 'your forgot password code..'));
+                    Mail::to($request->email)->send(new SignUp($request->email, $six_digit_random_number, 'Forgot Password Verification Code..'));
                 } else {
                     $token = "28|4RAQVFfe8fJAyvqRL563ze8goiFecESpni5bHsoS";
                     $email = $request->email;
