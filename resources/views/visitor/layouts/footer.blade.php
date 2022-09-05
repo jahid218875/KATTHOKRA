@@ -107,7 +107,7 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">প্রয়োজনীয় পেইজ </h6>
                     <hr class="mb-4 mt-0 d-block mx-auto"
-                        style="width: 100px; background-color: #7c4dff; height: 2px" />
+                        style="width: 130px; background-color: #7c4dff; height: 2px" />
                     <p>
                         <a href="{{route('contact')}}" class="text-dark">পরামর্শ ও সহযোগিতা</a>
                     </p>
@@ -122,12 +122,12 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">যোগাযোগ</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto"
-                        style="width: 60px; background-color: #7c4dff; height: 2px" />
+                        style="width: 80px; background-color: #7c4dff; height: 2px" />
                     {{-- <p><i class="fas fa-home mr-3"></i> বাংলাদেশ প্রকৌশল বিশ্ববিদ্যালয়</p> --}}
                     <p><i class="fas fa-envelope mr-3"></i> <a href="mailto:community@katthokra.com"
-                            class="text-dark">community@katthokra.com</a></p>
-                    {{-- <p><i class="fas fa-phone mr-3"></i> + 880 1234 56788</p>
-                    <p><i class="fas fa-print mr-3"></i> + 880 1234 56788</p> --}}
+                            class="text-dark text-lowercase">community@katthokra.com</a></p>
+                    <p><i class="fas fa-phone mr-3"></i> + 880 1234 56788</p>
+                    <p><i class="fas fa-print mr-3"></i> + 880 1234 56788</p>
                 </div>
                 <!-- Grid column -->
             </div>
