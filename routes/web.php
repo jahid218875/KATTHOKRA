@@ -68,9 +68,9 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/editor-delete/{id}', [AdminController::class, 'editor_delete'])->name('editor_delete');
 
         // Teacher Add for Home page
-        // Route::get('/teacher-add', [AdminController::class, 'teacher_add'])->name('teacher_add');
-        // Route::post('/teacher-add', [AdminController::class, 'teacher_add_process'])->name('teacher_process');
-        // Route::get('/teacher-delete/{id}', [AdminController::class, 'teacher_delete'])->name('teacher_delete');
+        Route::get('/teacher-add', [AdminController::class, 'teacher_add'])->name('teacher_add');
+        Route::post('/teacher-add', [AdminController::class, 'teacher_add_process'])->name('teacher_process');
+        Route::get('/teacher-delete/{id}', [AdminController::class, 'teacher_delete'])->name('teacher_delete');
 
 
         // Subject Add 

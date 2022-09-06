@@ -20,9 +20,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $teachers = Teacher::get();
-        // dd($teacher);
-        return view('visitor.index');
+        $teachers = Teacher::get();
+        return view('visitor.index', compact('teachers'));
     }
 
     public function contact()

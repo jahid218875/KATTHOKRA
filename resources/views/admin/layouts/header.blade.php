@@ -107,12 +107,12 @@
                                 <span>Add Editor</span>
                             </a>
                         </li>
-                        {{-- <li class="sidebar-item {{ request()->routeIs('admin.teacher_add') ? 'active' : ''}} ">
+                        <li class="sidebar-item {{ request()->routeIs('admin.teacher_add') ? 'active' : ''}} ">
                             <a href="{{route('admin.teacher_add')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Add Teacher Hompage</span>
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
                             <a href="{{route('manager.logout')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
