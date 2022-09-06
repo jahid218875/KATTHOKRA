@@ -301,11 +301,24 @@ $("#chapter").change(function(e){
 });
 
 // CK Editor 
-CKEDITOR.replace( 'editor1' );
-CKEDITOR.replace( 'editor2' );
-CKEDITOR.replace( 'editor3' );
-CKEDITOR.replace( 'editor4' );
-CKEDITOR.replace( 'editor5' );
+CKEDITOR.replace( 'editor1', {
+    removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor'
+} );
+CKEDITOR.replace( 'editor2', {
+    removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor'
+} );
+CKEDITOR.replace( 'editor3', {
+    removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor'
+} );
+CKEDITOR.replace( 'editor4', {
+    removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor'
+} );
+CKEDITOR.replace( 'editor5', {
+    removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor'
+} );
+
+
+// CKEDITOR.config.removeButtons = '';
 
 </script>
 @endsection
