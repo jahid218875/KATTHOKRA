@@ -157,7 +157,7 @@
         <div class="col item slide shadow mt-5">
             <p>{{$review->review}}</p>
             <div class="user">
-                <img src="assets/images/pic-6.png" loading="lazy" alt="">
+                <img src="{{$review->university_name}}" loading="lazy" alt="">
                 <div class="user-info">
                     <h3>{{$review->name}}</h3>
                     <p class="subject">{{$review->university_name}}</p>
