@@ -6,11 +6,9 @@
 
 <section class="contact px-3 pb-5">
 
-    <h1 class="text-center fw-bold py-5">আপনার<span class="text-success"> গঠনমূলক পরামর্শ</span></h1>
+    <h1 class="text-center fw-bold pt-5 pb-3">পরামর্শ ও<span class="text-success"> সহযোগিতা</span></h1>
 
     <div class="row">
-        <h4 class="text-center fw-bold">পরামর্শ ও সহযোগিতা</h4>
-        <hr style="width: 180px; margin:auto; color: #157347; padding-bottom: 20px;">
         <div class="col-md-12 px-5">
             <p class="text-center">আপনার কি কোন বিষয়ে সহযোগিতা প্রয়োজন ? অথবা আমাদের জন্য আপনার কোন পরামর্শ ? আমাদের
                 সেবা বিষয়ক যেকোন

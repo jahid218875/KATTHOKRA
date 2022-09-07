@@ -149,7 +149,7 @@
 
 <section class="reviews pb-5 px-0 m-0">
 
-    <h1 class="text-center fw-bold mt-5">ব্যাবহারকারী <span class="text-success">মতামত ও পরামর্শ</span></h1>
+    <h1 class="text-center fw-bold mt-5">ব্যবহারকারীদের <span class="text-success">মতামত ও পরামর্শ</span></h1>
 
     <div class="row owl-carousel owl-theme three reviews-slider p-0 m-0">
 
