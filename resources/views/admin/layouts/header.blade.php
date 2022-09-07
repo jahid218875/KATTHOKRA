@@ -113,6 +113,12 @@
                                 <span>Add Teacher Hompage</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.review_add') ? 'active' : ''}} ">
+                            <a href="{{route('admin.review_add')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Add Review Hompage</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
                             <a href="{{route('manager.logout')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>

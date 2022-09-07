@@ -73,6 +73,12 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/teacher-delete/{id}', [AdminController::class, 'teacher_delete'])->name('teacher_delete');
 
 
+        // Review Add 
+        Route::get('/review-add', [AdminController::class, 'review_add'])->name('review_add');
+        Route::post('/review-add', [AdminController::class, 'review_add_process'])->name('review_process');
+        Route::get('/review-delete/{id}', [AdminController::class, 'review_delete'])->name('review_delete');
+
+
         // Subject Add 
         Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
         Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');

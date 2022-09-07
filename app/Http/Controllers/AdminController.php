@@ -6,13 +6,14 @@ use App\Models\Type;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Paper;
+use App\Models\Review;
 use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\HscContent;
+use Mockery\Matcher\Subset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Mockery\Matcher\Subset;
 
 class AdminController extends Controller
 {
@@ -143,6 +144,44 @@ class AdminController extends Controller
         Teacher::where('id', $id)->delete();
 
         return back()->with('success', 'Teacher Deleted!');
+    }
+
+    // Review add 
+
+    public function review_add()
+    {
+        $review = Review::get();
+        return view('admin.review-add', compact('review'));
+    }
+
+    public function review_add_process(Request $request)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'university_name' => 'required',
+            'review' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('image')) {
+            $image      = $request->file('image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['image'] = $image_name;
+
+        Review::create($data);
+
+        $success = "Review Homepage Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function review_delete($id)
+    {
+        Review::where('id', $id)->delete();
+
+        return back()->with('success', 'Review Deleted!');
     }
 
 

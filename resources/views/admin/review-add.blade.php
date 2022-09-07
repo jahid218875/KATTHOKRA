@@ -9,26 +9,6 @@
     </header>
 
     <div class="page-heading">
-        {{-- <div class="page-title">
-            <div class="row">
-                <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Add Subject</h3>
-                    <p class="text-subtitle text-muted">Multiple form layouts, you can use</p>
-                </div>
-                <div class="col-12 col-md-6 order-md-2 order-first">
-                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Form Layout</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div> --}}
-
-
-
-
         <!-- // Basic multiple Column Form section start -->
 
         <section id="multiple-column-form">
@@ -57,38 +37,41 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">HSC & Admission Subject Add</h4>
+                            <h4 class="card-title">Add New Review Home Page</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" action="{{ route('admin.subject_process')}}" method="post"
+                                <form class="form" action="{{ route('admin.review_process')}}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
-                                            <h6>Group Select</h6>
-                                            <fieldset class="form-group">
-                                                <select class="form-select" id="basicSelect" name="group_name" required>
-                                                    <option value="">Select....</option>
-                                                    <option>Science</option>
-                                                    <option>Humanities</option>
-                                                    <option>Business Studies</option>
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-12">
                                             <div class="form-group">
-                                                <label for="subject_name">Subject Name</label>
-                                                <input type="text" id="subject_name" class="form-control"
-                                                    placeholder="Subject Name" name="subject_name" required>
+                                                <label for="name">Name</label>
+                                                <input type="text" id="name" class="form-control"
+                                                    placeholder="Jahidul Islam" name="name" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="subject_image">Image Upload</label>
-                                                <p>Image Size 5000 * 7000 or 500 * 700</p>
-                                                <input type="file" id="subject_image" class="form-control"
-                                                    name="subject_image" required>
+                                                <label for="university_name">University / College Name</label>
+                                                <input type="text" id="university_name" class="form-control"
+                                                    placeholder="University of Dhaka" name="university_name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="review">Review</label>
+                                                <textarea id="review" class="form-control" name="review"
+                                                    rows="4"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Image Upload</label>
+                                                <p>image size 200 * 200</p>
+                                                <input type="file" id="image" class="form-control" name="image"
+                                                    required>
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
@@ -111,23 +94,18 @@
                     <table class="table" id="table1">
                         <thead>
                             <tr>
-                                <th>Group Name</th>
-                                <th>Subject Name</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Name</th>
+                                <th>University / College Name</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($subject as $sub_list)
+                            @foreach($review as $review_list)
                             <tr>
-                                <td>{{$sub_list->group_name}}</td>
-                                <td>{{$sub_list->subject_name}}</td>
+                                <td>{{$review_list->name}}</td>
+                                <td>{{$review_list->university_name}}</td>
                                 <td>
-                                    <a href="{{ route('admin.subject_edit', $sub_list->id)}}"
-                                        onclick="return confirm('are you sure?')" class="badge bg-success">Edit</a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.subject_delete', $sub_list->id)}}"
+                                    <a href="{{ route('admin.review_delete', $review_list->id)}}"
                                         onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
                                 </td>
                             </tr>

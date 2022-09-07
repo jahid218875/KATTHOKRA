@@ -65,6 +65,7 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="subject_image">Image Upload</label>
+                                                <p>Image Size 5000 * 7000 or 500 * 700</p>
                                                 <input type="file" id="subject_image" class="form-control"
                                                     name="subject_image" required>
                                             </div>

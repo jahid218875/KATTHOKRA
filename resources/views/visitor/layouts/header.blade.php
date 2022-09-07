@@ -48,7 +48,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link fw-bold fs-5 menu-hover" href="#HSC&ADMISSION">HSC ও ADMISSION</a>
+                            <a class="nav-link fw-bold fs-5 menu-hover"
+                                href="{{ request()->routeIs('home') ? '#HSC&ADMISSION' : route('hsc_admission')}}">HSC ও
+                                ADMISSION</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link fw-bold fs-5 menu-hover" href="#প্রকৌশলবিদ্যা">প্রকৌশলবিদ্যা</a>
