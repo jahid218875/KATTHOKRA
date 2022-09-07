@@ -153,78 +153,18 @@
 
     <div class="row owl-carousel owl-theme three reviews-slider p-0 m-0">
 
+        @foreach($reviews as $review)
         <div class="col item slide shadow mt-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
-                numquam consequatur velit autem distinctio possimus culpa!</p>
-            <div class="user">
-                <img src="assets/images/pic-1.png" loading="lazy" alt="">
-                <div class="user-info">
-                    <h3>john deo</h3>
-                    <p class="subject">chemistry</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col item slide shadow mt-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
-                numquam consequatur velit autem distinctio possimus culpa!</p>
-            <div class="user">
-                <img src="assets/images/pic-2.png" loading="lazy" alt="">
-                <div class="user-info">
-                    <h3>john deo</h3>
-                    <p class="subject">chemistry</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col item slide shadow mt-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
-                numquam consequatur velit autem distinctio possimus culpa!</p>
-            <div class="user">
-                <img src="assets/images/pic-3.png" loading="lazy" alt="">
-                <div class="user-info">
-                    <h3>john deo</h3>
-                    <p class="subject">chemistry</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col item slide shadow mt-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
-                numquam consequatur velit autem distinctio possimus culpa!</p>
-            <div class="user">
-                <img src="assets/images/pic-4.png" loading="lazy" alt="">
-                <div class="user-info">
-                    <h3>john deo</h3>
-                    <p class="subject">chemistry</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col item slide shadow mt-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
-                numquam consequatur velit autem distinctio possimus culpa!</p>
-            <div class="user">
-                <img src="assets/images/pic-5.png" loading="lazy" alt="">
-                <div class="user-info">
-                    <h3>john deo</h3>
-                    <p class="subject">chemistry</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col item slide shadow mt-5">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum necessitatibus atque fuga delectus
-                numquam consequatur velit autem distinctio possimus culpa!</p>
+            <p>{{$review->review}}</p>
             <div class="user">
                 <img src="assets/images/pic-6.png" loading="lazy" alt="">
                 <div class="user-info">
-                    <h3>john deo</h3>
-                    <p class="subject">chemistry</p>
+                    <h3>{{$review->name}}</h3>
+                    <p class="subject">{{$review->university_name}}</p>
                 </div>
             </div>
         </div>
-
+        @endforeach
     </div>
 
 </section>
