@@ -69,6 +69,8 @@
     $("#paper").change(function(e){
   
   e.preventDefault();
+  $('#type').html( '<option value="">Select Type</option>');
+
   
  var paper = $(this).val();
 
@@ -97,6 +99,8 @@
 $("#chapter").change(function(e){
   
   e.preventDefault();
+  $('#content').html( '<p>Select Paper, Chapter & Type</p>');
+
  var chapter = $(this).val();
 
   $.ajax({
@@ -140,7 +144,9 @@ $("#type").change(function(e){
         type_id: type
     },
     success:function(data){
-        var content = `<article class="blog-post">${data.editor1}</article>`;
+        // console.log(data.status);
+        if (data.status == 'active'){
+            var content = `<article class="blog-post">${data.editor1}</article>`;
         $('#content').html(content) ;
         
       
@@ -161,6 +167,11 @@ $("#type").change(function(e){
             $('.paginate').after('<li class="page-item"><a class="page-link" href="#">2</a></li>');
         }
         getData(data);
+        }else{
+            var content = `<article class="blog-post">Empty Content</article>`;
+        $('#content').html(content) ;
+        }
+        
     }
 });
 

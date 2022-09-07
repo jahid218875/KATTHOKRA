@@ -12,6 +12,7 @@ use App\Models\Teacher;
 use App\Models\HscContent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mockery\Matcher\Subset;
 
 class AdminController extends Controller
 {
@@ -173,6 +174,35 @@ class AdminController extends Controller
         $success = "Subject Added Successfully";
 
         return back()->with('success', $success);
+    }
+
+    public function subject_edit($id)
+    {
+        $subject = Subject::where('id', $id)->first();
+
+        return view('admin.subject-edit', compact('subject'));
+    }
+
+    public function subject_update($id, Request $request)
+    {
+        $data = $this->validate($request, [
+            'group_name' => 'required',
+            'subject_name' => 'required',
+            'subject_image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('subject_image')) {
+            $image      = $request->file('subject_image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['subject_image'] = $image_name;
+
+        Subject::where('id', $id)->update($data);
+
+        $success = "Subject Updated Successfully";
+
+        return redirect()->route('admin.subject_add')->with('success', $success);
     }
 
     public function subject_delete($id)

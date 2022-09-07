@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth:admin']], function () {
         // Subject Add 
         Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
         Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');
+        Route::get('/subject-edit/{id}', [AdminController::class, 'subject_edit'])->name('subject_edit');
+        Route::post('/subject-update/{id}', [AdminController::class, 'subject_update'])->name('subject_update');
         Route::get('/subject-delete/{id}', [AdminController::class, 'subject_delete'])->name('subject_delete');
 
 
