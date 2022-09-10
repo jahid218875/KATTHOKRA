@@ -122,7 +122,8 @@ class HomeController extends Controller
 
     public function signup()
     {
-        return view('visitor.signup');
+        $user = Auth::user();
+        return view('visitor.signup', compact('user'));
     }
 
     public function signupData(Request $request)
