@@ -71,8 +71,8 @@
                     {{-- {{ 'Your LoggedIn...' }} --}}
                     <li class="nav-item dropdown list-group">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-expanded="false"><img src="{{asset('assets/images/pic-1.png')}}"
-                                class="rounded-circle w-25"></a>
+                            aria-expanded="false"><img src="{{asset('uploads/' . $user->image)}}" class="rounded-circle"
+                                style="width: 50px; height:50px;"></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                             {{-- <li><a class="dropdown-item" href="#">Another action</a></li>

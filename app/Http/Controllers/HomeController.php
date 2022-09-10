@@ -23,7 +23,8 @@ class HomeController extends Controller
     {
         $teachers = Teacher::get();
         $reviews = Review::get();
-        return view('visitor.index', compact('teachers', 'reviews'));
+        $user = Auth::user();
+        return view('visitor.index', compact('teachers', 'reviews', 'user'));
     }
 
     public function contact()
