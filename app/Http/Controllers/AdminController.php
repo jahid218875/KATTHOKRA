@@ -399,6 +399,8 @@ class AdminController extends Controller
 
         $content = HscContent::where('id', $id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->first();
 
+        // dd($content);
+
         return view('admin.hsc-content-edit', compact('content'));
     }
 
@@ -406,6 +408,7 @@ class AdminController extends Controller
     {
 
         $hsc_content = $this->validate($request, [
+            'editor_email' => 'required',
             'subject_id' => 'required',
             'paper_id' => 'required',
             'chapter_id' => 'required',

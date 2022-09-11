@@ -24,6 +24,7 @@ class HomeController extends Controller
         $teachers = Teacher::get();
         $reviews = Review::get();
         // $user = Auth::user();
+        // dd($user);
         return view('visitor.index', compact('teachers', 'reviews'));
     }
 

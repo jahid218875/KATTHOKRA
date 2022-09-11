@@ -67,7 +67,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">HSC & Admission Content Add</h4>
+                            <h4 class="card-title">HSC & Admission Content Edit</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -75,6 +75,13 @@
                                     method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
+                                        <div class="col-12">
+                                            <h6>Your Email</h6>
+                                            <fieldset class="form-group">
+                                                <input type="text" class="form-control" name="editor_email"
+                                                    value="{{$editor->email}}" readonly>
+                                            </fieldset>
+                                        </div>
                                         <div class="col-12">
                                             <h6>Subject Select</h6>
                                             <fieldset class="form-group">

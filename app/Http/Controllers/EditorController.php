@@ -8,6 +8,7 @@ use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\HscContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EditorController extends Controller
 {
@@ -19,8 +20,10 @@ class EditorController extends Controller
     public function content_add()
     {
         $subject = Subject::get();
+        $editor = Auth::user();
+        // dd($editor);
 
-        return view('admin.editor.content-add', compact('subject'));
+        return view('admin.editor.content-add', compact('subject', 'editor'));
     }
 
     public function paper_process(Request $request)
@@ -41,7 +44,9 @@ class EditorController extends Controller
     public function hsc_content_submit(Request $request)
     {
 
+        // dd($request->all());
         $hsc_content = $this->validate($request, [
+            'editor_email' => 'required',
             'subject_id' => 'required',
             'paper_id' => 'required',
             'chapter_id' => 'required',
@@ -54,6 +59,8 @@ class EditorController extends Controller
         $hsc_content['editor4'] = $request->editor4;
         $hsc_content['editor5'] = $request->editor5;
         $hsc_content['status'] = 'pending';
+
+
 
 
 
@@ -75,14 +82,16 @@ class EditorController extends Controller
     {
 
         $content = HscContent::where('id', $id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->first();
+        $editor = Auth::user();
 
-        return view('admin.editor.content-edit', compact('content'));
+        return view('admin.editor.content-edit', compact('content', 'editor'));
     }
 
     public function hsc_content_update($id, Request $request)
     {
 
         $hsc_content = $this->validate($request, [
+            'editor_email' => 'required',
             'subject_id' => 'required',
             'paper_id' => 'required',
             'chapter_id' => 'required',

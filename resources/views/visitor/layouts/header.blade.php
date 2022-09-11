@@ -34,8 +34,8 @@
     <div class="shadow sticky-top bg-white">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
-                <a class="navbar-brand fw-bold text-success fs-3" href="{{'/'}}"><img
-                        src="{{asset('assets/images/logo.png')}}" style="width: 150px" class="py-2"></a>
+                <a class="navbar-brand fw-bold text-success" href="{{'/'}}"><img
+                        src="{{asset('assets/images/logo.png')}}" style="width: 120px" class="py-1"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -69,10 +69,11 @@
 
                     @if(Auth::check())
                     {{-- {{ 'Your LoggedIn...' }} --}}
+                    {{-- {{$user = Auth::user('image');}} --}}
                     <li class="nav-item dropdown list-group">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-expanded="false"><img src="{{asset('assets/images/pic-1.png')}}"
-                                class="rounded-circle w-25"></a>
+                            aria-expanded="false"><img src="{{asset('uploads/' . auth()->user()->image )}}"
+                                class="rounded-circle" style="width: 50px; height: 50px;"></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                             {{-- <li><a class="dropdown-item" href="#">Another action</a></li>
