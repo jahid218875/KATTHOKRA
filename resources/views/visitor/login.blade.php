@@ -33,7 +33,7 @@
                 </h5>
                 {{-- error session laravel --}}
 
-                <form class="mx-auto" method="post" action="{{route('loginSubmit')}}" style="width: 400px">
+                <form class="mx-auto login-form" method="post" action="{{route('loginSubmit')}}">
                     @csrf
                     <div class="mb-3 emails">
                         <label for="exampleInputEmail1" class="form-label fw-bold">মোবাইল নাম্বার/ইমেইল</label>
@@ -140,12 +140,23 @@
                         <label for="exampleInputPassword1" class="form-label fw-bold">পাসওয়ার্ড</label>
                         <input type="password" name="password" class="form-control py-3 login-input border-0"
                             id="password" required>
+                            <input class="mt-2" type="checkbox" onclick="myFunction()"> Show Password
                     </div>`);
                 }
             }
         })
     }
 })
+
+
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 
 </script>
 

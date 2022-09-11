@@ -307,6 +307,15 @@ a {
     background-color: #F2F2F2;
 }
 
+.login-form {
+    width: 400px;
+}
+
+#togglePassword {
+    margin-left: -30px;
+    cursor: pointer;
+}
+
 /* about page  */
 
 
@@ -438,6 +447,10 @@ a {
         margin-top: 45%;
 
     }
+
+    .login-form {
+        width: 350px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -478,6 +491,10 @@ a {
         border: none;
         margin-top: 45%;
 
+    }
+
+    .login-form {
+        width: 300px;
     }
 }
 
@@ -533,5 +550,9 @@ a {
         top: 8px;
         right: 6px;
         font-size: 10px;
+    }
+
+    .login-form {
+        width: 230px;
     }
 }

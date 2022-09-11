@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 py-5">
-                <form action="{{ route('signupData') }}" method="POST" class="mx-auto" style="width: 400px"
+                <form action="{{ route('signupData') }}" method="POST" class="mx-auto login-form" style="width: 400px"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
