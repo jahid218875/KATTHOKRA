@@ -76,10 +76,10 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
-                                            <h6>Editor Email</h6>
+                                            <h6>Editor Name</h6>
                                             <fieldset class="form-group">
-                                                <input type="text" class="form-control" name="editor_email"
-                                                    value="{{$content->editor_email}}" readonly>
+                                                <input type="text" class="form-control" name="editor_name"
+                                                    value="{{$content->editor_name}}" readonly>
                                             </fieldset>
                                         </div>
                                         <div class="col-12">

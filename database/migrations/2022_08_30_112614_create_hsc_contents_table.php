@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('hsc_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('editor_email');
+            $table->string('editor_name');
             $table->string('subject_id');
             $table->string('paper_id');
             $table->string('chapter_id');

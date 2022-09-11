@@ -47,7 +47,7 @@
                                 <th>Paper Name</th>
                                 <th>Chapter Name</th>
                                 <th>Type</th>
-                                <th>Editor Email</th>
+                                <th>Editor Name</th>
                                 <th>Status</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -60,7 +60,7 @@
                                 <td>{{$hsc_content_list->getPaper->paper_name}}</td>
                                 <td>{{$hsc_content_list->getChapter->chapter_name}}</td>
                                 <td>{{$hsc_content_list->getType->type_name}}</td>
-                                <td>{{$hsc_content_list->editor_email}}</td>
+                                <td>{{$hsc_content_list->editor_name}}</td>
                                 <td>{{$hsc_content_list->status}}</td>
                                 <td>
                                     <a href="{{ route('admin.hsc_content_edit', $hsc_content_list->id)}}"
