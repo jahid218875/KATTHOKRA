@@ -119,6 +119,12 @@
                                 <span>Add Review Hompage</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.ads') ? 'active' : ''}} ">
+                            <a href="{{route('admin.ads')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Add Ads Hompage</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
                             <a href="{{route('manager.logout')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>

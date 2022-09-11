@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Models\Type;
 use App\Models\User;
 use App\Models\Admin;
@@ -144,6 +145,43 @@ class AdminController extends Controller
         Teacher::where('id', $id)->delete();
 
         return back()->with('success', 'Teacher Deleted!');
+    }
+
+
+    // Ads 
+
+    public function ads()
+    {
+        $ads = Ads::get();
+        return view('admin.ads', compact('ads'));
+    }
+
+    public function ads_process(Request $request)
+    {
+        $data = $this->validate($request, [
+            'ads_name' => 'required',
+            'ads_image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('ads_image')) {
+            $image      = $request->file('ads_image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['ads_image'] = $image_name;
+
+        Ads::create($data);
+
+        $success = "Ads Image Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function ads_delete($id)
+    {
+        Ads::where('id', $id)->delete();
+
+        return back()->with('success', 'Ads Deleted!');
     }
 
     // Review add 

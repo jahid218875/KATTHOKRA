@@ -31,6 +31,26 @@
 
 <!-- about section ends -->
 
+<!-- ads section starts  -->
+
+<section class="ads container-fluid py-5 px-0 m-0">
+
+    <div class="row owl-carousel owl-theme one p-0 m-0">
+
+        @foreach ($ads as $ad)
+
+        <div class="col item">
+            <img src="{{asset('uploads/' . $ad->ads_image)}}" loading="lazy" class="rounded">
+        </div>
+
+        @endforeach
+
+    </div>
+
+</section>
+
+<!-- ads section ends -->
+
 
 <!-- HSC & ADMISSION section starts  -->
 

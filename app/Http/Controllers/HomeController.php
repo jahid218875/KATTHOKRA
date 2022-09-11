@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ads;
 use App\Mail\SignUp;
 use App\Models\Type;
 use App\Models\User;
 use App\Models\Paper;
+use App\Models\Review;
 use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\HscContent;
-use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +24,8 @@ class HomeController extends Controller
     {
         $teachers = Teacher::get();
         $reviews = Review::get();
-        // $user = Auth::user();
-        // dd($user);
-        return view('visitor.index', compact('teachers', 'reviews'));
+        $ads = Ads::get();
+        return view('visitor.index', compact('teachers', 'reviews', 'ads'));
     }
 
     public function contact()
