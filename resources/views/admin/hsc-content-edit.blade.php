@@ -80,6 +80,8 @@
                                             <fieldset class="form-group">
                                                 <input type="text" class="form-control" name="editor_name"
                                                     value="{{$content->editor_name}}" readonly>
+                                                <input type="text" class="form-control" name="editor_id"
+                                                    value="{{$content->editor_id}}" hidden>
                                             </fieldset>
                                         </div>
                                         <div class="col-12">

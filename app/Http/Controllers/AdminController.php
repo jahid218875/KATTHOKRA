@@ -446,6 +446,7 @@ class AdminController extends Controller
     {
 
         $hsc_content = $this->validate($request, [
+            'editor_id' => 'required',
             'editor_name' => 'required',
             'subject_id' => 'required',
             'paper_id' => 'required',

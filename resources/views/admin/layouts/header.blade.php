@@ -101,6 +101,17 @@
 
                             </ul>
                         </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Engineering</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item {{ request()->routeIs('admin.subject_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.subject_add')}}">Subject Add</a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.editor_add') ? 'active' : ''}} ">
                             <a href="{{route('admin.editor_add')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>

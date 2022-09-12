@@ -46,6 +46,7 @@ class EditorController extends Controller
 
         // dd($request->all());
         $hsc_content = $this->validate($request, [
+            'editor_id' => 'required',
             'editor_name' => 'required',
             'subject_id' => 'required',
             'paper_id' => 'required',
@@ -74,8 +75,11 @@ class EditorController extends Controller
     public function hsc_content_list()
     {
         $hsc_content = HscContent::with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
+        $editor = Auth::user();
+        // dd($hsc_content);
 
-        return view('admin.editor.hsc-content-list', compact('hsc_content'));
+
+        return view('admin.editor.hsc-content-list', compact('hsc_content', 'editor'));
     }
 
     public function hsc_content_edit($id)
@@ -91,6 +95,7 @@ class EditorController extends Controller
     {
 
         $hsc_content = $this->validate($request, [
+            'editor_id' => 'required',
             'editor_name' => 'required',
             'subject_id' => 'required',
             'paper_id' => 'required',

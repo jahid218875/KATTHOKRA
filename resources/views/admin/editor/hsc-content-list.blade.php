@@ -37,6 +37,7 @@
         </div>
 
         <!-- Basic Tables start -->
+
         <section class="section">
             <div class="card">
                 <div class="card-body">
@@ -53,6 +54,7 @@
                         <tbody>
 
                             @foreach($hsc_content as $hsc_content_list)
+                            @if($editor->id == $hsc_content_list->editor_id)
                             <tr>
                                 <td>{{$hsc_content_list->getSubject->subject_name}}</td>
                                 <td>{{$hsc_content_list->getPaper->paper_name}}</td>
@@ -63,6 +65,7 @@
                                         onclick="return confirm('are you sure?')" class="badge bg-danger">Edit</a>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
 
                         </tbody>
