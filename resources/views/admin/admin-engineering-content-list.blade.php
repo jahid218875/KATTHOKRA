@@ -31,7 +31,7 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Hsc and Admission Content List</h3>
+                    <h3>Engineering Content List</h3>
                 </div>
             </div>
         </div>
