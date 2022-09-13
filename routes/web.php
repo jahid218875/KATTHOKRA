@@ -84,7 +84,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/review-delete/{id}', [AdminController::class, 'review_delete'])->name('review_delete');
 
 
-        // Subject Add 
+        // HSC & Admission Subject Add 
         Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');
         Route::post('/subject-add', [AdminController::class, 'subject_add_process'])->name('subject_process');
         Route::get('/subject-edit/{id}', [AdminController::class, 'subject_edit'])->name('subject_edit');
@@ -92,13 +92,13 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/subject-delete/{id}', [AdminController::class, 'subject_delete'])->name('subject_delete');
 
 
-        // Paper Add 
+        // HSC & Admission Paper Add 
         Route::get('/paper-add', [AdminController::class, 'paper_add'])->name('paper_add');
         Route::post('/paper-add', [AdminController::class, 'paper_add_process'])->name('paper_process');
         Route::get('/paper-delete/{id}', [AdminController::class, 'paper_delete'])->name('paper_delete');
 
 
-        // Chapter add 
+        // HSC & Admission Chapter add 
         Route::get('/chapter-add', [AdminController::class, 'chapter_add'])->name('chapter_add');
 
         Route::post('/chapter-add', [AdminController::class, 'chapter_add_process'])->name('chapter_process');
@@ -108,7 +108,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/chapter-delete/{id}', [AdminController::class, 'chapter_delete'])->name('chapter_delete');
 
 
-        // Type add
+        // HSC & Admission Type add
 
         Route::get('/type-add', [AdminController::class, 'type_add'])->name('type_add');
 
@@ -118,12 +118,44 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
 
-        // Hsc Content List 
+        // HSC & Admission Content List 
 
         Route::get('/hsc-content-list', [AdminController::class, 'hsc_content_list'])->name('hsc_content_list');
         Route::get('/hsc-content-edit/{id}', [AdminController::class, 'hsc_content_edit'])->name('hsc_content_edit');
         Route::post('/hsc-content-update/{id}', [AdminController::class, 'hsc_content_update'])->name('hsc_content_update');
         Route::get('/hsc-content-delete/{id}', [AdminController::class, 'hsc_content_delete'])->name('hsc_content_delete');
+
+        //  Engineering Subject Add 
+        Route::get('/engineering-subject-add', [AdminController::class, 'engineering_subject_add'])->name('engineering_subject_add');
+        Route::post('/engineering-subject-add', [AdminController::class, 'engineering_subject_process'])->name('engineering_subject_process');
+        Route::get('/engineering-subject-edit/{id}', [AdminController::class, 'engineering_subject_edit'])->name('engineering_subject_edit');
+        Route::post('/engineering-subject-update/{id}', [AdminController::class, 'engineering_subject_update'])->name('engineering_subject_update');
+        Route::get('/engineering-subject-delete/{id}', [AdminController::class, 'engineering_subject_delete'])->name('engineering_subject_delete');
+
+        // Engineering Chapter add 
+        Route::get('/engineering-chapter-add', [AdminController::class, 'engineering_chapter_add'])->name('engineering_chapter_add');
+
+        Route::post('/engineering-chapter-submit', [AdminController::class, 'engineering_chapter_submit'])->name('engineering_chapter_submit');
+
+        Route::get('/engineering-chapter-delete/{id}', [AdminController::class, 'engineering_chapter_delete'])->name('engineering_chapter_delete');
+
+        // Engineering Type add
+
+        Route::get('/engineering-type-add', [AdminController::class, 'engineering_type_add'])->name('engineering_type_add');
+
+        Route::post('/engineering-type-add', [AdminController::class, 'engineering_type_process'])->name('engineering_type_process');
+
+        Route::post('/engineering-type-add-submit', [AdminController::class, 'engineering_type_submit'])->name('engineering_type_submit');
+
+        Route::get('/type-delete/{id}', [AdminController::class, 'engineering_type_delete'])->name('engineering_type_delete');
+
+
+        // Engineering Content List 
+
+        Route::get('/engineering-content-list', [AdminController::class, 'engineering_content_list'])->name('engineering_content_list');
+        Route::get('/engineering-content-edit/{id}', [AdminController::class, 'engineering_content_edit'])->name('engineering_content_edit');
+        Route::post('/engineering-content-update/{id}', [AdminController::class, 'engineering_content_update'])->name('engineering_content_update');
+        Route::get('/engineering-content-delete/{id}', [AdminController::class, 'engineering_content_delete'])->name('engineering_content_delete');
     });
 });
 
@@ -132,6 +164,8 @@ Route::group(['middleware' => ['auth:editor']], function () {
     Route::name('editor.')->prefix('/panel/editor')->group(function () {
 
         Route::get('/dashboard', [EditorController::class, 'dashboard'])->name('dashboard');
+
+        // HSC content add
 
         Route::get('/content-add', [EditorController::class, 'content_add'])->name('content_add');
         Route::post('/paper-process', [EditorController::class, 'paper_process'])->name('paper_process');
@@ -143,5 +177,17 @@ Route::group(['middleware' => ['auth:editor']], function () {
         Route::get('/hsc-content-list', [EditorController::class, 'hsc_content_list'])->name('hsc_content_list');
         Route::get('/hsc-content-edit/{id}', [EditorController::class, 'hsc_content_edit'])->name('hsc_content_edit');
         Route::post('/hsc-content-update/{id}', [EditorController::class, 'hsc_content_update'])->name('hsc_content_update');
+
+
+        // Engineering content add
+
+        Route::get('/engineering-content-add', [EditorController::class, 'engineering_content_add'])->name('engineering_content_add');
+        Route::post('/engineering-chapter-process', [EditorController::class, 'engineering_chapter_process'])->name('engineering_chapter_process');
+        Route::post('/engineering-type-process', [EditorController::class, 'engineering_type_process'])->name('engineering_type_process');
+        Route::post('/engineering-content-submit', [EditorController::class, 'engineering_content_submit'])->name('engineering_content_submit');
+
+        Route::get('/engineering-content-list', [EditorController::class, 'engineering_content_list'])->name('engineering_content_list');
+        Route::get('/engineering-content-edit/{id}', [EditorController::class, 'engineering_content_edit'])->name('engineering_content_edit');
+        Route::post('/engineering-content-update/{id}', [EditorController::class, 'engineering_content_update'])->name('engineering_content_update');
     });
 });

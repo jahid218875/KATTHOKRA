@@ -14,6 +14,10 @@ use App\Models\Teacher;
 use App\Models\HscContent;
 use Mockery\Matcher\Subset;
 use Illuminate\Http\Request;
+use App\Models\EngineeringType;
+use App\Models\EngineeringChapter;
+use App\Models\EngineeringContent;
+use App\Models\EngineeringSubject;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -473,5 +477,206 @@ class AdminController extends Controller
     {
         HscContent::where('id', $id)->delete();
         return back()->with('success', 'Hsc Content Deleted!');
+    }
+
+    // Engineering Subject Added 
+    public function engineering_subject_add()
+    {
+        $subject = EngineeringSubject::OrderBy('id', 'desc')->get();
+        // dd($subject);
+        return view('admin.engineering-subject-add', compact('subject'));
+    }
+
+    public function engineering_subject_process(Request $request)
+    {
+        $data = $this->validate($request, [
+            'group_name' => 'required',
+            'subject_name' => 'required',
+            'subject_image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('subject_image')) {
+            $image      = $request->file('subject_image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['subject_image'] = $image_name;
+
+        EngineeringSubject::create($data);
+
+        $success = "Subject Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function engineering_subject_edit($id)
+    {
+        $subject = EngineeringSubject::where('id', $id)->first();
+
+        return view('admin.engineering-subject-edit', compact('subject'));
+    }
+
+    public function engineering_subject_update($id, Request $request)
+    {
+        $data = $this->validate($request, [
+            'group_name' => 'required',
+            'subject_name' => 'required',
+            'subject_image' => 'required|image|mimes:jpg,jpeg,png',
+        ]);
+        if ($request->file('subject_image')) {
+            $image      = $request->file('subject_image');
+            $image_name = time() . '.' . $image->getClientOriginalName();
+            $image->move(public_path() . '/uploads', $image_name);
+        }
+
+        $data['subject_image'] = $image_name;
+
+        EngineeringSubject::where('id', $id)->update($data);
+
+        $success = "Subject Updated Successfully";
+
+        return redirect()->route('admin.engineering_subject_add')->with('success', $success);
+    }
+
+    public function engineering_subject_delete($id)
+    {
+        EngineeringSubject::where('id', $id)->delete();
+        EngineeringChapter::where('subject_id', $id)->delete();
+        EngineeringType::where('subject_id', $id)->delete();
+        EngineeringContent::where('subject_id', $id)->delete();
+
+        return back()->with('success', 'Subject Deleted!');
+    }
+
+    // Engineering Chapter Added 
+    public function engineering_chapter_add()
+    {
+        $subject = EngineeringSubject::get();
+        $chapter = EngineeringChapter::with('getSubject')->get();
+
+        return view('admin.engineering-chapter-add', compact('subject', 'chapter'));
+    }
+
+    public function engineering_chapter_submit(Request $request)
+    {
+
+        $chapter = $this->validate($request, [
+            'subject_id' => 'required',
+            'chapter_name' => 'required',
+        ]);
+
+        $check = EngineeringChapter::where($chapter)->first();
+        if ($check) {
+            return back()->with('error', 'This Chapter Name is Already Exists');
+        }
+
+        EngineeringChapter::create($chapter);
+
+        $success = "Chapter Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function engineering_chapter_delete($id)
+    {
+        EngineeringChapter::where('id', $id)->delete();
+        EngineeringType::where('chapter_id', $id)->delete();
+        EngineeringContent::where('chapter_id', $id)->delete();
+        return back()->with('success', 'Chapter Deleted!');
+    }
+
+    // Engineering Type Added 
+
+    public function engineering_type_add()
+    {
+        $subject = EngineeringSubject::get();
+
+        $type = EngineeringType::with('getSubject', 'getChapter')->get();
+
+        return view('admin.engineering-type-add', compact('subject', 'type'));
+    }
+
+    public function engineering_type_process(Request $request)
+    {
+        return EngineeringChapter::where('subject_id', $request->subject_id)->get();
+    }
+
+    public function engineering_type_submit(Request $request)
+    {
+
+        $type = $this->validate($request, [
+            'subject_id' => 'required',
+            'chapter_id' => 'required',
+            'type_name' => 'required',
+        ]);
+
+        $check = EngineeringType::where($type)->first();
+        if ($check) {
+            return back()->with('error', 'This Type Name is Already Exists');
+        }
+
+        EngineeringType::create($type);
+
+        $success = "Type Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function engineering_type_delete($id)
+    {
+        EngineeringType::where('id', $id)->delete();
+        EngineeringContent::where('type_id', $id)->delete();
+        return back()->with('success', 'Type Deleted!');
+    }
+
+    // Engineering Content List 
+
+    public function engineering_content_list()
+    {
+        $engineering_content = EngineeringContent::with('getSubject', 'getChapter', 'getType')->get();
+
+        return view('admin.admin-engineering-content-list', compact('engineering_content'));
+    }
+
+    public function engineering_content_edit($id)
+    {
+
+        $content = EngineeringContent::where('id', $id)->with('getSubject', 'getChapter', 'getType')->first();
+
+        // dd($content);
+
+        return view('admin.engineering-content-edit', compact('content'));
+    }
+
+    public function engineering_content_update($id, Request $request)
+    {
+
+        $content = $this->validate($request, [
+            'editor_id' => 'required',
+            'editor_name' => 'required',
+            'subject_id' => 'required',
+            'chapter_id' => 'required',
+            'type_id' => 'required',
+            'editor1' => 'required',
+            'status' => 'required',
+            'course_type' => 'required',
+        ]);
+
+        $content['editor2'] = $request->editor2;
+        $content['editor3'] = $request->editor3;
+        $content['editor4'] = $request->editor4;
+        $content['editor5'] = $request->editor5;
+
+        EngineeringContent::where('id', $id)->update($content);
+
+
+
+        return redirect()->route('admin.engineering_content_list')->with('success', 'Content Update Successfully');
+    }
+
+    public function engineering_content_delete($id)
+    {
+        EngineeringContent::where('id', $id)->delete();
+        return back()->with('success', 'Content Deleted!');
     }
 }

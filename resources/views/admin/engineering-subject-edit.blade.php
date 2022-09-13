@@ -38,22 +38,19 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Engineering Subject Add</h4>
+                            <h4 class="card-title">Engineering Subject Edit</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" action="{{ route('admin.subject_process')}}" method="post"
-                                    enctype="multipart/form-data">
+                                <form class="form" action="{{ route('admin.engineering_subject_update', $subject->id)}}"
+                                    method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
                                             <h6>Group Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="basicSelect" name="group_name" required>
-                                                    <option value="">Select....</option>
-                                                    <option>Science</option>
-                                                    <option>Humanities</option>
-                                                    <option>Business Studies</option>
+                                                    <option>{{$subject->group_name}}</option>
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -61,7 +58,8 @@
                                             <div class="form-group">
                                                 <label for="subject_name">Subject Name</label>
                                                 <input type="text" id="subject_name" class="form-control"
-                                                    placeholder="Subject Name" name="subject_name" required>
+                                                    placeholder="Subject Name" name="subject_name"
+                                                    value="{{$subject->subject_name}}" required>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -73,7 +71,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <button type="submit" class="btn btn-success me-1 mb-1">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -84,44 +82,6 @@
             </div>
         </section>
         <!-- // Basic multiple Column Form section end -->
-
-        <!-- Basic Tables start -->
-        <section class="section">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table" id="table1">
-                        <thead>
-                            <tr>
-                                <th>Group Name</th>
-                                <th>Subject Name</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($subject as $sub_list)
-                            <tr>
-                                <td>{{$sub_list->group_name}}</td>
-                                <td>{{$sub_list->subject_name}}</td>
-                                <td>
-                                    <a href="{{ route('admin.subject_edit', $sub_list->id)}}"
-                                        onclick="return confirm('are you sure?')" class="badge bg-success">Edit</a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('admin.subject_delete', $sub_list->id)}}"
-                                        onclick="return confirm('are you sure?')" class="badge bg-danger">Delete</a>
-                                </td>
-                            </tr>
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </section>
-        <!-- Basic Tables end -->
     </div>
 </div>
 

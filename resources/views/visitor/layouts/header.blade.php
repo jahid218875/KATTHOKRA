@@ -72,7 +72,7 @@
                     {{-- {{$user = Auth::user('image');}} --}}
                     <li class="nav-item dropdown list-group">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-expanded="false"><img src="{{asset('uploads/' . auth()->user()->image )}}"
+                            aria-expanded="false"><img src="{{asset('images/' . auth()->user()->image )}}"
                                 class="rounded-circle" style="width: 50px; height: 50px;"></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>

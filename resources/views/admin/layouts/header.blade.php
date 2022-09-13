@@ -107,8 +107,21 @@
                                 <span>Engineering</span>
                             </a>
                             <ul class="submenu ">
-                                <li class="submenu-item {{ request()->routeIs('admin.subject_add') ? 'active' : ''}}">
-                                    <a href="{{route('admin.subject_add')}}">Subject Add</a>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.engineering_subject_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.engineering_subject_add')}}">Subject Add</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.engineering_chapter_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.engineering_chapter_add')}}">Chapter Add</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.engineering_type_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.engineering_type_add')}}">Type Add</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.engineering_content_list') ? 'active' : ''}}">
+                                    <a href="{{route('admin.engineering_content_list')}}">Content List</a>
                                 </li>
                             </ul>
                         </li>
@@ -168,6 +181,22 @@
                                 <li
                                     class="submenu-item {{ request()->routeIs('editor.hsc_content_list') ? 'active' : ''}}">
                                     <a href="{{route('editor.hsc_content_list')}}">Content List</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Engineering</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li
+                                    class="submenu-item {{ request()->routeIs('editor.engineering_content_add') ? 'active' : ''}}">
+                                    <a href="{{route('editor.engineering_content_add')}}">Engineering Content Add</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('editor.engineering_content_list') ? 'active' : ''}}">
+                                    <a href="{{route('editor.engineering_content_list')}}">Engineering Content list</a>
                                 </li>
                             </ul>
                         </li>
