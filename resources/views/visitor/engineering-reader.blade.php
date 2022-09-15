@@ -61,40 +61,10 @@
 @section('scripts')
 
 <script>
-    //     $("#paper").change(function(e){
-  
-//   e.preventDefault();
-//   $('#type').html( '<option value="">Select Type</option>');
-
-  
-//  var paper = $(this).val();
-
-//   $.ajax({
-//      type:'POST',
-//      url:"{{ route('paper_to_chapter') }}",
-//      data:{
-//         '_token': $('input[name=_token]').val(),
-//         paper_id: paper
-//     },
-//     success:function(data){
-//         // console.log(data);
-//             var chapter = [];
-//             data.map(function(chapters){
-//             chapter.push(`<option value="${chapters.id}">${chapters.chapter_name}</option>`)
-
-//         })
-//         $('#chapter').html( '<option value="">Select Chapter</option>' + chapter) ;
-        
-         
-//      }
-//   });
-
-// });
-
-$("#chapter").change(function(e){
+    $("#chapter").change(function(e){
   
   e.preventDefault();
-  $('#content').html( '<p>Select Paper, Chapter & Type</p>');
+  $('#content').html( '<p>Select Chapter & Type</p>');
 
  var chapter = $(this).val();
 
