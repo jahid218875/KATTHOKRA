@@ -100,7 +100,7 @@
         @foreach($engineering as $engineering_sub)
         <div class="col-6 col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover">
-                <a href="#">
+                <a href="{{ route('engineering_reader', $engineering_sub->subject_name)}}">
                     <img src="{{asset('uploads/' . $engineering_sub->subject_image)}}" loading="lazy"
                         class="card-img-top" alt="...">
                 </a>

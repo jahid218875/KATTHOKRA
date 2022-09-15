@@ -50,12 +50,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
     Route::post('/signup', [HomeController::class, 'signupData'])->name('signupData');
 
-
+    // HSC Reader 
     Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');
-    Route::get('/engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
     Route::post('/paper-to-chapter', [HomeController::class, 'paper_to_chapter'])->name('paper_to_chapter');
     Route::post('/chapter-to-type', [HomeController::class, 'chapter_to_type'])->name('chapter_to_type');
     Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');
+
+    // engineering reader 
+    Route::get('/engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
+    Route::post('/engineering-chapter-to-type', [HomeController::class, 'engineering_chapter_to_type'])->name('engineering_chapter_to_type');
+    Route::post('/engineering-type-to-content', [HomeController::class, 'engineering_type_to_content'])->name('engineering_type_to_content');
 });
 
 Route::group(['middleware' => ['auth:admin']], function () {

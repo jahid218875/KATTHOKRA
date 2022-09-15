@@ -13,6 +13,8 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\HscContent;
 use Illuminate\Http\Request;
+use App\Models\EngineeringType;
+use App\Models\EngineeringContent;
 use App\Models\EngineeringSubject;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -174,13 +176,6 @@ class HomeController extends Controller
         return view('visitor.reader', compact('papers'));
     }
 
-    public function engineering_reader($subject)
-    {
-        $chapters = EngineeringSubject::where('subject_name', $subject)->with('get_chapter')->get();
-
-        return view('visitor.engineering-reader', compact('chapters'));
-    }
-
     public function paper_to_chapter(Request $request)
     {
         return Chapter::where('paper_id', $request->paper_id)->get();
@@ -194,6 +189,28 @@ class HomeController extends Controller
     public function type_to_content(Request $request)
     {
         $content = HscContent::where(['paper_id' => $request->paper_id, 'chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
+        return $content;
+    }
+
+
+    // Engineering Reader
+
+    public function engineering_reader($subject)
+    {
+        $chapters = EngineeringSubject::where('subject_name', $subject)->with('get_chapter')->get();
+
+        return view('visitor.engineering-reader', compact('chapters'));
+    }
+
+    public function engineering_chapter_to_type(Request $request)
+    {
+        return EngineeringType::where('chapter_id', $request->chapter_id)->get();
+    }
+
+    public function engineering_type_to_content(Request $request)
+    {
+        $content = EngineeringContent::where(['chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
+        // dd($content);
         return $content;
     }
 

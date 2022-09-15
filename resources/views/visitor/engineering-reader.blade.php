@@ -70,7 +70,7 @@
 
   $.ajax({
      type:'POST',
-     url:"{{ route('chapter_to_type') }}",
+     url:"{{ route('engineering_chapter_to_type') }}",
      data:{
         '_token': $('input[name=_token]').val(),
         chapter_id: chapter
@@ -100,7 +100,7 @@ $("#type").change(function(e){
  if(chapter && type){
     $.ajax({
      type:'POST',
-     url:"{{ route('type_to_content') }}",
+     url:"{{ route('engineering_type_to_content') }}",
      data:{
         '_token': $('input[name=_token]').val(),
         chapter_id: chapter,
