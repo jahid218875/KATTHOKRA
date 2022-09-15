@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>কাঠঠোকরা- মাতৃভাষায় উচ্চশিক্ষার একমাত্র প্লাটফর্ম</title>
 
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.jpeg')}}" type="image/x-icon">
+
     <!-- bootstrap cdn link  -->
 
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">

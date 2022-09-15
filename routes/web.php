@@ -23,6 +23,7 @@ Route::get('/hsc-and-admission', [HomeController::class, 'hsc_admission'])->name
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::post('/login', [HomeController::class, 'loginSubmit'])->name('loginSubmit');
+Route::get('/engineering', [HomeController::class, 'engineering'])->name('engineering');
 
 Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
@@ -51,6 +52,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');
+    Route::get('/engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
     Route::post('/paper-to-chapter', [HomeController::class, 'paper_to_chapter'])->name('paper_to_chapter');
     Route::post('/chapter-to-type', [HomeController::class, 'chapter_to_type'])->name('chapter_to_type');
     Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');

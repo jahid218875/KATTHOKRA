@@ -13,6 +13,7 @@ use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\HscContent;
 use Illuminate\Http\Request;
+use App\Models\EngineeringSubject;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -25,7 +26,16 @@ class HomeController extends Controller
         $teachers = Teacher::get();
         $reviews = Review::get();
         $ads = Ads::get();
-        return view('visitor.index', compact('teachers', 'reviews', 'ads'));
+        $engineering = EngineeringSubject::orderBy('id', 'asc')->get();
+        // dd($engineering);
+        return view('visitor.index', compact('teachers', 'reviews', 'ads', 'engineering'));
+    }
+
+    public function engineering()
+    {
+        $engineering = EngineeringSubject::orderBy('id', 'asc')->get();
+        // dd($engineering);
+        return view('visitor.engineering', compact('engineering'));
     }
 
     public function contact()
@@ -162,6 +172,13 @@ class HomeController extends Controller
         $papers = Subject::where(['group_name' => $name, 'subject_name' => $subject])->with('get_paper')->get();
 
         return view('visitor.reader', compact('papers'));
+    }
+
+    public function engineering_reader($subject)
+    {
+        $chapters = EngineeringSubject::where('subject_name', $subject)->with('get_chapter')->get();
+
+        return view('visitor.engineering-reader', compact('chapters'));
     }
 
     public function paper_to_chapter(Request $request)

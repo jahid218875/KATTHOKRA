@@ -97,35 +97,17 @@
 <section class="mb-5 container" id="প্রকৌশলবিদ্যা">
     <h1 class="text-center my-5 fw-bold">প্রকৌশলবিদ্যা</h1>
     <div class="row">
+        @foreach($engineering as $engineering_sub)
         <div class="col-6 col-md-3">
             <div class="card shadow my-3 border-0 mx-auto card-hover">
                 <a href="#">
-                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
+                    <img src="{{asset('uploads/' . $engineering_sub->subject_image)}}" loading="lazy"
+                        class="card-img-top" alt="...">
                 </a>
             </div>
         </div>
-        <div class="col-6 col-md-3">
-            <div class="card shadow my-3 border-0 mx-auto card-hover">
-                <a href="#">
-                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
-                </a>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card shadow my-3 border-0 mx-auto card-hover">
-                <a href="#">
-                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
-                </a>
-            </div>
-        </div>
-        <div class="col-6 col-md-3">
-            <div class="card shadow my-3 border-0 mx-auto card-hover">
-                <a href="#">
-                    <img src="assets/images/laplace.png" loading="lazy" class="card-img-top" alt="...">
-                </a>
-            </div>
-        </div>
-        <div class="col-12 pt-5 d-flex justify-content-center"><a href="{{'/engineering'}}"
+        @endforeach
+        <div class="col-12 pt-5 d-flex justify-content-center"><a href="{{route('engineering')}}"
                 class="btn btn-success fw-bold rounded-pill px-4 py-2" type="submit"><i
                     class="fa-solid fa-list me-2"></i> সকল বিষয় </a></div>
     </div>

@@ -10,4 +10,9 @@ class EngineeringSubject extends Model
     use HasFactory;
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function get_chapter()
+    {
+        return $this->hasMany(EngineeringChapter::class, 'subject_id', 'id');
+    }
 }
