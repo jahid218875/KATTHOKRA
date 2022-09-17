@@ -165,6 +165,11 @@
 <!-- Main js  -->
 <script src="{{asset('assets/js/main.js')}}" defer></script>
 
+<script>
+    document.querySelector('meta[name="theme-color"]').setAttribute('content',  '#157347');
+
+</script>
+
 
 
 @yield('scripts')

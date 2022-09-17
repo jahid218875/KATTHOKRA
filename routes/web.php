@@ -24,6 +24,7 @@ Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 Route::post('/login', [HomeController::class, 'loginSubmit'])->name('loginSubmit');
 Route::get('/engineering', [HomeController::class, 'engineering'])->name('engineering');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 

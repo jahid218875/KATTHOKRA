@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FF0000">
     <title>কাঠঠোকরা- মাতৃভাষায় উচ্চশিক্ষার একমাত্র প্লাটফর্ম</title>
 
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
@@ -106,8 +107,8 @@
 
     <div class="container-fluid cards">
         <div class="d-flex justify-content-center">
-            <div class="input-field"> <input placeholder="খোঁজ করুন" class="form-control shadow home-search" /> <button
-                    class="btn1"><i class="fa fa-search"></i></button> </div>
+            <form class="input-field"> <input placeholder="খোঁজ করুন" class="form-control shadow home-search" /> <button
+                    type="submit" class="btn1"><i class="fa fa-search"></i></button> </form>
         </div>
     </div>
 
