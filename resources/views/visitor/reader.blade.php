@@ -70,7 +70,7 @@
   
   e.preventDefault();
   $('#type').html( '<option value="">Select Type</option>');
-
+  $('#content').html( '<p>Select Paper, Chapter & Type</p>');
   
  var paper = $(this).val();
 
@@ -132,6 +132,8 @@ $("#type").change(function(e){
  var paper = $('#paper').val();
  var chapter = $('#chapter').val();
  var type = $('#type').val();
+ 
+
 
  if(paper && chapter && type){
     $.ajax({
