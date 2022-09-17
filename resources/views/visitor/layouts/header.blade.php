@@ -77,8 +77,10 @@
                     <li class="nav-item dropdown list-group">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                             aria-expanded="false"><img src="{{asset('images/' . auth()->user()->image )}}"
-                                class="rounded-circle" style="width: 50px; height: 50px;"></a>
+                                class="rounded-circle" style="width: 30px; height: 30px;"></a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{route('hsc_admission')}}">HSC ও ADMISSION</a></li>
+                            <li><a class="dropdown-item" href="{{route('engineering')}}">প্রকৌশলবিদ্যা</a></li>
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                             {{-- <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
