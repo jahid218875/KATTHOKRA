@@ -195,5 +195,12 @@ Route::group(['middleware' => ['auth:editor']], function () {
         Route::get('/engineering-content-list', [EditorController::class, 'engineering_content_list'])->name('engineering_content_list');
         Route::get('/engineering-content-edit/{id}', [EditorController::class, 'engineering_content_edit'])->name('engineering_content_edit');
         Route::post('/engineering-content-update/{id}', [EditorController::class, 'engineering_content_update'])->name('engineering_content_update');
+
+        // Engineering Chapter add 
+        // Route::get('/engineering-chapter-add', [EditorController::class, 'engineering_chapter_add'])->name('engineering_chapter_add');
+
+        // Route::post('/engineering-chapter-submit', [EditorController::class, 'engineering_chapter_submit'])->name('engineering_chapter_submit');
+
+        // Route::get('/engineering-chapter-delete/{id}', [EditorController::class, 'engineering_chapter_delete'])->name('engineering_chapter_delete');
     });
 });

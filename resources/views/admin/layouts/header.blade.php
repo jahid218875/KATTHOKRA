@@ -190,13 +190,17 @@
                                 <span>Engineering</span>
                             </a>
                             <ul class="submenu ">
+                                {{-- <li
+                                    class="submenu-item {{ request()->routeIs('editor.engineering_chapter_add') ? 'active' : ''}}">
+                                    <a href="{{route('editor.engineering_chapter_add')}}">Chapter Add</a>
+                                </li> --}}
                                 <li
                                     class="submenu-item {{ request()->routeIs('editor.engineering_content_add') ? 'active' : ''}}">
-                                    <a href="{{route('editor.engineering_content_add')}}">Engineering Content Add</a>
+                                    <a href="{{route('editor.engineering_content_add')}}">Content Add</a>
                                 </li>
                                 <li
                                     class="submenu-item {{ request()->routeIs('editor.engineering_content_list') ? 'active' : ''}}">
-                                    <a href="{{route('editor.engineering_content_list')}}">Engineering Content list</a>
+                                    <a href="{{route('editor.engineering_content_list')}}">Content list</a>
                                 </li>
                             </ul>
                         </li>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>কাঠঠোকরা- মাতৃভাষায় উচ্চশিক্ষার একমাত্র প্লাটফর্ম</title>
 
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.jpeg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
 
     <!-- bootstrap cdn link  -->
 
@@ -55,7 +55,8 @@
                                 ADMISSION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-bold fs-5 menu-hover" href="#প্রকৌশলবিদ্যা">প্রকৌশলবিদ্যা</a>
+                            <a class="nav-link fw-bold fs-5 menu-hover"
+                                href="{{ request()->routeIs('home') ? '#প্রকৌশলবিদ্যা' : route('engineering')}}">প্রকৌশলবিদ্যা</a>
                         </li>
                     </ul>
                     {{-- <div class="btn-group" role="group">

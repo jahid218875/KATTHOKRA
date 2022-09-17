@@ -215,4 +215,33 @@ class EditorController extends Controller
 
         return redirect()->route('editor.engineering_content_list')->with('success', 'Content Update Successfully');
     }
+
+    // Engineering Chapter Added 
+    // public function engineering_chapter_add()
+    // {
+    //     $subject = EngineeringSubject::get();
+    //     $chapter = EngineeringChapter::with('getSubject')->get();
+
+    //     return view('admin.editor.engineering-chapter-add', compact('subject', 'chapter'));
+    // }
+
+    // public function engineering_chapter_submit(Request $request)
+    // {
+
+    //     $chapter = $this->validate($request, [
+    //         'subject_id' => 'required',
+    //         'chapter_name' => 'required',
+    //     ]);
+
+    //     $check = EngineeringChapter::where($chapter)->first();
+    //     if ($check) {
+    //         return back()->with('error', 'This Chapter Name is Already Exists');
+    //     }
+
+    //     EngineeringChapter::create($chapter);
+
+    //     $success = "Chapter Added Successfully";
+
+    //     return back()->with('success', $success);
+    // }
 }
