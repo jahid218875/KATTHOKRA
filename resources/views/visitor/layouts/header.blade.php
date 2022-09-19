@@ -39,10 +39,10 @@
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-success" href="{{'/'}}"><img
                         src="{{asset('assets/images/logo.png')}}" style="width: 120px" class="py-1"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler border-success" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon text-success"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
@@ -79,15 +79,10 @@
                             aria-expanded="false"><img src="{{asset('images/' . auth()->user()->image )}}"
                                 class="rounded-circle" style="width: 30px; height: 30px;"></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('hsc_admission')}}">HSC ও ADMISSION</a></li>
-                            <li><a class="dropdown-item" href="{{route('engineering')}}">প্রকৌশলবিদ্যা</a></li>
+                            <li><a class="dropdown-item" href="{{route('profile')}}">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Subscription</a></li>
+                            <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
-                            {{-- <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li> --}}
                         </ul>
                     </li>
                 </div>

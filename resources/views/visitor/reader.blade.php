@@ -8,7 +8,7 @@
         <form class="row">
             @csrf
             <div class="col-md-4">
-                <select id="paper" class="form-select border-0 my-1" name="paper">
+                <select id="paper" class="form-select border-0 my-1 decorated" name="paper">
                     <option value="">Select Paper</option>
                     @foreach($papers as $paper)
                     { @foreach($paper->get_paper as $gpaper)

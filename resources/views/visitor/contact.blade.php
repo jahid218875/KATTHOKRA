@@ -23,11 +23,9 @@
         <div class="col-md-6 mt-5">
             <form action="" method="post">
                 <span>আপনার নাম</span>
-                <input type="text" required placeholder="পুরো নাম" maxlength="50" name="name"
-                    class="box shadow text-black-50">
-                <span>আপনার email</span>
-                <input type="email" required placeholder="Enter your email" maxlength="50" name="email"
-                    class="box text-black-50 shadow">
+                <input type="text" required maxlength="50" name="name" class="box shadow text-black-50">
+                <span>আপনার Email</span>
+                <input type="email" required maxlength="50" name="email" class="box text-black-50 shadow">
                 <span>আপনার বার্তা</span>
                 <textarea name="message" class="box shadow" id="" cols="5" rows="5"></textarea>
                 <input type="submit" value="পাঠিয়ে দিন" class="btn btn-success fw-bold rounded-pill px-4 py-2  shadow"

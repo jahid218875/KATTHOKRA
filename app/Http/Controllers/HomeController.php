@@ -167,6 +167,34 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('visitor.profile', compact('user'));
+    }
+
+    public function profile_update(Request $request)
+    {
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'level' => 'required',
+            'institution' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $data['image'] = $name;
+        }
+
+
+        User::where('email', Auth::user()->email)->update($data);
+        return redirect()->route('profile')->with('success', 'Profile Updated Successfully');
+    }
+
 
     public function logout()
     {

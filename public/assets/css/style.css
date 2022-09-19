@@ -40,6 +40,14 @@ html {
     border-radius: 5rem;
 }
 
+.pagination>li.active>a {
+    background-color: #157347 !important;
+}
+
+select.decorated option:hover {
+    box-shadow: 0 0 10px 100px #157347 inset;
+}
+
 a {
     text-decoration: none;
 }
