@@ -4,6 +4,7 @@
 
 <!-- main content  -->
 <section class="px-2">
+    <h1 class="text-center py-4">{{$chapters[0]->subject_name}}</h1>
     <div class="container py-4 reader mt-3 card border-0 shadow">
         <form class="row">
             @csrf

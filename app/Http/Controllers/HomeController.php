@@ -233,6 +233,7 @@ class HomeController extends Controller
     {
         $chapters = EngineeringSubject::where('subject_name', $subject)->with('get_chapter')->get();
 
+
         return view('visitor.engineering-reader', compact('chapters'));
     }
 
