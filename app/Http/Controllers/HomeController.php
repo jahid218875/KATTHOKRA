@@ -205,6 +205,7 @@ class HomeController extends Controller
     public function reader($name, $subject)
     {
         $papers = Subject::where(['group_name' => $name, 'subject_name' => $subject])->with('get_paper')->get();
+        // dd($papers[0]->subject_name);
 
         return view('visitor.reader', compact('papers'));
     }

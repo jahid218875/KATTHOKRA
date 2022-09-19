@@ -51,7 +51,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link fw-bold fs-5 menu-hover"
+                            <a class="nav-link fw-bold fs-5 menu-hover "
                                 href="{{ request()->routeIs('home') ? '#HSC&ADMISSION' : route('hsc_admission')}}">HSC ও
                                 ADMISSION</a>
                         </li>
