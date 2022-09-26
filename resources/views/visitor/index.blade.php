@@ -135,7 +135,7 @@
                 <a href="mailto:{{$teacher->email}}" class="fa-solid fa-envelope"></a>
                 <a href="{{$teacher->linkedin}}" class="fab fa-linkedin"></a>
             </div>
-            <h3>{{$teacher->name}}</h3>
+            <h5>{{$teacher->name}}</h5>
         </div>
 
         @endforeach

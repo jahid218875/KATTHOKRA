@@ -25,10 +25,14 @@
 
                 <h5 class="text-center fw-bold py-5">গুছিয়ে পড়াশোনার সহজ সমাধান
                     {{-- success session laravel --}}
-                    @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
+                    @if(session('success'))
+                    <script>
+                        Swal.fire(
+                        'Good job!',
+                        '{{ session('success') }}',
+                        'success'
+                        )
+                    </script>
                     @endif
                 </h5>
                 {{-- error session laravel --}}
@@ -105,6 +109,7 @@
                         <label for="exampleInputPassword1" class="form-label fw-bold">পাসওয়ার্ড</label>
                         <input type="password" name="password" class="form-control py-3 login-input border-0"
                             id="password" required>
+                            <input class="mt-2" type="checkbox" onclick="myFunction()"> Show Password
                     </div>`);
                 } else {
                     Swal.fire(
@@ -132,7 +137,6 @@
                         </label>
                         <input type="number" name="otp" class="form-control  py-3 login-input border-0" id="otpText"
                             aria-describedby="otplHelp" required>
-                        <div id="otplHelp" class="form-text">আপনি কোডটি পাননি? <a href="#">আবার পাঠান</a></div>
                         <div id="otplHelp" class="form-text">Inbox এ কোন মেইল পাননি? দয়া করে Spam এ খোঁজ করুন।</div>
                     </div>`);
                 }else{

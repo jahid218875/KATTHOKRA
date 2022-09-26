@@ -42,6 +42,15 @@ html {
 
 .pagination>li.active>a {
     background-color: #157347 !important;
+    border-color: #157347;
+}
+
+.page-link:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
 select.decorated option:hover {
@@ -161,9 +170,9 @@ a {
     border-radius: .5rem;
 }
 
-.teachers .slide h3 {
+.teachers .slide h5 {
     margin-top: 1.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     color: rgb(72, 71, 71);
 }

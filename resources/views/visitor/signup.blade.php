@@ -33,15 +33,16 @@
 
                     @if(is_int(Auth()->user()->email))
                     <div class="mb-3">
-                        <label for="exampleInputinstitution1" class="form-label fw-bold">Email</label>
-                        <input type="text" name="email_phone" placeholder="abcd@gmail.com"
+                        <label for="exampleInputinstitution1" class="form-label fw-bold">Phone Number</label>
+                        <input type="text" name="email_phone" placeholder="017xxxxxxxx"
                             class="form-control  form-control-lg login-input border-0" id="exampleInputinstitution1"
                             required>
                     </div>
+
                     @else
                     <div class="mb-3">
-                        <label for="exampleInputinstitution1" class="form-label fw-bold">Phone Number</label>
-                        <input type="text" name="email_phone" placeholder="017xxxxxxxx"
+                        <label for="exampleInputinstitution1" class="form-label fw-bold">Email</label>
+                        <input type="text" name="email_phone" placeholder="abcd@gmail.com"
                             class="form-control  form-control-lg login-input border-0" id="exampleInputinstitution1"
                             required>
                     </div>
