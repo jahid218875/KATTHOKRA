@@ -149,6 +149,12 @@
                                 <span>Add Ads Hompage</span>
                             </a>
                         </li>
+                        <li class="sidebar-item {{ request()->routeIs('admin.user_list') ? 'active' : ''}} ">
+                            <a href="{{route('admin.user_list')}}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>User List</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.manager.logout') ? 'active' : ''}} ">
                             <a href="{{route('manager.logout')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>

@@ -679,4 +679,19 @@ class AdminController extends Controller
         EngineeringContent::where('id', $id)->delete();
         return back()->with('success', 'Content Deleted!');
     }
+
+
+    public function user_list()
+    {
+        $user_list = User::get();
+        // dd($user_list);
+
+        return view('admin.user-list', compact('user_list'));
+    }
+
+    public function user_delete($id)
+    {
+        User::where('id', $id)->delete();
+        return back()->with('success', 'User Deleted!');
+    }
 }

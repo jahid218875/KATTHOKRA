@@ -166,6 +166,11 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::get('/engineering-content-edit/{id}', [AdminController::class, 'engineering_content_edit'])->name('engineering_content_edit');
         Route::post('/engineering-content-update/{id}', [AdminController::class, 'engineering_content_update'])->name('engineering_content_update');
         Route::get('/engineering-content-delete/{id}', [AdminController::class, 'engineering_content_delete'])->name('engineering_content_delete');
+
+
+        // User List 
+        Route::get('/user-list', [AdminController::class, 'user_list'])->name('user_list');
+        Route::get('/user-delete/{id}', [AdminController::class, 'user_delete'])->name('user_delete');
     });
 });
 
