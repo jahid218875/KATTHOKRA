@@ -154,20 +154,20 @@ $("#type").change(function(e){
         
       
         if(data.editor5){
-            $('.paginate').after('<li class="page-item"><a class="page-link" href="#">5</a></li>');
+            $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">5</a></li>');
         }
 
         
         if(data.editor4){
-            $('.paginate').after('<li class="page-item"><a class="page-link" href="#">4</a></li>');
+            $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">4</a></li>');
         }
         
         if(data.editor3){
-            $('.paginate').after('<li class="page-item"><a class="page-link" href="#">3</a></li>');
+            $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">3</a></li>');
         }
 
         if(data.editor2){
-            $('.paginate').after('<li class="page-item"><a class="page-link" href="#">2</a></li>');
+            $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">2</a></li>');
         }
         getData(data);
         }else{

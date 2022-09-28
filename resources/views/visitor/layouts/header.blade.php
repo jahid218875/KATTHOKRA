@@ -104,8 +104,9 @@
 
     <div class="container-fluid cards">
         <div class="d-flex justify-content-center">
-            <form class="input-field"> <input placeholder="খোঁজ করুন" class="form-control shadow home-search" /> <button
-                    type="submit" class="btn1"><i class="fa fa-search"></i></button> </form>
+            <form class="input-field" action="{{route('search')}}" method="GET"> <input placeholder="খোঁজ করুন"
+                    class="form-control shadow home-search" name="query" /> <button type="submit" class="btn1"><i
+                        class="fa fa-search"></i></button> </form>
         </div>
     </div>
 

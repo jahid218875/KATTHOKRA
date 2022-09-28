@@ -57,9 +57,11 @@ class HomeController extends Controller
         return view('visitor.hsc-page');
     }
 
-    public function search()
+    public function search(Request $request)
     {
-        return view('visitor.search');
+        // return $request->input('query'); 
+        $data = HscContent::where('editor1', 'like', '%' . $request->input('query') . '%')->get();
+        return view('visitor.search', compact('data'));
     }
 
     public function login()

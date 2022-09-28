@@ -5,28 +5,42 @@
 <!-- search section starts  -->
 
 <section class="mb-5 container" id="search">
-    <h1 class="text-center my-3 fw-bold text-dark">Search Result</h1>
+    <h1 class="text-center my-3 fw-bold text-dark">Search <span class="text-success">Result</span></h1>
     <div class="row">
+
+        @foreach ($data as $content)
         <div class="col-md-12 my-3">
-            <div class="card p-5 shadow border-0">
-                <h3 class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, dolore.</h3>
-                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, perspiciatis
-                    blanditiis! Similique,
-                    illum consequatur nihil numquam odit rerum? Veniam rerum voluptates non, numquam perspiciatis
-                    sapiente mollitia aliquid natus a ullam ea deleniti dolorum, provident nulla distinctio dicta
-                    asperiores eum architecto id. Necessitatibus ab dolorem eum quam eos dolore ipsum optio!</p>
+            <div class="card shadow border-0">
+                <div class="card-header bg-success d-flex justify-content-between px-4">
+                    <p class="fw-bold mt-3 text-white">{{$content->getSubject->subject_name}}</p>
+                    <p class="fw-bold mt-3 text-white">{{$content->getType->type_name}}</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-black-50">{!! substr(strip_tags($content->editor1), 0, 500) !!}</p>
+                    <a href="#" class="btn btn-outline-success btn-sm">Read More</a>
+                </div>
             </div>
         </div>
-        <div class="col-md-12 my-3">
-            <div class="card p-5 shadow border-0">
-                <h3 class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, dolore.</h3>
-                <p class="text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, perspiciatis
-                    blanditiis! Similique,
-                    illum consequatur nihil numquam odit rerum? Veniam rerum voluptates non, numquam perspiciatis
-                    sapiente mollitia aliquid natus a ullam ea deleniti dolorum, provident nulla distinctio dicta
-                    asperiores eum architecto id. Necessitatibus ab dolorem eum quam eos dolore ipsum optio!</p>
+        @endforeach
+
+        {{-- <div class="col-md-12 my-3">
+            <div class="card shadow border-0">
+                <div class="card-header bg-success d-flex justify-content-between px-4">
+                    <p class="fw-bold mt-3 text-white">Subject Name</p>
+                    <p class="fw-bold mt-3 text-white">Type Name</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
+                        commodi fugiat
+                        illum facere laborum vitae officia aspernatur quisquam blanditiis culpa atque assumenda,
+                        similique adipisci omnis illo necessitatibus suscipit itaque nobis. Lorem ipsum, dolor sit amet
+                        consectetur adipisicing elit. Dolore commodi fugiat
+                        illum facere laborum vitae officia aspernatur quisquam blanditiis culpa atque assumenda,
+                        similique adipisci omnis illo necessitatibus suscipit itaque nobis</p>
+                    <a href="#" class="btn btn-outline-success btn-sm">Read More</a>
+                </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </section>
 

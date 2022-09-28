@@ -55,7 +55,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile', [HomeController::class, 'profile_update'])->name('profile_update');
 
     // HSC Reader 
-    Route::get('/group/{name}/{subject}', [HomeController::class, 'reader'])->name('reader');
+    Route::get('/group/{name}/{subject}', [HomeController::class, 'read  er'])->name('reader');
     Route::post('/paper-to-chapter', [HomeController::class, 'paper_to_chapter'])->name('paper_to_chapter');
     Route::post('/chapter-to-type', [HomeController::class, 'chapter_to_type'])->name('chapter_to_type');
     Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');

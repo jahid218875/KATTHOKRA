@@ -61,8 +61,12 @@ a {
     text-decoration: none;
 }
 
+.page-num {
+    color: rgb(27, 26, 26);
+}
 
 /* search  */
+
 
 .cards {
     height: 450px;
