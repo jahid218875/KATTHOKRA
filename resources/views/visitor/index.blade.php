@@ -156,13 +156,15 @@
     <div class="row owl-carousel owl-theme three reviews-slider p-0 m-0">
 
         @foreach($reviews as $review)
-        <div class="col item slide shadow mt-5">
-            <p>{{$review->review}}</p>
-            <div class="user">
-                <img src="{{asset('uploads/' . $review->image)}}" loading="lazy" alt="">
-                <div class="user-info">
-                    <h3>{{$review->name}}</h3>
-                    <p class="subject">{{$review->university_name}}</p>
+        <div class="col">
+            <div class="item slide shadow mt-5">
+                <p class="review-text">{{$review->review}}</p>
+                <div class="user">
+                    <img src="{{asset('uploads/' . $review->image)}}" loading="lazy" alt="">
+                    <div class="user-info">
+                        <h3>{{$review->name}}</h3>
+                        <p class="subject">{{$review->university_name}}</p>
+                    </div>
                 </div>
             </div>
         </div>

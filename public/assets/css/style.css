@@ -209,6 +209,11 @@ a {
 
 /* Reviews  */
 
+.reviews .slide .review-text {
+    height: 130px;
+    overflow: hidden;
+}
+
 .reviews-slider .slide {
     border-radius: .5rem;
     background-color: #FFFFFF;
