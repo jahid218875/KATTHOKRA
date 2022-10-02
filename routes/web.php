@@ -128,6 +128,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::get('/type-delete/{id}', [AdminController::class, 'type_delete'])->name('type_delete');
 
+
         // HSC & Admission Content List 
 
         Route::get('/hsc-content-list', [AdminController::class, 'hsc_content_list'])->name('hsc_content_list');
@@ -157,7 +158,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
         Route::post('/engineering-type-add-submit', [AdminController::class, 'engineering_type_submit'])->name('engineering_type_submit');
 
-        Route::get('/type-delete/{id}', [AdminController::class, 'engineering_type_delete'])->name('engineering_type_delete');
+        Route::get('/engineering-type-delete/{id}', [AdminController::class, 'engineering_type_delete'])->name('engineering_type_delete');
 
 
         // Engineering Content List 
