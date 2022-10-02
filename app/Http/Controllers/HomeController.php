@@ -61,10 +61,10 @@ class HomeController extends Controller
     {
         // return $request->input('query'); 
         $data = HscContent::where('editor1', 'like', '%' . $request->input('query') . '%')
-            ->where('editor2', 'like', '%' . $request->input('query') . '%')
-            ->where('editor3', 'like', '%' . $request->input('query') . '%')
-            ->where('editor4', 'like', '%' . $request->input('query') . '%')
-            ->where('editor5', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor2', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor3', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor4', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor5', 'like', '%' . $request->input('query') . '%')
             ->get();
 
 
