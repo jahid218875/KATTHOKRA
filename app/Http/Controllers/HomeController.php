@@ -59,12 +59,22 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        $HscAndAdmission = HscContent::where('editor1', 'like', '%' . $request->input('query') . '%')
-            ->Orwhere('editor2', 'like', '%' . $request->input('query') . '%')
-            ->Orwhere('editor3', 'like', '%' . $request->input('query') . '%')
-            ->Orwhere('editor4', 'like', '%' . $request->input('query') . '%')
-            ->Orwhere('editor5', 'like', '%' . $request->input('query') . '%')->with('getSubject')
+
+
+        $ss = $request->input('query');
+        $search = "like','%$ss%";
+        // $HscAndAdmission = HscContent::whereRaw('match(editor1) against(?)', [$search])->get();
+
+
+        // dd($request->input('query'));
+        $HscAndAdmission = HscContent::whereRaw('match(editor1) against(?)', [$search])
+            ->orWhereRaw('match(editor2) against(?)', [$search])
+            ->orWhereRaw('match(editor3) against(?)', [$search])
+            ->orWhereRaw('match(editor4) against(?)', [$search])
+            ->orWhereRaw('match(editor5) against(?)', [$search])
+            ->with('getSubject')
             ->get();
+
 
         $EngineeringContent = EngineeringContent::where('editor1', 'like', '%' . $request->input('query') . '%')
             ->Orwhere('editor2', 'like', '%' . $request->input('query') . '%')
