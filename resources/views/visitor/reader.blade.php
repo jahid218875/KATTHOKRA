@@ -67,6 +67,28 @@
 @section('scripts')
 
 <script>
+    $(document).ready(function(){
+        let searchParams = new URLSearchParams(window.location.search)
+        let paper = searchParams.get('paper')
+        let chapter = searchParams.get('chapter')
+        let type = searchParams.get('type')
+
+
+        setTimeout(() => {
+            $('#paper').val(paper).trigger('change');
+        }, 1000);
+        setTimeout(() => {
+            $('#chapter').val(chapter).trigger('change');
+        }, 1500);
+        setTimeout(() => {
+            $('#type').val(type).trigger('change');
+        }, 2000);
+
+        console.log(paper);
+    })
+</script>
+
+<script>
     $("#paper").change(function(e){
   
   e.preventDefault();

@@ -28,6 +28,9 @@ Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 Route::get('/group/{name}', [HomeController::class, 'group'])->name('group');
 
+// Route::get('/search/group/{name}/{subject}/{paper}/{chapter}/{type}', [HomeController::class, 'search_reader'])->name('search_reader');
+
+
 Route::get('forgot', [HomeController::class, 'forgotPassword'])->name('forgotPassword');
 Route::post('forgot', [HomeController::class, 'forgot'])->name('forgot');
 

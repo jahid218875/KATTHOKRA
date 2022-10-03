@@ -6,9 +6,13 @@
 
 <section class="mb-5 container" id="search">
     <h1 class="text-center my-3 fw-bold text-dark">Search <span class="text-success">Result</span></h1>
-    <div class="row">
-
-        @foreach ($data as $content)
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-outline-success me-2" onclick="HscAndAdmission()">Hsc and Admission</button>
+        <button class="btn btn-outline-success" onclick="engineering()">Engineering</button>
+    </div>
+    <div class="row" id="HscAndAdmission">
+        <h3 class="text-center pt-5 mb-3">Hsc and Admission</h3>
+        @foreach ($HscAndAdmission as $content)
         <div class="col-md-12 my-3">
             <div class="card shadow border-0">
                 <div class="card-header bg-success d-flex justify-content-between px-4">
@@ -17,30 +21,32 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text text-black-50">{!! substr(strip_tags($content->editor1), 0, 500) !!}</p>
-                    <a href="#" class="btn btn-outline-success btn-sm">Read More</a>
+                    <a href="{{route('reader',['name' => $content->getSubject->group_name, 'subject' => $content->getSubject->subject_name, 'paper' => $content->paper_id, 'chapter' => $content->chapter_id, 'type' => $content->type_id])}}"
+                        class="btn btn-outline-success btn-sm">Read More</a>
                 </div>
             </div>
         </div>
         @endforeach
 
-        {{-- <div class="col-md-12 my-3">
+    </div>
+
+    <div class="row" id="engineering">
+        <h3 class="text-center pt-5 mb-3">Engineering Content</h3>
+        @foreach ($EngineeringContent as $content)
+        <div class="col-md-12 my-3">
             <div class="card shadow border-0">
                 <div class="card-header bg-success d-flex justify-content-between px-4">
-                    <p class="fw-bold mt-3 text-white">Subject Name</p>
-                    <p class="fw-bold mt-3 text-white">Type Name</p>
+                    <p class="fw-bold mt-3 text-white">{{$content->getSubject->subject_name}}</p>
+                    <p class="fw-bold mt-3 text-white">{{$content->getType->type_name}}</p>
                 </div>
                 <div class="card-body">
-                    <p class="card-text text-black-50">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore
-                        commodi fugiat
-                        illum facere laborum vitae officia aspernatur quisquam blanditiis culpa atque assumenda,
-                        similique adipisci omnis illo necessitatibus suscipit itaque nobis. Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Dolore commodi fugiat
-                        illum facere laborum vitae officia aspernatur quisquam blanditiis culpa atque assumenda,
-                        similique adipisci omnis illo necessitatibus suscipit itaque nobis</p>
-                    <a href="#" class="btn btn-outline-success btn-sm">Read More</a>
+                    <p class="card-text text-black-50">{!! substr(strip_tags($content->editor1), 0, 500) !!}</p>
+                    <a href="{{route('engineering_reader',['name' => $content->getSubject->group_name, 'subject' => $content->getSubject->subject_name, 'chapter' => $content->chapter_id, 'type' => $content->type_id])}}"
+                        class="btn btn-outline-success btn-sm">Read More</a>
                 </div>
             </div>
-        </div> --}}
+        </div>
+        @endforeach
     </div>
 </section>
 
@@ -79,5 +85,21 @@
 </section>
 
 <!-- search section ends -->
+
+@endsection
+
+@section('scripts')
+
+<script>
+    function HscAndAdmission(){
+        document.getElementById('HscAndAdmission').style.display = "block";
+        document.getElementById('engineering').style.display = "none";
+    }
+
+    function engineering(){
+        document.getElementById('HscAndAdmission').style.display = "none";
+        document.getElementById('engineering').style.display = "block";
+    }
+</script>
 
 @endsection

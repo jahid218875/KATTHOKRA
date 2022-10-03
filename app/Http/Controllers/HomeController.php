@@ -59,17 +59,27 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        // return $request->input('query'); 
-        $data = HscContent::where('editor1', 'like', '%' . $request->input('query') . '%')
+        $HscAndAdmission = HscContent::where('editor1', 'like', '%' . $request->input('query') . '%')
             ->Orwhere('editor2', 'like', '%' . $request->input('query') . '%')
             ->Orwhere('editor3', 'like', '%' . $request->input('query') . '%')
             ->Orwhere('editor4', 'like', '%' . $request->input('query') . '%')
-            ->Orwhere('editor5', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor5', 'like', '%' . $request->input('query') . '%')->with('getSubject')
+            ->get();
+
+        $EngineeringContent = EngineeringContent::where('editor1', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor2', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor3', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor4', 'like', '%' . $request->input('query') . '%')
+            ->Orwhere('editor5', 'like', '%' . $request->input('query') . '%')->with('getSubject')
             ->get();
 
 
 
-        return view('visitor.search', compact('data'));
+        // dd($EngineeringContent);
+
+
+
+        return view('visitor.search', compact('HscAndAdmission', 'EngineeringContent'));
     }
 
     public function login()
