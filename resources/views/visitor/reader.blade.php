@@ -78,10 +78,10 @@
             $('#paper').val(paper).trigger('change');
         }, 500);
         setTimeout(() => {
-            alert(chapter)
             $('#chapter').val(chapter).trigger('change');
-        }, 1500);
+        }, 1000);
         setTimeout(() => {
+            alert(type)
             $('#type').val(type).trigger('change');
         }, 2000);
 
