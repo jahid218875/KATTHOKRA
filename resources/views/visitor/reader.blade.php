@@ -81,7 +81,6 @@
             $('#chapter').val(chapter).trigger('change');
         }, 1500);
         setTimeout(() => {
-            alert(type)
             $('#type').val(type).trigger('change');
         }, 2500);
 
