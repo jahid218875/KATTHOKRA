@@ -96,6 +96,11 @@ Route::group(['middleware' => ['auth:admin']], function () {
         Route::post('/review-add', [AdminController::class, 'review_add_process'])->name('review_process');
         Route::get('/review-delete/{id}', [AdminController::class, 'review_delete'])->name('review_delete');
 
+        // Subscription Add 
+        Route::get('/subscription-add', [AdminController::class, 'subscription_add'])->name('subscription_add');
+        // Route::post('/review-add', [AdminController::class, 'review_add_process'])->name('review_process');
+        // Route::get('/review-delete/{id}', [AdminController::class, 'review_delete'])->name('review_delete');
+
 
         // HSC & Admission Subject Add 
         Route::get('/subject-add', [AdminController::class, 'subject_add'])->name('subject_add');

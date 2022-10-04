@@ -76,8 +76,9 @@
 
         setTimeout(() => {
             $('#paper').val(paper).trigger('change');
-        }, 1000);
+        }, 5000);
         setTimeout(() => {
+            alert(chapter)
             $('#chapter').val(chapter).trigger('change');
         }, 1500);
         setTimeout(() => {

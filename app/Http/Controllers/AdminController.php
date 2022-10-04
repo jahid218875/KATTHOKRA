@@ -227,6 +227,15 @@ class AdminController extends Controller
     }
 
 
+    // Subscription Add 
+
+    public function subscription_add()
+    {
+        $subject = Subject::get();
+        return view('admin.subscription-add', compact('subject'));
+    }
+
+
     // Subject Added 
     public function subject_add()
     {
