@@ -79,11 +79,11 @@
         }, 500);
         setTimeout(() => {
             $('#chapter').val(chapter).trigger('change');
-        }, 1000);
+        }, 1500);
         setTimeout(() => {
             alert(type)
             $('#type').val(type).trigger('change');
-        }, 2000);
+        }, 2500);
 
         console.log(paper);
     })
