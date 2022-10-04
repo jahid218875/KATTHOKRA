@@ -36,7 +36,11 @@
     <div class="container my-5 card p-5 border-0 shadow">
         <div class="row">
             <div class="col-md-12" id="content">
-
+                <div class="d-flex justify-content-center align-items-center py-3">
+                    <div class="spinner-border m-5 text-success ajax-loading" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
             </div>
 
             <nav aria-label="Page navigation example">
@@ -93,7 +97,7 @@
   
   e.preventDefault();
   $('#type').html( '<option value="">Select Type</option>');
-  $('#content').html( '<p>Select Paper, Chapter & Type</p>');
+//   $('#content').html( '<p>Select Paper, Chapter & Type</p>');
   
  var paper = $(this).val();
 
@@ -122,7 +126,7 @@
 $("#chapter").change(function(e){
   
   e.preventDefault();
-  $('#content').html( '<p>Select Paper, Chapter & Type</p>');
+//   $('#content').html( '<p>Select Paper, Chapter & Type</p>');
 
  var chapter = $(this).val();
 
@@ -168,6 +172,10 @@ $("#type").change(function(e){
         chapter_id: chapter,
         type_id: type
     },
+
+    beforeSend: function() {
+    $('.ajax-loading',e).addClass('active');// Note the ,e that I added
+},
     success:function(data){
         // console.log(data.status);
         if (data.status == 'active'){
