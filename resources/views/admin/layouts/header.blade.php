@@ -125,6 +125,36 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Subscription</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.subscription_add') ? 'active' : ''}}">
+                                    <a href="{{route('admin.subscription_add')}}">Subscription Add</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.subscription_list') ? 'active' : ''}}">
+                                    <a href="{{route('admin.subscription_list')}}">Subscription List</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-stack"></i>
+                                <span>Premium User</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li
+                                    class="submenu-item {{ request()->routeIs('admin.premium_user_list') ? 'active' : ''}}">
+                                    <a href="{{route('admin.premium_user_list')}}">Premium User List</a>
+                                </li>
+
+                            </ul>
+                        </li>
                         <li class="sidebar-item {{ request()->routeIs('admin.editor_add') ? 'active' : ''}} ">
                             <a href="{{route('admin.editor_add')}}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>

@@ -80,7 +80,7 @@
                                 class="rounded-circle" style="width: 30px; height: 30px;"></a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('profile')}}">Update Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Subscription</a></li>
+                            <li><a class="dropdown-item" href="{{route('subscription')}}">Subscription</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                         </ul>

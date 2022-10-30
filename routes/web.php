@@ -64,9 +64,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');
 
     // engineering reader 
-    Route::get('/engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
+    Route::get('/Engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
     Route::post('/engineering-chapter-to-type', [HomeController::class, 'engineering_chapter_to_type'])->name('engineering_chapter_to_type');
     Route::post('/engineering-type-to-content', [HomeController::class, 'engineering_type_to_content'])->name('engineering_type_to_content');
+
+    // Subscription 
+
+    Route::get('/subscription', [HomeController::class, 'subscription'])->name('subscription');
+    Route::post('/subscription-total', [HomeController::class, 'subscription_total'])->name('subscription_total');
+
+
+    Route::post('/checkout_data', [HomeController::class, 'checkout_data'])->name('checkout_data');
+    Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+    Route::post('/premium-user', [HomeController::class, 'premium_user'])->name('premium_user');
 });
 
 Route::group(['middleware' => ['auth:admin']], function () {
@@ -98,8 +108,18 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
         // Subscription Add 
         Route::get('/subscription-add', [AdminController::class, 'subscription_add'])->name('subscription_add');
-        // Route::post('/review-add', [AdminController::class, 'review_add_process'])->name('review_process');
-        // Route::get('/review-delete/{id}', [AdminController::class, 'review_delete'])->name('review_delete');
+        Route::post('/subscription-add', [AdminController::class, 'subscription_add_process'])->name('subscription_process');
+        Route::get('/subscription-list', [AdminController::class, 'subscription_list'])->name('subscription_list');
+        Route::get('/subscription-edit/{id}', [AdminController::class, 'subscription_edit'])->name('subscription_edit');
+        Route::post('/subscription-update/{id}', [AdminController::class, 'subscription_update'])->name('subscription_update');
+        Route::get('/subscription-delete/{id}', [AdminController::class, 'subscription_delete'])->name('subscription_delete');
+
+        // Premium User 
+        Route::get('/premium-user-list', [AdminController::class, 'premium_user_list'])->name('premium_user_list');
+        Route::get('/premium-user-edit/{id}', [AdminController::class, 'premium_user_edit'])->name('premium_user_edit');
+        Route::post('/premium-update/{id}', [AdminController::class, 'premium_update'])->name('premium_update');
+        Route::get('/premium-delete/{id}', [AdminController::class, 'premium_user_delete'])->name('premium_user_delete');
+
 
 
         // HSC & Admission Subject Add 

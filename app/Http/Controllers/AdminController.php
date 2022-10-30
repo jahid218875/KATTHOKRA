@@ -18,6 +18,9 @@ use App\Models\EngineeringType;
 use App\Models\EngineeringChapter;
 use App\Models\EngineeringContent;
 use App\Models\EngineeringSubject;
+use App\Models\PremiumCourses;
+use App\Models\PremiumUser;
+use App\Models\Subscription;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -231,10 +234,110 @@ class AdminController extends Controller
 
     public function subscription_add()
     {
-        $subject = Subject::get();
-        return view('admin.subscription-add', compact('subject'));
+        $Hscgroup = Subject::select('group_name')->groupBy('group_name')->get();
+        $eng_subject = EngineeringSubject::get();
+        // dd($eng_subject[0]->subject_name);
+        return view('admin.subscription-add', compact('Hscgroup', 'eng_subject'));
     }
 
+    public function subscription_add_process(Request $request)
+    {
+        $data = $this->validate($request, [
+            'type' => 'required',
+            'subs_item' => 'required',
+            'subscription_fee' => 'required',
+        ]);
+
+        Subscription::create($data);
+
+        $success = "Subscription Added Successfully";
+
+        return back()->with('success', $success);
+    }
+
+    public function subscription_list()
+    {
+        $subscription = Subscription::get();
+
+        return view('admin.subscription-list', compact('subscription'));
+    }
+
+    public function subscription_edit($id)
+    {
+        $subscription = Subscription::where('id', $id)->first();
+        // dd($subscription);
+
+        return view('admin.subscription-edit', compact('subscription'));
+    }
+
+    public function subscription_update($id, Request $request)
+    {
+        $data = $this->validate($request, [
+            'type' => 'required',
+            'subs_item' => 'required',
+            'subscription_fee' => 'required',
+        ]);
+
+        Subscription::where('id', $id)->update($data);
+
+        $success = "Subscription Updated Successfully";
+
+        return redirect()->route('admin.subscription_list')->with('success', $success);
+    }
+
+    public function subscription_delete($id)
+    {
+        Subscription::where('id', $id)->delete();
+
+        return back()->with('success', 'Subscription Deleted!');
+    }
+
+    // Premium User 
+
+    public function premium_user_list()
+    {
+        $premium_user = PremiumUser::get();
+
+        return view('admin.premium-user-list', compact('premium_user'));
+    }
+
+    public function premium_user_edit($id)
+    {
+        $premium_user = PremiumUser::where('id', $id)->first();
+        $PremiumCourses = PremiumCourses::where(['user_id' => $premium_user->user_id, 'order_id' => $premium_user->order_id])->get();
+
+        $prem_Courses = [];
+        foreach ($PremiumCourses as $courses) {
+            $prem_Courses[] = $courses->course;
+        }
+
+        $courses = Subscription::whereIn('id', $prem_Courses)->get();
+        $total = Subscription::whereIn('id', $prem_Courses)->sum('subscription_fee');
+
+        return view('admin.premium-user-edit', compact('premium_user', 'courses', 'total'));
+    }
+
+    public function premium_update($id, Request $request)
+    {
+        $data = $this->validate($request, [
+            'status' => 'required',
+        ]);
+
+        PremiumUser::where('id', $id)->update($data);
+
+        $success = "Premium User Updated Successfully";
+
+        return redirect()->route('admin.premium_user_list')->with('success', $success);
+    }
+    public function premium_user_delete($id)
+    {
+        $PremiumUser = PremiumUser::where('id', $id)->first();
+        PremiumCourses::where('order_id', $PremiumUser->order_id)->delete();
+        PremiumUser::where('id', $id)->delete();
+
+
+        return back()->with('success', 'Premium User Deleted!');
+    }
 
     // Subject Added 
     public function subject_add()

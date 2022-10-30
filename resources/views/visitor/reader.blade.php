@@ -78,21 +78,25 @@
         let type = searchParams.get('type')
 
 
-        setTimeout(() => {
-            $('#paper').val(paper).trigger('change');
-        }, 500);
-        setTimeout(() => {
-            $('#chapter').val(chapter).trigger('change');
-        }, 1500);
-        setTimeout(() => {
-            $('#type').val(type).trigger('change');
-        }, 2500);
-
-        console.log(paper);
+        if(paper || chapter || type){
+            setTimeout(() => {
+                $('#paper').val(paper).trigger('change');
+            }, 500);
+            setTimeout(() => {
+                $('#chapter').val(chapter).trigger('change');
+            }, 1500);
+            setTimeout(() => {
+                $('#type').val(type).trigger('change');
+            }, 2500);
+            console.log(paper);
+        }
     })
 </script>
 
 <script>
+    $('.ajax-loading').hide();
+
+
     $("#paper").change(function(e){
   
   e.preventDefault();
@@ -137,7 +141,6 @@ $("#chapter").change(function(e){
         '_token': $('input[name=_token]').val(),
         chapter_id: chapter
     },
-
         success:function(data){
 
             var type = [];
@@ -174,13 +177,23 @@ $("#type").change(function(e){
     },
 
     beforeSend: function() {
-    $('.ajax-loading',e).addClass('active');// Note the ,e that I added
-},
+        $('.ajax-loading').show();// Note the ,e that I added
+    },
     success:function(data){
         // console.log(data.status);
+
+
+
+
         if (data.status == 'active'){
-            var content = `<article class="blog-post">${data.editor1}</article>`;
-        $('#content').html(content) ;
+            if(data.pricing == 'freemium'){
+                var content = `<article class="blog-post">${data.editor1.substr(0, 5000)}</article>.......... <br><br> <p>সম্পূর্ণ লেখাটি পড়তে নীচের বাটনে প্রেস করে কোর্সটি কিনুন। </p><br><br>
+                <a href="{{ route('subscription')}}" class="btn btn-success">কোর্সটি কিনুন</a>`;
+                $('#content').html(content);
+            }else{
+                var content = `<article class="blog-post">${data.editor1}</article>`;
+                $('#content').html(content);
+            }
         
       
         if(data.editor5){
@@ -199,10 +212,10 @@ $("#type").change(function(e){
         if(data.editor2){
             $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">2</a></li>');
         }
-        getData(data);
+            getData(data);
         }else{
             var content = `<article class="blog-post">Empty Content</article>`;
-        $('#content').html(content) ;
+            $('#content').html(content) ;
         }
         
     }

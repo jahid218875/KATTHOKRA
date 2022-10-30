@@ -42,7 +42,7 @@
                 </div>
                 @endif
 
-
+                @if($subscription->type == 'HSC')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -50,7 +50,8 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" method="post" action="{{ route('admin.subscription_process')}}"
+                                <form class="form" method="post"
+                                    action="{{ route('admin.subscription_update', $subscription->id)}}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -66,10 +67,8 @@
                                             <h6>Group Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="basicSelect" name="subs_item" required>
-                                                    <option value="">Select....</option>
-                                                    @foreach ($Hscgroup as $group_name)
-                                                    <option>{{$group_name->group_name}}</option>
-                                                    @endforeach
+
+                                                    <option>{{$subscription->subs_item}}</option>
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -77,11 +76,12 @@
                                             <div class="form-group">
                                                 <label for="subscription_fee">Subscription Fee</label>
                                                 <input type="text" id="subscription_fee" class="form-control"
-                                                    placeholder="1250" name="subscription_fee" required>
+                                                    placeholder="1250" name="subscription_fee" required
+                                                    value="{{$subscription->subscription_fee}}">
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-
+                @elseif($subscription->type == 'Engineering')
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -97,7 +97,8 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form" method="post" action="{{ route('admin.subscription_process')}}"
+                                <form class="form" method="post"
+                                    action="{{ route('admin.subscription_update', $subscription->id)}}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -113,10 +114,8 @@
                                             <h6>Subject Select</h6>
                                             <fieldset class="form-group">
                                                 <select class="form-select" id="basicSelect" name="subs_item" required>
-                                                    <option value="">Select....</option>
-                                                    @foreach ($eng_subject as $subject)
-                                                    <option>{{$subject->subject_name}}</option>
-                                                    @endforeach
+
+                                                    <option>{{$subscription->subs_item}}</option>
                                                 </select>
                                             </fieldset>
                                         </div>
@@ -124,11 +123,12 @@
                                             <div class="form-group">
                                                 <label for="subscription_fee">Subscription Fee</label>
                                                 <input type="text" id="subscription_fee" class="form-control"
-                                                    placeholder="1250" name="subscription_fee" required>
+                                                    placeholder="1250" name="subscription_fee" required
+                                                    value="{{$subscription->subscription_fee}}">
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Update</button>
                                         </div>
                                     </div>
                                 </form>
@@ -136,6 +136,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </section>
         <!-- // Basic multiple Column Form section end -->

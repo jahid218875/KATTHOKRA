@@ -128,8 +128,17 @@ $("#type").change(function(e){
     success:function(data){
         // console.log(data.status);
         if (data.status == 'active'){
-            var content = `<article class="blog-post">${data.editor1}</article>`;
-        $('#content').html(content) ;
+        //     var content = `<article class="blog-post">${data.editor1}</article>`;
+        // $('#content').html(content) ;
+
+        if(data.pricing == 'freemium'){
+                var content = `<article class="blog-post">${data.editor1.substr(0, 5000)}</article>.......... <br><br> <p>সম্পূর্ণ লেখাটি পড়তে নীচের বাটনে প্রেস করে কোর্সটি কিনুন। </p><br><br>
+                <a href="{{ route('subscription')}}" class="btn btn-success">কোর্সটি কিনুন</a>`;
+                $('#content').html(content);
+            }else{
+                var content = `<article class="blog-post">${data.editor1}</article>`;
+                $('#content').html(content);
+            }
         
       
         if(data.editor5){

@@ -12,13 +12,19 @@ use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\Teacher;
 use App\Models\HscContent;
+use App\Models\PremiumUser;
+use Illuminate\Support\Str;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\EngineeringType;
 use App\Models\EngineeringContent;
 use App\Models\EngineeringSubject;
+use App\Models\PremiumCourses;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cookie;
 
 class HomeController extends Controller
 {
@@ -235,7 +241,6 @@ class HomeController extends Controller
     public function reader($name, $subject)
     {
         $papers = Subject::where(['group_name' => $name, 'subject_name' => $subject])->with('get_paper')->get();
-        // dd($papers[0]->subject_name);
 
         return view('visitor.reader', compact('papers'));
     }
@@ -252,8 +257,60 @@ class HomeController extends Controller
 
     public function type_to_content(Request $request)
     {
-        $content = HscContent::where(['paper_id' => $request->paper_id, 'chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
-        return $content;
+        $content = HscContent::with('getSubject')
+            ->where([
+                'paper_id' => $request->paper_id,
+                'chapter_id' => $request->chapter_id,
+                'type_id' => $request->type_id
+            ])->first();
+        // $content->getSubject->group_name == Science
+
+        if ($content->course_type == 'Premium') {
+
+            $prem = PremiumUser::with('courses')
+                ->where(
+                    [
+                        'user_id' => Auth()->user()->id,
+                        'status' => 'approve'
+                    ]
+                )->get();
+
+
+
+            if ($prem) {
+
+                $done = [];
+                foreach ($prem as $premik) {
+                    foreach ($premik->courses as $courses) {
+                        $done[] = $courses->course;
+                    }
+                }
+
+                $sd = Subscription::whereIn('id', $done)->get();
+
+                $final = [];
+                foreach ($sd as $final) {
+                    if ($final->subs_item == $content->getSubject->group_name) {
+                        $got = 'got it';
+                    }
+                }
+
+                if (@$got) {
+                    return $content;
+                } else {
+                    $content['pricing'] = 'freemium';
+                    return (object)$content;
+                }
+            }
+
+
+            $content['pricing'] = 'freemium';
+            return (object)$content;
+        } else {
+            return $content;
+        }
+
+        // return $content;
     }
 
 
@@ -274,9 +331,168 @@ class HomeController extends Controller
 
     public function engineering_type_to_content(Request $request)
     {
-        $content = EngineeringContent::where(['chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
+        // $content = EngineeringContent::where(['chapter_id' => $request->chapter_id, 'type_id' => $request->type_id])->first();
+        // return $content;
+
+        $content = EngineeringContent::with('getSubject')
+            ->where([
+                'chapter_id' => $request->chapter_id,
+                'type_id' => $request->type_id
+            ])->first();
+        // $content->getSubject->group_name == Engineering
         // dd($content);
-        return $content;
+
+        if ($content->course_type == 'Premium') {
+
+            $prem = PremiumUser::with('courses')
+                ->where(
+                    [
+                        'user_id' => Auth()->user()->id,
+                        'status' => 'approve'
+                    ]
+                )->get();
+
+
+
+            if ($prem) {
+
+                $done = [];
+                foreach ($prem as $premik) {
+                    foreach ($premik->courses as $courses) {
+                        $done[] = $courses->course;
+                    }
+                }
+
+                $sd = Subscription::whereIn('id', $done)->get();
+
+                $final = [];
+                foreach ($sd as $final) {
+                    if ($final->subs_item == $content->getSubject->subject_name) {
+                        $got = 'got it';
+                    }
+                }
+
+                if (@$got) {
+                    return $content;
+                } else {
+                    $content['pricing'] = 'freemium';
+                    return (object)$content;
+                }
+            }
+
+
+            $content['pricing'] = 'freemium';
+            return (object)$content;
+        } else {
+            return $content;
+        }
+    }
+
+    // Subscription 
+
+    public function subscription()
+    {
+        $prem_user = PremiumCourses::where('user_id', Auth()->user()->id)->get();
+        // $prem_user->
+        $course_id = [];
+        foreach ($prem_user as $courses) {
+            $course_id[] = $courses->course;
+        }
+
+        // dd($course_id);
+        if ($prem_user) {
+            $sub_hsc = Subscription::whereNotIn('id', $course_id)->where('type', 'HSC')->get();
+            // dd($sub_hsc[0]->type);
+            $sub_eng = Subscription::whereNotIn('id', $course_id)->where('type', 'Engineering')->get();
+        } else {
+            $sub_hsc = Subscription::where('type', 'HSC')->get();
+            $sub_eng = Subscription::where('type', 'Engineering')->get();
+        }
+
+
+
+        return view('visitor.subscription', compact('sub_hsc', 'sub_eng'));
+    }
+
+    public function subscription_total(Request $request)
+    {
+        $subs_total = Subscription::where('id', $request->sub_id)->first();
+        return $subs_total;
+    }
+
+    public function checkout_data(Request $request)
+    {
+        // $a = json_encode($request->course);
+
+        $this->validate($request, [
+            'course' => 'required'
+        ]);
+
+        $courses = Subscription::whereIn('id', $request->course)->get();
+        $total = Subscription::whereIn('id', $request->course)->sum('subscription_fee');
+
+
+        $ids = $request->course;
+
+
+        return redirect('checkout')->with(['courses' => $courses, 'total' => $total, 'ids' => $ids]);
+    }
+
+    public function checkout()
+    {
+
+        // dd(session()->get('ids'));
+
+        if (session()->get('courses')) {
+            return view('visitor.checkout');
+        }
+
+        return redirect('subscription');
+    }
+
+
+    public function premium_user(Request $request)
+    {
+        // $prem_user = PremiumUser::where('user_id', Auth()->user()->id)->first();
+        // dd($prem_user);
+        $courses = explode(',', $request->course);
+        $order_id = random_int(100000, 999999);
+
+        foreach ($courses as $course) {
+            $premium_courses = [
+                'course' => $course,
+                'order_id' => $order_id,
+                'user_id' => Auth()->user()->id,
+            ];
+
+            PremiumCourses::create($premium_courses);
+        }
+
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+            'PaymentType' => 'required',
+            'PaymentNumber' => 'required',
+            'transaction_id' => 'required',
+        ]);
+        $data['zipCode'] = $request->zipCode;
+        $data['message'] = $request->message;
+        $data['status'] = 'pending';
+        $data['user_id'] = Auth()->user()->id;
+        $data['order_id'] = $order_id;
+
+        PremiumUser::create($data);
+
+
+
+
+        $success = "Your Order has been Successfully Submitted";
+
+        return redirect('subscription')->with('success', $success);
     }
 
 
