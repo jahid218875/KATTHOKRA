@@ -63,6 +63,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/chapter-to-type', [HomeController::class, 'chapter_to_type'])->name('chapter_to_type');
     Route::post('/type-to-content', [HomeController::class, 'type_to_content'])->name('type_to_content');
 
+    // HSC Reader Highlight
+    Route::post('/highlight', [HomeController::class, 'highlight'])->name('highlight');
+    Route::post('/highlight-data', [HomeController::class, 'highlight_data'])->name('highlight_data');
+
+    // HSC Reader Highlight List
+    Route::get('/highlight-list', [HomeController::class, 'highlight_list'])->name('highlight_list');
+
+    // HSC Reader Bookmark
+    Route::post('/bookmark', [HomeController::class, 'bookmark'])->name('bookmark');
+    Route::get('/bookmark-list', [HomeController::class, 'bookmark_list'])->name('bookmark_list');
+
+
+
+
     // engineering reader 
     Route::get('/Engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
     Route::post('/engineering-chapter-to-type', [HomeController::class, 'engineering_chapter_to_type'])->name('engineering_chapter_to_type');

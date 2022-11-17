@@ -81,6 +81,8 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('profile')}}">Update Profile</a></li>
                             <li><a class="dropdown-item" href="{{route('subscription')}}">Subscription</a></li>
+                            <li><a class="dropdown-item" href="{{route('bookmark_list')}}">Bookmark</a></li>
+                            <li><a class="dropdown-item" href="{{route('highlight_list')}}">Highlight</a></li>
                             <hr class="dropdown-divider">
                             <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                         </ul>

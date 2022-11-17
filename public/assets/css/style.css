@@ -13,6 +13,20 @@
 
 }
 
+span.robi-colored {
+    background: yellow;
+}
+
+/* .highlight {
+    background-color: yellow;
+} */
+
+
+/* ::selection {
+    color: red;
+    background: yellow;
+} */
+
 input::file-selector-button {
     border: thin solid grey;
     border-radius: 3px;

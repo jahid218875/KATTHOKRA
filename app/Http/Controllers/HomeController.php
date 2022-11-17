@@ -11,16 +11,18 @@ use App\Models\Review;
 use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\Bookmark;
+use App\Models\Highlight;
 use App\Models\HscContent;
 use App\Models\PremiumUser;
 use Illuminate\Support\Str;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Models\PremiumCourses;
 use App\Models\EngineeringType;
 use App\Models\EngineeringContent;
 use App\Models\EngineeringSubject;
-use App\Models\PremiumCourses;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -241,6 +243,7 @@ class HomeController extends Controller
     public function reader($name, $subject)
     {
         $papers = Subject::where(['group_name' => $name, 'subject_name' => $subject])->with('get_paper')->get();
+        // dd($papers);
 
         return view('visitor.reader', compact('papers'));
     }
@@ -311,6 +314,72 @@ class HomeController extends Controller
         }
 
         // return $content;
+    }
+
+    // Highlight 
+
+    public function highlight(Request $request)
+    {
+        $data = $this->validate($request, [
+            'subject' => 'required',
+            'paper' => 'required',
+            'chapter' => 'required',
+            'type' => 'required',
+            'content' => 'required',
+            'page' => 'required',
+        ]);
+        $data['user_id'] = Auth()->user()->id;
+        $data['save_type'] = 'highlight';
+
+        // dd($data);
+        Highlight::create($data);
+
+        return 'data submitted';
+    }
+
+    public function highlight_data(Request $request)
+    {
+        $data = Highlight::where(['user_id' => Auth()->user()->id, 'paper' => $request->paper_id, 'chapter' => $request->chapter_id, 'type' => $request->type_id, 'page' => $request->page_id])->get();
+        return $data;
+    }
+
+    public function highlight_list()
+    {
+        $highlight = Highlight::where('user_id', Auth()->user()->id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
+        // dd($highlight);
+        return view('visitor.highlight-list', compact('highlight'));
+    }
+
+    // Bookmark 
+
+    public function bookmark(Request $request)
+    {
+        $data = $this->validate($request, [
+            'group' => 'required',
+            'subject' => 'required',
+            'paper' => 'required',
+            'chapter' => 'required',
+            'type' => 'required',
+            'page' => 'required',
+        ]);
+        $data['user_id'] = Auth()->user()->id;
+        $data['save_type'] = 'bookmark';
+
+        $check = Bookmark::where($data)->first();
+        if ($check) {
+            return 'error';
+        }
+
+        Bookmark::create($data);
+
+        return 'success';
+    }
+
+    public function bookmark_list()
+    {
+        $bookmark = Bookmark::where('user_id', Auth()->user()->id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
+        // dd($bookmark);
+        return view('visitor.bookmark-list', compact('bookmark'));
     }
 
 
