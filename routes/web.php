@@ -69,10 +69,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     // HSC Reader Highlight List
     Route::get('/highlight-list', [HomeController::class, 'highlight_list'])->name('highlight_list');
+    Route::get('/highlight-delete/{id}', [HomeController::class, 'highlight_delete'])->name('highlight_delete');
 
     // HSC Reader Bookmark
     Route::post('/bookmark', [HomeController::class, 'bookmark'])->name('bookmark');
     Route::get('/bookmark-list', [HomeController::class, 'bookmark_list'])->name('bookmark_list');
+    Route::get('/bookmark-delete/{id}', [HomeController::class, 'bookmark_delete'])->name('bookmark_delete');
 
 
 

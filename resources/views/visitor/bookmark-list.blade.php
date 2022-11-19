@@ -65,7 +65,8 @@
                                 <td>
                                     <a href="{{route('reader',['name' => $bookmark_list->group, 'subject' => $bookmark_list->getSubject->subject_name, 'paper' => $bookmark_list->paper, 'chapter' => $bookmark_list->chapter, 'type' => $bookmark_list->type])}}"
                                         class="btn btn-success btn-sm">Open</a>
-                                    <a href="" onclick="return confirm('are you sure?')"
+                                    <a href="{{route('bookmark_delete', $bookmark_list->id)}}"
+                                        onclick="return confirm('are you sure?')"
                                         class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                                 {{-- <td>

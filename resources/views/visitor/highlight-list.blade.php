@@ -92,13 +92,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="" onclick="return confirm('are you sure?')"
-                                        class="btn btn-danger">Delete</a>
+                                    <a href="{{route('highlight_delete', $highlight_list->id)}}"
+                                        onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
                                 </td>
-                                {{-- <td>
-                                    <a href="" onclick="return confirm('are you sure?')"
-                                        class="btn btn-danger">Delete</a>
-                                </td> --}}
                             </tr>
                             @endforeach
 

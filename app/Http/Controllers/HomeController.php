@@ -350,6 +350,13 @@ class HomeController extends Controller
         return view('visitor.highlight-list', compact('highlight'));
     }
 
+    public function highlight_delete($id)
+    {
+        Highlight::where('id', $id)->delete();
+
+        return back()->with('success', 'Highlight Deleted!');
+    }
+
     // Bookmark 
 
     public function bookmark(Request $request)
@@ -380,6 +387,13 @@ class HomeController extends Controller
         $bookmark = Bookmark::where('user_id', Auth()->user()->id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
         // dd($bookmark);
         return view('visitor.bookmark-list', compact('bookmark'));
+    }
+
+    public function bookmark_delete($id)
+    {
+        Bookmark::where('id', $id)->delete();
+
+        return back()->with('success', 'Bookmark Deleted!');
     }
 
 
