@@ -16,7 +16,7 @@
     <div class="container py-4 reader mt-3 card border-0 shadow">
         <form class="row">
             @csrf
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select id="paper" class="form-select border-0 my-1 decorated" name="paper">
                     <option value="">Select Paper</option>
                     @foreach($papers as $paper)
@@ -26,24 +26,24 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select id="chapter" class="form-select border-0 my-1" name="chapter">
 
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <select id="type" class="form-select border-0 my-1" name="type">
                 </select>
             </div>
             <input type="hidden" id="user_id" name="user_id" value="{{Auth()->user()->id}}">
-            <div class="col-md-4">
-                <button class="btn btn-success" id="changeColor">Highlight</button>
-
+            <div class="col-md-3 d-flex justify-content-center align-items-center mt-sm-2 mt-md-0">
+                <button class="btn btn-success ms-2" id="changeColor">Highlight</button>
+                <button class="btn btn-success ms-2" id="bookmark">Bookmark</button>
             </div>
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <button class="btn btn-success" id="bookmark">Bookmark</button>
 
-            </div>
+            </div> --}}
         </form>
     </div>
 </section>

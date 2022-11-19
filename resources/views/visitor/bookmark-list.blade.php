@@ -69,10 +69,6 @@
                                         onclick="return confirm('are you sure?')"
                                         class="btn btn-danger btn-sm">Delete</a>
                                 </td>
-                                {{-- <td>
-                                    <a href="" onclick="return confirm('are you sure?')"
-                                        class="btn btn-danger">Delete</a>
-                                </td> --}}
                             </tr>
                             @endforeach
 
