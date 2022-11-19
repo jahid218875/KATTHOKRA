@@ -13,10 +13,11 @@
     <h1 class="text-center py-4">{{$papers[0]->subject_name}}</h1>
     <input type="hidden" id="subject_id" name="subject_id" value="{{$papers[0]->id}}">
     <input type="hidden" id="group_name" name="group_name" value="{{$papers[0]->group_name}}">
-    <div class="container py-4 reader mt-3 card border-0 shadow">
+
+    <div class="container py-4 reader mt-3 card border-0 shadow sticky-top overflow-x">
         <form class="row">
             @csrf
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <select id="paper" class="form-select border-0 my-1 decorated" name="paper">
                     <option value="">Select Paper</option>
                     @foreach($papers as $paper)
@@ -26,17 +27,17 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <select id="chapter" class="form-select border-0 my-1" name="chapter">
 
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <select id="type" class="form-select border-0 my-1" name="type">
                 </select>
             </div>
             <input type="hidden" id="user_id" name="user_id" value="{{Auth()->user()->id}}">
-            <div class="col-md-3 d-flex justify-content-center align-items-center mt-sm-2 mt-md-0">
+            <div class="col-6 col-md-3 d-flex justify-content-center align-items-center mt-sm-2 mt-md-0">
                 <button class="btn btn-success ms-2" id="changeColor">Highlight</button>
                 <button class="btn btn-success ms-2" id="bookmark">Bookmark</button>
             </div>
@@ -329,7 +330,7 @@ $("#type").change(function(e){
 
             if(data.pricing == 'freemium'){
                 var content = `<article class="blog-post">${data.editor1.substr(0, 5000)}</article>.......... <br><br> <p>সম্পূর্ণ লেখাটি পড়তে নীচের বাটনে প্রেস করে কোর্সটি কিনুন। </p><br><br>
-                <a href="{{ route('subscription')}}" class="btn btn-success">কোর্সটি কিনুন</a>`;
+                <a href="{{ route('subscription')}}" class="btn btn-success my-3">কোর্সটি কিনুন</a>`;
                 $('#content').html(content);
             }else{
                 var content = `<article class="blog-post">${data.editor1}</article>`;

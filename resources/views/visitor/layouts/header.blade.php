@@ -34,7 +34,7 @@
 
 
     <!-- header area start  -->
-    <div class="shadow sticky-top bg-white">
+    <div class="shadow {{Request::is('reader/*') ? '' : 'sticky-top'}} bg-white">
         <nav class="navbar navbar-expand-lg container">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-success" href="{{'/'}}"><img
