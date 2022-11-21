@@ -42,7 +42,7 @@
         <!-- Basic Tables start -->
         <section class="section my-5">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table" id="table1">
                         <thead>
                             <tr>
@@ -93,7 +93,8 @@
                                         </div>
                                     </div>
                                     <a href="{{route('highlight_delete', $highlight_list->id)}}"
-                                        onclick="return confirm('are you sure?')" class="btn btn-danger">Delete</a>
+                                        onclick="return confirm('are you sure?')"
+                                        class="btn btn-danger mt-2 mt-md-0">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

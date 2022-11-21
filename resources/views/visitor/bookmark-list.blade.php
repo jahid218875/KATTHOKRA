@@ -42,7 +42,7 @@
         <!-- Basic Tables start -->
         <section class="section my-5">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <table class="table" id="table1">
                         <thead>
                             <tr>
@@ -67,7 +67,7 @@
                                         class="btn btn-success btn-sm">Open</a>
                                     <a href="{{route('bookmark_delete', $bookmark_list->id)}}"
                                         onclick="return confirm('are you sure?')"
-                                        class="btn btn-danger btn-sm">Delete</a>
+                                        class="btn btn-danger btn-sm mt-2 mt-md-0">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

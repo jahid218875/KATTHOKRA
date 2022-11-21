@@ -14,7 +14,7 @@
     <input type="hidden" id="subject_id" name="subject_id" value="{{$papers[0]->id}}">
     <input type="hidden" id="group_name" name="group_name" value="{{$papers[0]->group_name}}">
 
-    <div class="container py-4 reader mt-3 card border-0 shadow sticky-top overflow-x">
+    <div class="container py-4 reader mt-3 card border-0 shadow sticky-top overflow-y">
         <form class="row">
             @csrf
             <div class="col-6 col-md-3">
@@ -37,9 +37,15 @@
                 </select>
             </div>
             <input type="hidden" id="user_id" name="user_id" value="{{Auth()->user()->id}}">
-            <div class="col-6 col-md-3 d-flex justify-content-center align-items-center mt-sm-2 mt-md-0">
-                <button class="btn btn-success ms-2" id="changeColor">Highlight</button>
-                <button class="btn btn-success ms-2" id="bookmark">Bookmark</button>
+            <div class="col-6 col-md-3 d-flex align-items-center">
+                {{-- <i class="fa-solid fa-highlighter fa-2x ms-4" id="changeColor"></i> --}}
+                {{-- <i class="fa-solid fa-book-bookmark fa-2x ms-4" id="bookmark"></i> --}}
+                <button class="btn border-0 p-0" id="changeColor"><i
+                        class="fa-solid fa-highlighter fa-2x ms-4"></i></button>
+                <button class="btn border-0 p-0" id="bookmark"><i
+                        class="fa-solid fa-book-bookmark fa-2x ms-4"></i></button>
+
+                {{-- <button class="btn btn-success" id="bookmark">Bookmark</button> --}}
             </div>
             {{-- <div class="col-md-4">
                 <button class="btn btn-success" id="bookmark">Bookmark</button>
