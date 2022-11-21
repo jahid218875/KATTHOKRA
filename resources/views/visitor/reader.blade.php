@@ -8,13 +8,11 @@
 @section('content')
 
 <!-- main content  -->
-<section class="px-2">
-
-    <h1 class="text-center py-4">{{$papers[0]->subject_name}}</h1>
-    <input type="hidden" id="subject_id" name="subject_id" value="{{$papers[0]->id}}">
-    <input type="hidden" id="group_name" name="group_name" value="{{$papers[0]->group_name}}">
-
-    <div class="container py-4 reader mt-3 card border-0 shadow sticky-top overflow-y">
+<h1 class="text-center py-4">{{$papers[0]->subject_name}}</h1>
+<input type="hidden" id="subject_id" name="subject_id" value="{{$papers[0]->id}}">
+<input type="hidden" id="group_name" name="group_name" value="{{$papers[0]->group_name}}">
+<section class="px-2 sticky-top">
+    <div class="container py-4 reader mt-3 card border-0 shadow">
         <form class="row">
             @csrf
             <div class="col-6 col-md-3">
