@@ -228,6 +228,7 @@ $.ajax({
             var replacement = $('<span></span>').attr({'class':'robi-colored'}).html(selection);
 
             var replacementHtml = $('<div>').append(replacement.clone()).remove().html();
+                
             $('#content').html( $('#content').html().replace(selection, replacementHtml) );
 
 

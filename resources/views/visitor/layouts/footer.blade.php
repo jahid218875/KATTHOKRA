@@ -171,12 +171,6 @@
 </script>
 
 
-<script src="//cdn.jsdelivr.net/npm/eruda"></script>
-<script>
-    eruda.init();
-</script>
-
-
 @yield('scripts')
 
 </body>
