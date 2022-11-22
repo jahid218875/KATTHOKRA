@@ -52,8 +52,8 @@
                     <div class="password"></div>
                     <div class="more"></div>
 
-                    <button class="btn btn-success fw-bold py-3 mt-3 login" type="submit" style="width: 100%;"><i
-                            class="fa-solid fa-arrow-right-to-bracket me-2"></i> এগিয়ে যান </button>
+                    <button class="btn btn-success fw-bold py-3 mt-3 login" type="submit" id="btnSubmit"
+                        style="width: 100%;"><i class="fa-solid fa-arrow-right-to-bracket me-2"></i> এগিয়ে যান </button>
                 </form>
             </div>
         </div>
@@ -65,6 +65,16 @@
 
 
 @section('scripts')
+<script>
+    $(document).ready(function () {
+     $("#btnSubmit").on('click', function (event) {  
+           event.preventDefault();
+           var el = $(this);
+           el.prop('disabled', true);
+           setTimeout(function(){el.prop('disabled', false); }, 3000);
+     });
+});
+</script>
 <script>
     $('.login').click(function (e) {
 	e.preventDefault();
