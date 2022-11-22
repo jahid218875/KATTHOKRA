@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact', [HomeController::class, 'contact_form'])->name('contact_form');
+
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/hsc-and-admission', [HomeController::class, 'hsc_admission'])->name('hsc_admission');
 Route::get('/login', [HomeController::class, 'login'])->name('login');

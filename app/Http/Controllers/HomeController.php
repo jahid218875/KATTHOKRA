@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Contact;
 use App\Models\Ads;
 use App\Mail\SignUp;
 use App\Models\Type;
@@ -52,6 +53,21 @@ class HomeController extends Controller
     {
 
         return view('visitor.contact');
+    }
+
+    public function contact_form(Request $request)
+    {
+
+        $data = $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+
+        ]);
+
+
+        Mail::to('community@katthokra.com')->send(new Contact($data['name'], $data['email'], $data['message']));
+        return back()->with('Thank you');
     }
 
     public function about()

@@ -52,7 +52,7 @@
                     <div class="password"></div>
                     <div class="more"></div>
 
-                    <button class="btn btn-success fw-bold py-3 mt-3 login" style="width: 100%;"><i
+                    <button class="btn btn-success fw-bold py-3 mt-3 login" type="submit" style="width: 100%;"><i
                             class="fa-solid fa-arrow-right-to-bracket me-2"></i> এগিয়ে যান </button>
                 </form>
             </div>

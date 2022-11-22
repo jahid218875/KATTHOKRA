@@ -39,9 +39,9 @@
                 {{-- <i class="fa-solid fa-highlighter fa-2x ms-4" id="changeColor"></i> --}}
                 {{-- <i class="fa-solid fa-book-bookmark fa-2x ms-4" id="bookmark"></i> --}}
                 <button class="btn border-0 p-0" id="changeColor"><i
-                        class="fa-solid fa-highlighter fa-2x ms-4"></i></button>
+                        class="fa-solid fa-highlighter fa-2x ms-4 text-success"></i></button>
                 <button class="btn border-0 p-0" id="bookmark"><i
-                        class="fa-solid fa-book-bookmark fa-2x ms-4"></i></button>
+                        class="fa-solid fa-book-bookmark fa-2x ms-4 text-success"></i></button>
 
                 {{-- <button class="btn btn-success" id="bookmark">Bookmark</button> --}}
             </div>
@@ -188,6 +188,7 @@ $.ajax({
         let paper = searchParams.get('paper')
         let chapter = searchParams.get('chapter')
         let type = searchParams.get('type')
+        let page = searchParams.get('page')
 
 
         if(paper || chapter || type){
@@ -200,7 +201,12 @@ $.ajax({
             setTimeout(() => {
                 $('#type').val(type).trigger('change');
             }, 2500);
-            // console.log(paper);
+            setTimeout(() => {
+                if (page !== 1){
+                    $('.page-link:contains('+page+')').trigger('click');
+                }
+            }, 3500);
+            console.log(paper);
         }
     })
 </script>
@@ -323,8 +329,12 @@ $("#type").change(function(e){
     },
     success:function(data){
         // console.log(data.status);
-
-
+        if(data.pricing == 'freemium'){
+            data.editor5 = ''
+            data.editor4 = ''
+            data.editor3 = ''
+            data.editor2 = ''
+        }
 
 
         if (data.status == 'active'){
