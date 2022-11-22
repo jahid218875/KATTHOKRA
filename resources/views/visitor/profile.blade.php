@@ -34,24 +34,52 @@
                 enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label fw-bold">Your Name</label>
+                    <label for="YourName" class="form-label fw-bold">Your Name</label>
                     <input type="text" name="name" value="{{$user->name}}"
-                        class="form-control form-control-lg login-input border-0" id="exampleInputEmail1"
-                        aria-describedby="emailHelp" required>
+                        class="form-control form-control-lg login-input border-0" id="YourName" required>
                 </div>
                 <div class="mb-3">
-                    <label for="otpText" class="form-label fw-bold">Level</label>
-                    <select id="inputState" name="level"
-                        class="form-select border-0 my-1 login-input form-control-lg py-3" required>
+                    <label for="level" class="form-label fw-bold">Level</label>
+                    <select id="level" name="level" class="form-select border-0 my-1 login-input form-control-lg py-3"
+                        required>
                         <option {{$user->level == 'HSC/Admission' ? 'selected' : ''}}>HSC/Admission</option>
                         <option {{$user->level == 'University' ? 'selected' : ''}}>University</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputinstitution1" class="form-label fw-bold">Institution</label>
+                    <label for="institution" class="form-label fw-bold">Institution</label>
                     <input type="text" name="institution" class="form-control  form-control-lg login-input border-0"
-                        id="exampleInputinstitution1" required value="{{$user->Institution}}">
+                        id="institution" required value="{{$user->Institution}}">
                 </div>
+
+                @if (!is_numeric(Auth()->user()->email))
+                <div class="col-md-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control  form-control-lg login-input border-0" id="email"
+                        name="email" value="{{Auth()->user()->email}}" readonly>
+                </div>
+                @else
+                <div class="col-md-12">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control  form-control-lg login-input border-0"
+                        id="email" value="{{Auth()->user()->email_phone}}" readonly>
+                </div>
+                @endif
+
+
+                @if (is_numeric(Auth()->user()->email))
+                <div class="col-md-12">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control  form-control-lg login-input border-0" id="phone"
+                        name="email_phone" value="{{Auth()->user()->email}}">
+                </div>
+                @else
+                <div class="col-md-12">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control  form-control-lg login-input border-0" id="phone"
+                        value="{{Auth()->user()->email_phone}}" name="email_phone">
+                </div>
+                @endif
 
 
                 {{-- <div class="mb-3">

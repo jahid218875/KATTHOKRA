@@ -796,7 +796,6 @@ class AdminController extends Controller
     public function user_list()
     {
         $user_list = User::get();
-        // dd($user_list);
 
         return view('admin.user-list', compact('user_list'));
     }

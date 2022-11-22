@@ -44,8 +44,8 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email/Mobile</th>
-                                <th>Email/Mobile</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                                 <th>Level</th>
                                 <th class="text-center">Action</th>
                             </tr>
@@ -55,8 +55,19 @@
                             @foreach($user_list as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
+
+                                @if (!is_numeric($user->email))
                                 <td>{{$user->email}}</td>
+                                @else
                                 <td>{{$user->email_phone}}</td>
+                                @endif
+
+                                @if (is_numeric($user->email_phone))
+                                <td>{{$user->email_phone}}</td>
+                                @else
+                                <td>{{$user->email}}</td>
+                                @endif
+
                                 <td>{{$user->level}}</td>
 
                                 <td>

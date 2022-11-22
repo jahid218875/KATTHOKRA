@@ -62,19 +62,28 @@
         </div>
 
         <div class="col-md-6 mt-5 mx-auto">
-            <form action="" method="post">
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="list-unstyled">
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+            <form action="{{route('search_form')}}" method="post" enctype="multipart/form-data">
+                @csrf
                 <span>Select Level</span>
-                <select name="" id="" class="box text-black-50 shadow" maxlength="50">
-                    <option>Select Level</option>
-                    <option value="">HSC ও ADMISSION</option>
-                    <option value="">প্রকৌশলবিদ্যা</option>
+                <select name="level" class="box text-black-50 shadow" maxlength="50" required>
+                    <option value="">Select Level</option>
+                    <option value="HSC ও ADMISSION">HSC ও ADMISSION</option>
+                    <option value="প্রকৌশলবিদ্যা">প্রকৌশলবিদ্যা</option>
                 </select>
                 <span>প্রশ্নের ছবি</span>
-                <input type="file" required placeholder="Enter your email" maxlength="50" name="email"
-                    class="box text-black-50 shadow">
+                <input type="file" name="image" class="box text-black-50 shadow">
                 <span>প্রশ্ন লিখুন</span>
-                <textarea name="message" placeholder="প্রশ্ন লিখুন" class="box shadow text-black-50" id="" cols="5"
-                    rows="5"></textarea>
+                <textarea name="my_message" placeholder="প্রশ্ন লিখুন" class="box shadow text-black-50" id="" cols="5"
+                    rows="5" required></textarea>
                 <input type="submit" value="পাঠিয়ে দিন" class="btn btn-success fw-bold rounded-pill px-4 py-2  shadow"
                     name="send">
             </form>
@@ -101,5 +110,6 @@
         document.getElementById('engineering').style.display = "block";
     }
 </script>
+
 
 @endsection

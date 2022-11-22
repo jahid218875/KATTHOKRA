@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Contact;
+use App\Mail\SearchMail;
 use App\Models\Ads;
 use App\Mail\SignUp;
 use App\Models\Type;
@@ -81,6 +82,8 @@ class HomeController extends Controller
         return view('visitor.hsc-page');
     }
 
+    // Search 
+
     public function search(Request $request)
     {
 
@@ -107,13 +110,30 @@ class HomeController extends Controller
             ->Orwhere('editor5', 'like', '%' . $request->input('query') . '%')->with('getSubject')
             ->get();
 
-
-
-        // dd($EngineeringContent);
-
-
-
         return view('visitor.search', compact('HscAndAdmission', 'EngineeringContent'));
+    }
+
+    public function search_form(Request $request)
+    {
+
+        $data = $this->validate($request, [
+            'level' => 'required',
+            'my_message' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+        ]);
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $name);
+            $data['image'] = $name;
+        }
+
+
+        Mail::to('community@katthokra.com')->send(new SearchMail($data['level'], $data['my_message'], $data['image']));
+        return back()->with('Thank you');
     }
 
     public function login()
@@ -233,6 +253,8 @@ class HomeController extends Controller
             'name' => 'required',
             'level' => 'required',
             'institution' => 'required',
+            'email' => 'required',
+            'email_phone' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
