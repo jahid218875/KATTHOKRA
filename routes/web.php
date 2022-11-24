@@ -71,22 +71,31 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/highlight', [HomeController::class, 'highlight'])->name('highlight');
     Route::post('/highlight-data', [HomeController::class, 'highlight_data'])->name('highlight_data');
 
-    // HSC Reader Highlight List
+    // Highlight List
     Route::get('/highlight-list', [HomeController::class, 'highlight_list'])->name('highlight_list');
     Route::get('/highlight-delete/{id}', [HomeController::class, 'highlight_delete'])->name('highlight_delete');
+    Route::get('/eng-highlight-delete/{id}', [HomeController::class, 'eng_highlight_delete'])->name('eng_highlight_delete');
 
     // HSC Reader Bookmark
     Route::post('/bookmark', [HomeController::class, 'bookmark'])->name('bookmark');
     Route::get('/bookmark-list', [HomeController::class, 'bookmark_list'])->name('bookmark_list');
     Route::get('/bookmark-delete/{id}', [HomeController::class, 'bookmark_delete'])->name('bookmark_delete');
+    Route::get('/eng-bookmark-delete/{id}', [HomeController::class, 'eng_bookmark_delete'])->name('eng_bookmark_delete');
 
 
 
 
     // engineering reader 
-    Route::get('/Engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
+    Route::get('/reader/Engineering/{subject}', [HomeController::class, 'engineering_reader'])->name('engineering_reader');
     Route::post('/engineering-chapter-to-type', [HomeController::class, 'engineering_chapter_to_type'])->name('engineering_chapter_to_type');
     Route::post('/engineering-type-to-content', [HomeController::class, 'engineering_type_to_content'])->name('engineering_type_to_content');
+
+    // engineering Reader Highlight
+    Route::post('/engineering-highlight', [HomeController::class, 'engineering_highlight'])->name('engineering_highlight');
+    Route::post('/engineering-highlight-data', [HomeController::class, 'engineering_highlight_data'])->name('engineering_highlight_data');
+
+    // engineering Reader Bookmark
+    Route::post('/engineering-bookmark', [HomeController::class, 'engineering_bookmark'])->name('engineering_bookmark');
 
     // Subscription 
 

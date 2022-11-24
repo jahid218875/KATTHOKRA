@@ -35,13 +35,13 @@
                 </select>
             </div>
             <input type="hidden" id="user_id" name="user_id" value="{{Auth()->user()->id}}">
-            <div class="col-6 col-md-3 d-flex align-items-center">
+            <div class="col-6 col-md-3 d-flex align-items-center justify-content-evenly">
                 {{-- <i class="fa-solid fa-highlighter fa-2x ms-4" id="changeColor"></i> --}}
                 {{-- <i class="fa-solid fa-book-bookmark fa-2x ms-4" id="bookmark"></i> --}}
                 <button class="btn border-0 p-0" id="changeColor"><i
-                        class="fa-solid fa-highlighter fa-2x ms-4 text-success"></i></button>
+                        class="fa-solid fa-highlighter fa-2x text-success"></i></button>
                 <button class="btn border-0 p-0" id="bookmark"><i
-                        class="fa-solid fa-book-bookmark fa-2x ms-4 text-success"></i></button>
+                        class="fa-solid fa-book-bookmark fa-2x text-success"></i></button>
 
                 {{-- <button class="btn btn-success" id="bookmark">Bookmark</button> --}}
             </div>
@@ -93,24 +93,21 @@
 
 <script>
     $('#changeColor').click(function(e){
+        var selection = getSelectedText(); 
+        selection = selection.anchorNode.parentElement.innerHTML;
+        var replacement = $('<span></span>').attr({'class':'robi-colored'}).html(selection);
+        var replacementHtml = $('<div>').append(replacement.clone()).remove().html();
 
-    var selection = getSelectedText(); 
-    selection = selection.anchorNode.parentElement.innerHTML;
-
-    var replacement = $('<span></span>').attr({'class':'robi-colored'}).html(selection);
-
-    var replacementHtml = $('<div>').append(replacement.clone()).remove().html();
     $('#content').html( $('#content').html().replace(selection, replacementHtml) );
-
-
+    
     e.preventDefault();
 
-    var subject = $('#subject_id').val();
-    var paper = $('#paper').val();
-    var chapter = $('#chapter').val();
-    var type = $('#type').val();
-    var content = selection;
-    var page = $('.active').text();
+        var subject = $('#subject_id').val();
+        var paper = $('#paper').val();
+        var chapter = $('#chapter').val();
+        var type = $('#type').val();
+        var content = selection;
+        var page = $('.active').text();
 
     $.ajax({
         type: "POST",
@@ -129,7 +126,6 @@
         }
         
     });
-
 });
 
 function getSelectedText(){ 
@@ -141,16 +137,14 @@ function getSelectedText(){
 }
 
 $('#bookmark').click(function(e){
+    e.preventDefault();
 
-e.preventDefault();
-
-var group = $('#group_name').val();
-var subject = $('#subject_id').val();
-var paper = $('#paper').val();
-var chapter = $('#chapter').val();
-var type = $('#type').val();
-var page = $('.active').text();
-
+    var group = $('#group_name').val();
+    var subject = $('#subject_id').val();
+    var paper = $('#paper').val();
+    var chapter = $('#chapter').val();
+    var type = $('#type').val();
+    var page = $('.active').text();
 
 $.ajax({
     type: "POST",
@@ -167,16 +161,13 @@ $.ajax({
     
     success: function(data) {
         if(data == 'success'){
-
             swal("Good job!", "Save Now to Read Later", "success");  
         }else{
             swal("Oops!", "Already Saved", "error");  
-
         }
     }  
 });
 });
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
@@ -189,18 +180,16 @@ $.ajax({
         let chapter = searchParams.get('chapter')
         let type = searchParams.get('type')
         let page = searchParams.get('page')
-
-
         if(paper || chapter || type){
             setTimeout(() => {
                 $('#paper').val(paper).trigger('change');
             }, 500);
             setTimeout(() => {
                 $('#chapter').val(chapter).trigger('change');
-            }, 1500);
+            }, 2000);
             setTimeout(() => {
                 $('#type').val(type).trigger('change');
-            }, 2500);
+            }, 3000);
             setTimeout(() => {
                 if (page !== 1){
                     $('.page-link:contains('+page+')').trigger('click');
@@ -223,28 +212,18 @@ $.ajax({
                 type_id: type,
                 page_id: page
             },
-
             success:function(data){
-
         $.each(data, function (key, val) {
             selection = val.content;
-
             var replacement = $('<span></span>').attr({'class':'robi-colored'}).html(selection);
-
             var replacementHtml = $('<div>').append(replacement.clone()).remove().html();
                 
             $('#content').html( $('#content').html().replace(selection, replacementHtml) );
-
-
             });
-
             }
         })
-
     }
     $('.ajax-loading').hide();
-
-
     $("#paper").change(function(e){
   
   e.preventDefault();
@@ -252,7 +231,6 @@ $.ajax({
 //   $('#content').html( '<p>Select Paper, Chapter & Type</p>');
   
  var paper = $(this).val();
-
   $.ajax({
      type:'POST',
      url:"{{ route('paper_to_chapter') }}",
@@ -265,23 +243,18 @@ $.ajax({
             var chapter = [];
             data.map(function(chapters){
             chapter.push(`<option value="${chapters.id}">${chapters.chapter_name}</option>`)
-
         })
         $('#chapter').html( '<option value="">Select Chapter</option>' + chapter) ;
         
          
      }
   });
-
 });
-
 $("#chapter").change(function(e){
   
   e.preventDefault();
 //   $('#content').html( '<p>Select Paper, Chapter & Type</p>');
-
  var chapter = $(this).val();
-
   $.ajax({
      type:'POST',
      url:"{{ route('chapter_to_type') }}",
@@ -290,20 +263,16 @@ $("#chapter").change(function(e){
         chapter_id: chapter
     },
         success:function(data){
-
             var type = [];
             data.map(function(types){
             type.push(`<option value="${types.id}">${types.type_name}</option>`)
-
         })
         $('#type').html( '<option value="">Select Type</option>' + type) ;
         
          
      }
   });
-
 });
-
 $("#type").change(function(e){
   
   e.preventDefault();
@@ -311,8 +280,6 @@ $("#type").change(function(e){
  var chapter = $('#chapter').val();
  var type = $('#type').val();
  
-
-
  if(paper && chapter && type){
     $.ajax({
      type:'POST',
@@ -323,7 +290,6 @@ $("#type").change(function(e){
         chapter_id: chapter,
         type_id: type
     },
-
     beforeSend: function() {
         $('.ajax-loading').show();// Note the ,e that I added
     },
@@ -335,14 +301,10 @@ $("#type").change(function(e){
             data.editor3 = ''
             data.editor2 = ''
         }
-
-
         if (data.status == 'active'){
-
            
             highlighted(paper, chapter, type, 1);
             
-
             if(data.pricing == 'freemium'){
                 var content = `<article class="blog-post">${data.editor1.substr(0, 5000)}</article>.......... <br><br> <p>সম্পূর্ণ লেখাটি পড়তে নীচের বাটনে প্রেস করে কোর্সটি কিনুন। </p><br><br>
                 <a href="{{ route('subscription')}}" class="btn btn-success my-3">কোর্সটি কিনুন</a>`;
@@ -356,7 +318,6 @@ $("#type").change(function(e){
         if(data.editor5){
             $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">5</a></li>');
         }
-
         
         if(data.editor4){
             $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">4</a></li>');
@@ -365,7 +326,6 @@ $("#type").change(function(e){
         if(data.editor3){
             $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">3</a></li>');
         }
-
         if(data.editor2){
             $('.paginate').after('<li class="page-item"><a class="page-link page-num" href="#">2</a></li>');
         }
@@ -377,15 +337,12 @@ $("#type").change(function(e){
         
     }
 });
-
 }
 });
-
 var data;
 function getData(response){
     data = response
 }
-
 $('.pagination').on('click', '.page-link', function(){
     var page = $(this).text();
 // console.log(data);
@@ -393,8 +350,6 @@ $('.pagination').on('click', '.page-link', function(){
         var content = `<article class="blog-post">${data.editor1}</article>`;
         $('#content').html(content);
     }
-
-
     if(page == 2){
         $('#content').html(`<article class="blog-post">${data.editor2}</article>`);
     }else if(page == 3){
@@ -406,13 +361,10 @@ $('.pagination').on('click', '.page-link', function(){
     }
     highlighted(data.paper_id, data.chapter_id, data.type_id, page);
     console.log(data.paper_id, data.chapter_id, data.type_id, page);
-
     $('.page-item').removeClass('active');
     $(this).parent().addClass('active');
    
 })
-
-
 </script>
 
 

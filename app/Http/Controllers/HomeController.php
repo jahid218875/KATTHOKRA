@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\Contact;
-use App\Mail\SearchMail;
 use App\Models\Ads;
 use App\Mail\SignUp;
 use App\Models\Type;
 use App\Models\User;
+use App\Mail\Contact;
 use App\Models\Paper;
 use App\Models\Review;
 use App\Models\Chapter;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Mail\SearchMail;
 use App\Models\Bookmark;
 use App\Models\Highlight;
 use App\Models\HscContent;
@@ -26,6 +26,8 @@ use App\Models\EngineeringType;
 use App\Models\EngineeringContent;
 use App\Models\EngineeringSubject;
 use Illuminate\Support\Facades\DB;
+use App\Models\EngineeringBookmark;
+use App\Models\EngineeringHighlight;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Cookie;
@@ -354,7 +356,7 @@ class HomeController extends Controller
         // return $content;
     }
 
-    // Highlight 
+    // HSC Highlight 
 
     public function highlight(Request $request)
     {
@@ -385,12 +387,20 @@ class HomeController extends Controller
     {
         $highlight = Highlight::where('user_id', Auth()->user()->id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
         // dd($highlight);
-        return view('visitor.highlight-list', compact('highlight'));
+        $EngineeringHighlight = EngineeringHighlight::where('user_id', Auth()->user()->id)->with('getSubject', 'getChapter', 'getType')->get();
+        return view('visitor.highlight-list', compact('highlight', 'EngineeringHighlight'));
     }
 
     public function highlight_delete($id)
     {
         Highlight::where('id', $id)->delete();
+
+        return back()->with('success', 'Highlight Deleted!');
+    }
+
+    public function eng_highlight_delete($id)
+    {
+        EngineeringHighlight::where('id', $id)->delete();
 
         return back()->with('success', 'Highlight Deleted!');
     }
@@ -424,12 +434,20 @@ class HomeController extends Controller
     {
         $bookmark = Bookmark::where('user_id', Auth()->user()->id)->with('getSubject', 'getPaper', 'getChapter', 'getType')->get();
         // dd($bookmark);
-        return view('visitor.bookmark-list', compact('bookmark'));
+        $eng_bookmark = EngineeringBookmark::where('user_id', Auth()->user()->id)->with('getSubject', 'getChapter', 'getType')->get();
+        return view('visitor.bookmark-list', compact('bookmark', 'eng_bookmark'));
     }
 
     public function bookmark_delete($id)
     {
         Bookmark::where('id', $id)->delete();
+
+        return back()->with('success', 'Bookmark Deleted!');
+    }
+
+    public function eng_bookmark_delete($id)
+    {
+        EngineeringBookmark::where('id', $id)->delete();
 
         return back()->with('success', 'Bookmark Deleted!');
     }
@@ -507,6 +525,53 @@ class HomeController extends Controller
         } else {
             return $content;
         }
+    }
+
+    // HSC Highlight 
+
+    public function engineering_highlight(Request $request)
+    {
+        $data = $this->validate($request, [
+            'subject' => 'required',
+            'chapter' => 'required',
+            'type' => 'required',
+            'content' => 'required',
+            'page' => 'required',
+        ]);
+        $data['user_id'] = Auth()->user()->id;
+        $data['save_type'] = 'highlight';
+
+        // dd($data);
+        EngineeringHighlight::create($data);
+
+        return 'data submitted';
+    }
+    public function engineering_highlight_data(Request $request)
+    {
+        $data = EngineeringHighlight::where(['user_id' => Auth()->user()->id, 'chapter' => $request->chapter_id, 'type' => $request->type_id, 'page' => $request->page_id])->get();
+        return $data;
+    }
+
+    public function engineering_bookmark(Request $request)
+    {
+        $data = $this->validate($request, [
+            'group' => 'required',
+            'subject' => 'required',
+            'chapter' => 'required',
+            'type' => 'required',
+            'page' => 'required',
+        ]);
+        $data['user_id'] = Auth()->user()->id;
+        $data['save_type'] = 'bookmark';
+
+        $check = EngineeringBookmark::where($data)->first();
+        if ($check) {
+            return 'error';
+        }
+
+        EngineeringBookmark::create($data);
+
+        return 'success';
     }
 
     // Subscription 

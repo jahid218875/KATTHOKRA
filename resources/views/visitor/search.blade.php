@@ -31,7 +31,7 @@
     </div>
 
     <div class="row" id="engineering">
-        <h3 class="text-center pt-5 mb-3">Engineering Content</h3>
+        <h3 class="text-center pt-5 mb-3">প্রকৌশলবিদ্যা</h3>
         @foreach ($EngineeringContent as $content)
         <div class="col-md-12 my-3">
             <div class="card shadow border-0">
